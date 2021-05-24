@@ -1,8 +1,0 @@
-Things that need Fixing:
-
-	The custom overlay is not being used, and even if it was I do not know how it would be colored in the same way as the fluid.
-	I think I can use one of the "EntityViewRenderEvent" in place of the overlay texture.
-	
-	When attempting to pick the fluid up wiht a bucket it just deletes that instance without change the bucket item.
-	
-	Using the custom Bucket Item to place the fluid does not play an empty sound.

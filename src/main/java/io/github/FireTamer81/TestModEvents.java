@@ -22,11 +22,23 @@ public class TestModEvents
 		
 		if (fluidstate.getType() == FluidInit.NAMEK_FLUID_FLOWING.get() || fluidstate.getType() == FluidInit.NAMEK_FLUID_SOURCE.get()) 
 		{
-			//event.setBlue(0);
-			//event.setGreen(255);
-			//event.setRed(0);
+			event.setBlue(0);
+			event.setGreen(255);
+			event.setRed(0);
 		}
 	}
 	
-	
+	@SubscribeEvent
+	public static void namekWaterFogDensity(EntityViewRenderEvent.FogDensity event) 
+	{
+		PlayerEntity player = Minecraft.getInstance().player;
+		double eyeHeight = player.getEyeY() - 1 / 9d;
+		FluidState fluidstate = player.level.getFluidState(new BlockPos(player.getX(), eyeHeight, player.getZ()));
+		
+		if (fluidstate.getType() == FluidInit.NAMEK_FLUID_FLOWING.get() || fluidstate.getType() == FluidInit.NAMEK_FLUID_SOURCE.get()) 
+		{
+			event.setDensity(0.1F);
+		}
+	}
+
 }

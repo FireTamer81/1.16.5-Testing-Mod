@@ -1,0 +1,8 @@
+Things that need Fixing:
+
+	The custom overlay is not being used, and even if it was I do not know how it would be colored in the same way as the fluid.
+	I can use an event to create a custom colored fog when inside the custom fluid, but I can't control the transparency/density of it which causes a headache when going into it.
+	
+	When attempting to pick the fluid up with a bucket it just deletes that instance without change the bucket item.
+	
+	Using the custom Bucket Item to place the fluid does not play an empty sound.
