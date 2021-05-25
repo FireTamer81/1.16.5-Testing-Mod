@@ -15,7 +15,7 @@ public class AverageFluidBlock extends FlowingFluidBlock {
     /**
     @Override
     public void entityInside(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if(this.getFluid() == UGFluids.VIRULENT_MIX_SOURCE.get() || this.getFluid() == UGFluids.VIRULENT_MIX_FLOWING.get()) {}
+        if(this.getFluid() == FluidInit.NAMEK_FLUID_SOURCE.get() || this.getFluid() == FluidInit.NAMEK_FLUID_FLOWING.get()) {}
     }
     **/
 }
