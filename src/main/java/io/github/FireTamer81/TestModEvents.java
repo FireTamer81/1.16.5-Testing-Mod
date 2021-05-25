@@ -5,6 +5,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.client.event.EntityViewRenderEvent;
+import net.minecraftforge.client.event.RenderBlockOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -23,13 +24,15 @@ public class TestModEvents
 		if (fluidstate.getType() == FluidInit.NAMEK_FLUID_FLOWING.get() || fluidstate.getType() == FluidInit.NAMEK_FLUID_SOURCE.get()) 
 		{
 			event.setBlue(0);
-			event.setGreen(255);
+			event.setGreen(1);
 			event.setRed(0);
 		}
 	}
 	
+	
+	
 	@SubscribeEvent
-	public static void namekWaterFogDensity(EntityViewRenderEvent.FogDensity event) 
+	public static void cancelVanillaWaterOverlay(RenderBlockOverlayEvent event) 
 	{
 		PlayerEntity player = Minecraft.getInstance().player;
 		double eyeHeight = player.getEyeY() - 1 / 9d;
@@ -37,8 +40,11 @@ public class TestModEvents
 		
 		if (fluidstate.getType() == FluidInit.NAMEK_FLUID_FLOWING.get() || fluidstate.getType() == FluidInit.NAMEK_FLUID_SOURCE.get()) 
 		{
-			event.setDensity(0.1F);
+			if (event.isCancelable()) 
+			{
+				event.setCanceled(true);
+			}
 		}
 	}
-
+	
 }

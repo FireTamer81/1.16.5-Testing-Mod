@@ -15,7 +15,8 @@ public class ItemInit
 	
 	public static final RegistryObject<Item> NAMEK_FLUID_BUCKET = ITEMS.register("namek_water_bucket", 
 			() -> new BucketItem(FluidInit.NAMEK_FLUID_SOURCE, (
-					new Item.Properties()).tab(TestItemGroup.GROUP)
+					new Item.Properties())
+					.tab(TestItemGroup.GROUP)
 					.craftRemainder(Items.BUCKET)
 					.stacksTo(1)));
 }

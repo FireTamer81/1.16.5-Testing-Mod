@@ -60,6 +60,7 @@ public class TestMod_Main
 	{
 		RenderTypeLookup.setRenderLayer(FluidInit.NAMEK_FLUID_SOURCE.get(), RenderType.translucent());
 		RenderTypeLookup.setRenderLayer(FluidInit.NAMEK_FLUID_FLOWING.get(), RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(BlockInit.NAMEK_FLUID_BLOCK.get(), RenderType.translucent());
 	}
 
 

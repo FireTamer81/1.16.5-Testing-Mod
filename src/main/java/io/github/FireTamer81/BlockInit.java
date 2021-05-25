@@ -14,7 +14,7 @@ public class BlockInit
 	
 	
 	public static final RegistryObject<FlowingFluidBlock> NAMEK_FLUID_BLOCK = BLOCKS.register("namek_fluid", 
-			() -> new FlowingFluidBlock(FluidInit.NAMEK_FLUID_SOURCE, AbstractBlock.Properties.of(Material.WATER)
+			() -> new FlowingFluidBlock(FluidInit.NAMEK_FLUID_SOURCE, AbstractBlock.Properties.of(Material.WATER) //TestMaterials.NAMEK_WATER
 					.noCollission()
 					.strength(100f)
 					.noDrops()));

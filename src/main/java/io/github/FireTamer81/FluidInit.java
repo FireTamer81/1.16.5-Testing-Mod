@@ -18,7 +18,6 @@ public class FluidInit
 	
 	private static ResourceLocation stillNamekWaterTexture = new ResourceLocation(TestMod_Main.MOD_ID, "fluids/namek_fluid_still");
 	private static ResourceLocation flowingNamekWaterTexture = new ResourceLocation(TestMod_Main.MOD_ID, "fluids/namek_fluid_flow");
-	private static ResourceLocation namekWaterOverlayTexture = new ResourceLocation(TestMod_Main.MOD_ID, "fluids/namek_water_overlay");
 	
 	
 	
@@ -31,7 +30,6 @@ public class FluidInit
 			FluidAttributes.builder(stillNamekWaterTexture, flowingNamekWaterTexture)
 				.sound(SoundEvents.WATER_AMBIENT)
 				.color(new Color(66, 191, 34, 200).getRGB())
-				.overlay(namekWaterOverlayTexture)
 			)
 			.bucket(ItemInit.NAMEK_FLUID_BUCKET)
 			.block(BlockInit.NAMEK_FLUID_BLOCK)
