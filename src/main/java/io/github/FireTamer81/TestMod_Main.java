@@ -4,8 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Blocks;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -33,9 +31,7 @@ public class TestMod_Main
         
         
         DeferredRegister<?>[] registers = {
-        		ItemInit.ITEMS,
-        		BlockInit.BLOCKS,
-        		FluidInit.FLUIDS
+        		
         };
         
         for (DeferredRegister<?> register : registers) {
@@ -58,9 +54,7 @@ public class TestMod_Main
     
 	public void clientSetup(FMLClientSetupEvent event) 
 	{
-		RenderTypeLookup.setRenderLayer(FluidInit.NAMEK_FLUID_SOURCE.get(), RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(FluidInit.NAMEK_FLUID_FLOWING.get(), RenderType.translucent());
-		RenderTypeLookup.setRenderLayer(BlockInit.NAMEK_FLUID_BLOCK.get(), RenderType.translucent());
+		
 	}
 
 
