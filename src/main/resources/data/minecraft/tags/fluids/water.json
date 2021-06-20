@@ -1,7 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "testingmod:test_fluid_source",
-    "testingmod:test_fluid_flowing"
-  ]
-}
