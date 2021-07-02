@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "": { "model": "testingmod:block/dirty_stone" }
+    }
+}

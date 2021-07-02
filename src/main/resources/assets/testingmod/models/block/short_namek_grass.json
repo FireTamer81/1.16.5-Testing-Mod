@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/tinted_cross",
+    "textures": {
+        "cross": "testingmod:blocks/short_namek_grass"
+    }
+}

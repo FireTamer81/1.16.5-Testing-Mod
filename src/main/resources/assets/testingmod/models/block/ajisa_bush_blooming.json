@@ -1,0 +1,101 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"1": "testingmod:blocks/namek_log_side",
+		"2": "testingmod:blocks/namek_log_top",
+		"4": "testingmod:blocks/ajisa_blooms",
+		"particle": "testingmod:blocks/ajisa_leaves"
+	},
+	"elements": [
+		{
+			"from": [5.25, -1.25, 5.25],
+			"to": [10.75, 4.25, 10.75],
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"east": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"west": {"uv": [0, 0, 16, 16], "texture": "#1"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		},
+		{
+			"from": [3, 4, 3],
+			"to": [13, 5, 13],
+			"faces": {
+				"north": {"uv": [16, 1.5, 8, 0], "texture": "#4"},
+				"east": {"uv": [8, 1.5, 16, 3], "texture": "#4"},
+				"south": {"uv": [8, 1.5, 16, 0], "texture": "#4"},
+				"west": {"uv": [8, 1.5, 16, 3], "texture": "#4"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"down": {"uv": [0, 0, 8, 8], "rotation": 90, "texture": "#4"}
+			}
+		},
+		{
+			"from": [3, 5, 2],
+			"to": [13, 15, 3],
+			"faces": {
+				"north": {"uv": [8, 0, 0, 8], "texture": "#4"},
+				"east": {"uv": [1.5, 8, 0, 16], "texture": "#4"},
+				"south": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"west": {"uv": [3, 8, 1.5, 16], "texture": "#4"},
+				"up": {"uv": [16, 3, 8, 1.5], "texture": "#4"},
+				"down": {"uv": [8, 1.5, 16, 3], "texture": "#4"}
+			}
+		},
+		{
+			"from": [13, 5, 3],
+			"to": [14, 15, 13],
+			"faces": {
+				"north": {"uv": [3, 8, 1.5, 16], "texture": "#4"},
+				"east": {"uv": [0, 8, 8, 0], "texture": "#4"},
+				"south": {"uv": [1.5, 16, 0, 8], "texture": "#4"},
+				"west": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"up": {"uv": [1.5, 8, 0, 16], "texture": "#4"},
+				"down": {"uv": [1.5, 16, 0, 8], "texture": "#4"}
+			}
+		},
+		{
+			"from": [3, 5, 13],
+			"to": [13, 15, 14],
+			"faces": {
+				"north": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"east": {"uv": [3, 16, 1.5, 8], "texture": "#4"},
+				"south": {"uv": [0, 0, 8, 8], "rotation": 180, "texture": "#4"},
+				"west": {"uv": [1.5, 8, 0, 16], "texture": "#4"},
+				"up": {"uv": [8, 1.5, 16, 3], "texture": "#4"},
+				"down": {"uv": [8, 3, 16, 1.5], "texture": "#4"}
+			}
+		},
+		{
+			"from": [2, 5, 3],
+			"to": [3, 15, 13],
+			"faces": {
+				"north": {"uv": [1.5, 8, 0, 16], "texture": "#4"},
+				"east": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"south": {"uv": [3, 8, 1.5, 16], "texture": "#4"},
+				"west": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"up": {"uv": [1.5, 16, 3, 8], "rotation": 180, "texture": "#4"},
+				"down": {"uv": [0, 8, 1.5, 16], "texture": "#4"}
+			}
+		},
+		{
+			"from": [3, 15, 3],
+			"to": [13, 16, 13],
+			"faces": {
+				"north": {"uv": [8, 3, 16, 1.5], "texture": "#4"},
+				"east": {"uv": [8, 3, 16, 1.5], "texture": "#4"},
+				"south": {"uv": [8, 0, 16, 1.5], "texture": "#4"},
+				"west": {"uv": [16, 0, 8, 1.5], "texture": "#4"},
+				"up": {"uv": [0, 0, 8, 8], "texture": "#4"},
+				"down": {"uv": [0, 0, 8, 8], "texture": "#4"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "LargeBushBlooming",
+			"origin": [0, 0, 0],
+			"children": [0, 1, 2, 3, 4, 5, 6]
+		}
+	]
+}

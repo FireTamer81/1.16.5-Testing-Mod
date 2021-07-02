@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "testingmod:block/ajisa_bush_small"
+    },
+    "age=1": {
+      "model": "testingmod:block/ajisa_bush_medium"
+    },
+    "age=2": {
+      "model": "testingmod:block/ajisa_bush_large"
+    },
+    "age=3": {
+      "model": "testingmod:block/ajisa_bush_blooming"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "testingmod:namek_fluid_source",
+    "testingmod:namek_fluid_flowing"
+  ]
+}

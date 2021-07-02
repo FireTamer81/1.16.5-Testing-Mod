@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "testingmod:blocks/namek_log_top",
+    "side": "testingmod:blocks/namek_log_side"
+  }
+}
