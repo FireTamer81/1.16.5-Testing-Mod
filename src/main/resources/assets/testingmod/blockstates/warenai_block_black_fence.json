@@ -1,26 +1,28 @@
 {
-  "multipart": [
-    {"apply": {"model": "testingmod:block/warenai_block_black_fence_post"} },
-    {"when": { "north": "true" }, "apply": {"model": "testingmod:block/warenai_block_black_fence_side", "uvlock": true}},
-    {"when": {"south": "true"}, "apply": {"model": "testingmod:block/warenai_block_black_fence_side", "y": 180, "uvlock": true}},
-    {"when": {
-        "west": "true"
-      },
-      "apply": {
-        "model": "testingmod:block/warenai_block_black_fence_side",
-        "y": 270,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "east": "true"
-      },
-      "apply": {
-        "model": "testingmod:block/warenai_block_black_fence_side",
-        "y": 90,
-        "uvlock": true
-      }
-    }
+  "multipart":
+  [
+    {"when": {"block_condition":1}, "apply": {"model": "testingmod:block/cracked_warenai_block_black_fence_post"} },
+    {"when": {"north":"true", "block_condition":1}, "apply": {"model": "testingmod:block/cracked_warenai_block_black_fence_side", "uvlock": true} },
+    {"when": {"south":"true", "block_condition":1}, "apply": {"model": "testingmod:block/cracked_warenai_block_black_fence_side", "y": 180, "uvlock": true} },
+    {"when": {"west":"true", "block_condition":1}, "apply": {"model": "testingmod:block/cracked_warenai_block_black_fence_side", "y": 270, "uvlock": true} },
+    {"when": {"east":"true", "block_condition":1}, "apply": {"model": "testingmod:block/cracked_warenai_block_black_fence_side", "y": 90, "uvlock": true} },
+
+    {"when": {"block_condition":2}, "apply": {"model": "testingmod:block/scuffed_warenai_block_black_fence_post"} },
+    {"when": {"north":"true", "block_condition":2}, "apply": {"model": "testingmod:block/scuffed_warenai_block_black_fence_side", "uvlock": true} },
+    {"when": {"south":"true", "block_condition":2}, "apply": {"model": "testingmod:block/scuffed_warenai_block_black_fence_side", "y": 180, "uvlock": true} },
+    {"when": {"west":"true", "block_condition":2}, "apply": {"model": "testingmod:block/scuffed_warenai_block_black_fence_side", "y": 270, "uvlock": true} },
+    {"when": {"east":"true", "block_condition":2}, "apply": {"model": "testingmod:block/scuffed_warenai_block_black_fence_side", "y": 90, "uvlock": true} },
+
+    {"when": {"block_condition":3}, "apply": {"model": "testingmod:block/warenai_block_black_fence_post"} },
+    {"when": {"north":"true", "block_condition":3}, "apply": {"model": "testingmod:block/warenai_block_black_fence_side", "uvlock": true} },
+    {"when": {"south":"true", "block_condition":3}, "apply": {"model": "testingmod:block/warenai_block_black_fence_side", "y": 180, "uvlock": true} },
+    {"when": {"west":"true", "block_condition":3}, "apply": {"model": "testingmod:block/warenai_block_black_fence_side", "y": 270, "uvlock": true} },
+    {"when": {"east":"true", "block_condition":3}, "apply": {"model": "testingmod:block/warenai_block_black_fence_side", "y": 90, "uvlock": true} },
+
+    {"when": {"block_condition":4}, "apply": {"model": "testingmod:block/polished_warenai_block_black_fence_post"} },
+    {"when": {"north":"true", "block_condition":4}, "apply": {"model": "testingmod:block/polished_warenai_block_black_fence_side", "uvlock": true} },
+    {"when": {"south":"true", "block_condition":4}, "apply": {"model": "testingmod:block/polished_warenai_block_black_fence_side", "y": 180, "uvlock": true} },
+    {"when": {"west":"true", "block_condition":4}, "apply": {"model": "testingmod:block/polished_warenai_block_black_fence_side", "y": 270, "uvlock": true} },
+    {"when": {"east":"true", "block_condition":4}, "apply": {"model": "testingmod:block/polished_warenai_block_black_fence_side", "y": 90, "uvlock": true} }
   ]
 }

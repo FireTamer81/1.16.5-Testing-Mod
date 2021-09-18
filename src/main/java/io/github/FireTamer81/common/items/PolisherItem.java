@@ -1,7 +1,8 @@
 package io.github.FireTamer81.common.items;
 
 import io.github.FireTamer81._testing.CustomBlockstateProperties;
-import io.github.FireTamer81._testing.WarenaiBlockSlab;
+import io.github.FireTamer81._testing.WarenaiBlockFence;
+import io.github.FireTamer81.common.blocks.WarenaiBlockSlab;
 import io.github.FireTamer81.common.blocks.WarenaiBlockStairs;
 import io.github.FireTamer81.common.blocks.WarenaiBlock;
 import net.minecraft.block.Block;
@@ -30,7 +31,8 @@ public class PolisherItem extends Item
 
         if (warenaiClassBlock instanceof WarenaiBlock ||
                 warenaiClassBlock instanceof WarenaiBlockStairs ||
-                warenaiClassBlock instanceof WarenaiBlockSlab)
+                warenaiClassBlock instanceof WarenaiBlockSlab ||
+                warenaiClassBlock instanceof WarenaiBlockFence)
         {
             if (state.getValue(CustomBlockstateProperties.CRACKED_DIRTY_CLEAN_POLISHED) == 1) {
                 //state.setValue(CustomBlockstateProperties.CRACKED_DIRTY_CLEAN_POLISHED, Integer.valueOf(2));

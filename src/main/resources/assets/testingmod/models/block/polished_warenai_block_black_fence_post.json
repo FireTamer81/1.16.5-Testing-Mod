@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "testingmod:block/polished_warenai_block_black"
+  }
+}
