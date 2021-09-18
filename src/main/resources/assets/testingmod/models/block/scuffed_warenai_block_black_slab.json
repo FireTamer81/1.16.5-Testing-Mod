@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "testingmod:block/dirty_stone",
+    "bottom": "testingmod:block/dirty_stone",
+    "top": "testingmod:block/dirty_stone"
+  }
+}

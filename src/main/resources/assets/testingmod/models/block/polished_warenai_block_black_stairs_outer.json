@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "testingmod:block/polished_warenai_block_black",
+    "bottom": "testingmod:block/polished_warenai_block_black",
+    "top": "testingmod:block/polished_warenai_block_black"
+  }
+}

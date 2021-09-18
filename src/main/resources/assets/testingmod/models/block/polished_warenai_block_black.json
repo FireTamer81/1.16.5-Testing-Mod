@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "testingmod:block/polished_warenai_block_black"
+  }
+}
