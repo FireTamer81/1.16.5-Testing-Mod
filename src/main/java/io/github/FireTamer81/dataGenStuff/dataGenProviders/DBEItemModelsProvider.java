@@ -41,7 +41,7 @@ public class DBEItemModelsProvider extends ItemModelProvider //implements IDataP
         //withExistingParent("warenai_block_black_fence", modLoc("block/warenai_block_black_fence_inventory"));
 
         //Walls
-        withExistingParent("warenai_block_black_wall", modLoc("block/warenai_block_black_wall_inventory"));
+        //withExistingParent("warenai_block_black_wall", modLoc("block/warenai_block_black_wall_inventory"));
 
     }
 

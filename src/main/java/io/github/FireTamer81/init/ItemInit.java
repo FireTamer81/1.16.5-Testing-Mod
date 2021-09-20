@@ -18,4 +18,5 @@ public class ItemInit
 
     public static final RegistryObject<Item> SCRAPER = ITEMS.register("scraper_item",
             () -> new ScraperItem(new Item.Properties()));
+
 }

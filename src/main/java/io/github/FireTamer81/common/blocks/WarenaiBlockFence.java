@@ -1,4 +1,4 @@
-package io.github.FireTamer81._testing;
+package io.github.FireTamer81.common.blocks;
 
 import io.github.FireTamer81._testing.CustomBlockstateProperties;
 import net.minecraft.block.Block;

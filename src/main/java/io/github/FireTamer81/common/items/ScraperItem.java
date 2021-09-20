@@ -1,7 +1,7 @@
 package io.github.FireTamer81.common.items;
 
 import io.github.FireTamer81._testing.CustomBlockstateProperties;
-import io.github.FireTamer81._testing.WarenaiBlockFence;
+import io.github.FireTamer81.common.blocks.WarenaiBlockFence;
 import io.github.FireTamer81.common.blocks.WarenaiBlockSlab;
 import io.github.FireTamer81.common.blocks.WarenaiBlockStairs;
 import io.github.FireTamer81.common.blocks.WarenaiBlock;

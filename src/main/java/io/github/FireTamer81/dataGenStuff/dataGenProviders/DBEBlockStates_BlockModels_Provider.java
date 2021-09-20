@@ -38,7 +38,7 @@ public class DBEBlockStates_BlockModels_Provider extends BlockStateProvider //im
         //fenceBlock(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_FENCE.get(), modLoc("block/warenai_block_black"));
 
         //Walls
-        wallBlock(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_WALL.get(), modLoc("block/warenai_block_black"));
+        //wallBlock(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_WALL.get(), modLoc("block/warenai_block_black"));
 
     }
 }
