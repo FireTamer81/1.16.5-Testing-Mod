@@ -1,5 +1,6 @@
 package io.github.FireTamer81._testing;
 
+import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;
 
 public class CustomBlockstateProperties

@@ -1,7 +1,7 @@
 package io.github.FireTamer81.init;
 
 import io.github.FireTamer81.TestModMain;
-import io.github.FireTamer81._testing.WarenaiBlockWall;
+import io.github.FireTamer81.common.blocks.WarenaiBlockWall;
 import io.github.FireTamer81.common.blocks.WarenaiBlockFence;
 import io.github.FireTamer81.common.blocks.WarenaiBlockSlab;
 import io.github.FireTamer81.common.blocks.WarenaiBlockStairs;
@@ -65,12 +65,12 @@ public class WarenaiBlocksInit
 
     //Fences
     public static final RegistryObject<FenceBlock> WARENAI_BLOCK_BLACK_FENCE = register("warenai_block_black_fence", () ->
-            new WarenaiBlockFence(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get())));
+            new WarenaiBlockFence(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get()).noOcclusion()));
 
 
     //Walls
     public static final RegistryObject<WarenaiBlockWall> WARENAI_BLOCK_BLACK_WALL = register("warenai_block_black_wall", () ->
-            new WarenaiBlockWall(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get())));
+            new WarenaiBlockWall(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get()).noOcclusion()));
 
 
 }

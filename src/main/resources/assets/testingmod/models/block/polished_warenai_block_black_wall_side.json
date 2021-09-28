@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "testingmod:block/polished_warenai_block_black"
+  }
+}

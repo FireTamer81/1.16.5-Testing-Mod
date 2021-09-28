@@ -1,6 +1,7 @@
 package io.github.FireTamer81.common.items;
 
 import io.github.FireTamer81._testing.CustomBlockstateProperties;
+import io.github.FireTamer81.common.blocks.WarenaiBlockWall;
 import io.github.FireTamer81.common.blocks.WarenaiBlockFence;
 import io.github.FireTamer81.common.blocks.WarenaiBlockSlab;
 import io.github.FireTamer81.common.blocks.WarenaiBlockStairs;
@@ -35,7 +36,8 @@ public class ScraperItem extends Item
         if (warenaiClassBlock instanceof WarenaiBlock ||
                 warenaiClassBlock instanceof WarenaiBlockStairs ||
                 warenaiClassBlock instanceof WarenaiBlockSlab ||
-                warenaiClassBlock instanceof WarenaiBlockFence)
+                warenaiClassBlock instanceof WarenaiBlockFence ||
+                warenaiClassBlock instanceof WarenaiBlockWall)
         {
             if (state.getValue(CustomBlockstateProperties.CRACKED_DIRTY_CLEAN_POLISHED) == 1) {
                 return ActionResultType.PASS;

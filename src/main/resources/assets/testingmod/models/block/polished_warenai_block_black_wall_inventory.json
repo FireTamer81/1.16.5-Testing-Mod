@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/wall_inventory",
+    "textures": {
+        "wall": "testingmod:block/polished_warenai_block_black"
+    }
+}
