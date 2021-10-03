@@ -1,22 +1,15 @@
 package io.github.FireTamer81.common.blocks;
 
-import io.github.FireTamer81._testing.CustomBlockstateProperties;
-import io.github.FireTamer81.init.ItemInit;
+import io.github.FireTamer81.common.CustomBlockstateProperties;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
 import net.minecraft.block.StairsBlock;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.*;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.Half;
 import net.minecraft.state.properties.StairsShape;
-import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Direction;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
 
 public class WarenaiBlockStairs extends StairsBlock
 {

@@ -1,4 +1,4 @@
-package io.github.FireTamer81._testing;
+package io.github.FireTamer81.common;
 
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.IntegerProperty;

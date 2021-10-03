@@ -1,6 +1,6 @@
 package io.github.FireTamer81.common.blocks;
 
-import io.github.FireTamer81._testing.CustomBlockstateProperties;
+import io.github.FireTamer81.common.CustomBlockstateProperties;
 import net.minecraft.block.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.fluid.FluidState;

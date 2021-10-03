@@ -4,6 +4,7 @@ import io.github.FireTamer81.dataGenStuff.dataGenProviders.DBEBlockStates_BlockM
 import io.github.FireTamer81.dataGenStuff.dataGenProviders.DBEBlockTagsProvider;
 import io.github.FireTamer81.dataGenStuff.dataGenProviders.DBEItemModelsProvider;
 import io.github.FireTamer81.init.ItemInit;
+import io.github.FireTamer81.init.TileEntityTypesInit;
 import io.github.FireTamer81.init.WarenaiBlocksInit;
 import io.github.FireTamer81.item_groups.WarenaiBlocksGroup;
 import net.minecraft.data.DataGenerator;
@@ -55,6 +56,7 @@ public class TestModMain
 		//Registries
 		DeferredRegister<?>[] registers = {
 				WarenaiBlocksInit.BLOCKS,
+				TileEntityTypesInit.TILE_ENTITY_TYPE,
 				ItemInit.ITEMS
 		};
 		
