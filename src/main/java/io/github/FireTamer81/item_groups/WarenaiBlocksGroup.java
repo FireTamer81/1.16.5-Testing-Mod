@@ -22,6 +22,7 @@ public class WarenaiBlocksGroup extends ItemGroup
         items.add(ItemInit.DAMAGE_ITEM.get().getDefaultInstance());
         items.add(ItemInit.REPAIR_ITEM.get().getDefaultInstance());
         items.add(ItemInit.POLISHER_ITEM.get().getDefaultInstance());
+        items.add(ItemInit.WEDGE_ITEM.get().getDefaultInstance());
 
         /**
          * Warenai Blocks

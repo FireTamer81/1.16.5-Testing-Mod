@@ -1,6 +1,7 @@
 package io.github.FireTamer81.common.blocks;
 
 import io.github.FireTamer81.common.CustomBlockstateProperties;
+import io.github.FireTamer81.init.TileEntityTypesInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
@@ -9,7 +10,9 @@ import net.minecraft.state.*;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.Half;
 import net.minecraft.state.properties.StairsShape;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.world.IBlockReader;
 
 public class WarenaiBlockStairs extends StairsBlock
 {
@@ -40,4 +43,14 @@ public class WarenaiBlockStairs extends StairsBlock
     }
 
 
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return TileEntityTypesInit.STRONGBLOCK_TILE.get().create();
+    }
 }

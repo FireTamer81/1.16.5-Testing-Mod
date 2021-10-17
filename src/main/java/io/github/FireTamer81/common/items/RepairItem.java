@@ -1,18 +1,13 @@
 package io.github.FireTamer81.common.items;
 
-import io.github.FireTamer81.common.CustomBlockstateProperties;
-import io.github.FireTamer81.common.blocks.WarenaiBlockWall;
-import io.github.FireTamer81.common.blocks.WarenaiBlockFence;
-import io.github.FireTamer81.common.blocks.WarenaiBlockSlab;
-import io.github.FireTamer81.common.blocks.WarenaiBlockStairs;
-import io.github.FireTamer81.common.blocks.WarenaiBlock;
 import io.github.FireTamer81.common.tileEntities.StrongBlockTileEntity;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUseContext;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
 public class RepairItem extends Item
@@ -21,26 +16,31 @@ public class RepairItem extends Item
         super(properties);
     }
 
-
     @Override
     public ActionResultType useOn(ItemUseContext context) {
         World worldIn = context.getLevel();
         BlockPos blockPos = context.getClickedPos();
-        BlockState blockState = worldIn.getBlockState(blockPos);
+        PlayerEntity playerEntity = context.getPlayer();
 
-        //Block warenaiClassBlock = blockState.getBlock();
-        boolean warenaiClassBlock = blockState.getBlock() instanceof WarenaiBlock;
 
-        if (blockState.hasTileEntity() && warenaiClassBlock) {
-            StrongBlockTileEntity strongBlockTile = new StrongBlockTileEntity();
+        if (!worldIn.isClientSide) {
+            TileEntity te = worldIn.getBlockEntity(blockPos);
 
-            strongBlockTile.repairStrongBlock(50);
-            //strongBlockTile.showBlockHealth();
-            return ActionResultType.SUCCESS;
+            if (te != null && te instanceof StrongBlockTileEntity) {
+                StrongBlockTileEntity strongBlockTile = (StrongBlockTileEntity) te;
 
+                if (playerEntity.isCrouching()) {
+                    playerEntity.displayClientMessage(new StringTextComponent("Block Health: " + ((StrongBlockTileEntity) te).getHealth()), false);
+                } else {
+                    strongBlockTile.repairBlock(100);
+                }
+
+                return ActionResultType.SUCCESS;
+            } else {
+                return ActionResultType.FAIL;
+            }
         } else {
-            return ActionResultType.PASS;
+            return ActionResultType.FAIL;
         }
     }
-
 }

@@ -47,8 +47,9 @@ public class WarenaiBlocksInit
     //Full Blocks
     public static final RegistryObject<Block> WARENAI_BLOCK_BLACK = register("warenai_block_black", () ->
             new WarenaiBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK)
-                    .strength(15f, 50f).harvestTool(ToolType.PICKAXE).harvestLevel(3)));
-
+                    .strength(-1.0F, 50f) //Was originally 15f, 50f
+                    .harvestTool(ToolType.PICKAXE)
+                    .harvestLevel(3)));
 
 
     //Stairs
@@ -73,4 +74,13 @@ public class WarenaiBlocksInit
             new WarenaiBlockWall(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get()).noOcclusion()));
 
 
+
+
+    public class WarenaiBlocks {
+
+    }
+
+    public class WarenaiBlockItems {
+
+    }
 }

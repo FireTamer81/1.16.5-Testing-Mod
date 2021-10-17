@@ -121,6 +121,7 @@ public class WarenaiBlockWall extends Block implements IWaterLoggable
 
         boolean isAboveBlockStateAFullBlock = aboveThisBlockState.isFaceSturdy(reader, aboveThisBlockPos, Direction.DOWN);
         boolean isAboveBlockStateWallBlock = aboveThisBlockState.getBlock() instanceof WallBlock || aboveThisBlockState.getBlock() instanceof WarenaiBlockWall;
+        //boolean aboveBlockIsAir = aboveThisBlockState.getBlock() instanceof AirBlock;
 
         boolean isCovered = isAboveBlockStateAFullBlock || isAboveBlockStateWallBlock;
         //boolean aboveBlockStateIsNotAir = !aboveThisBlockState.isAir();
