@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "block_condition=1": { "model": "testingmod:block/cracked_warenai_block_black" },
-    "block_condition=2": { "model": "testingmod:block/scuffed_warenai_block_black" },
-    "block_condition=3": { "model": "testingmod:block/warenai_block_black" },
-    "block_condition=4": { "model": "testingmod:block/polished_warenai_block_black" }
-  }
-}

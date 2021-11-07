@@ -37,7 +37,11 @@ public class PolisherItem extends Item
                 if (playerEntity.isCrouching()) {
                     playerEntity.displayClientMessage(new StringTextComponent("Block Health: " + ((StrongBlockTileEntity) te).getHealth()), false);
                 } else {
-                    strongBlockTile.polishBlock(50);
+                    strongBlockTile.polishBlock(100);
+
+                    context.getItemInHand().hurtAndBreak(1, context.getPlayer(), (consumer) -> {
+                        consumer.broadcastBreakEvent(context.getHand());
+                    });
                 }
 
                 return ActionResultType.SUCCESS;

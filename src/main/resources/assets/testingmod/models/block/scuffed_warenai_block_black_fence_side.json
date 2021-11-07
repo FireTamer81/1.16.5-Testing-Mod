@@ -1,6 +1,66 @@
 {
+  "credit": "Made with Blockbench",
   "parent": "minecraft:block/fence_side",
   "textures": {
-    "texture": "testingmod:block/dirty_stone"
-  }
+    "0": "testingmod:block/warenai_block_black",
+    "overlay": "testingmod:block/scuffed_overlay_texture",
+    "particle": "testingmod:block/warenai_block_black"
+  },
+  "elements": [
+    {
+      "from": [7, 6, 0],
+      "to": [9, 9, 6],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+      "faces": {
+        "north": {"uv": [7, 7, 9, 10], "texture": "#0"},
+        "east": {"uv": [0, 0, 6, 3], "texture": "#0"},
+        "south": {"uv": [0, 0, 2, 3], "texture": "#0"},
+        "west": {"uv": [0, 7, 6, 10], "texture": "#0"},
+        "up": {"uv": [0, 7, 6, 9], "rotation": 90, "texture": "#0"},
+        "down": {"uv": [0, 7, 6, 9], "rotation": 270, "texture": "#0"}
+      }
+    },
+    {
+      "from": [7, 12, 0],
+      "to": [9, 15, 6],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+      "faces": {
+        "north": {"uv": [7, 1, 9, 4], "texture": "#0"},
+        "east": {"uv": [0, 0, 6, 3], "texture": "#0"},
+        "south": {"uv": [0, 0, 2, 3], "texture": "#0"},
+        "west": {"uv": [0, 1, 6, 4], "texture": "#0"},
+        "up": {"uv": [0, 7, 6, 9], "rotation": 90, "texture": "#0"},
+        "down": {"uv": [0, 7, 6, 9], "rotation": 270, "texture": "#0"}
+      }
+    },
+
+
+
+    {
+      "from": [7, 6, 0],
+      "to": [9, 9, 6],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+      "faces": {
+        "north": {"uv": [7, 7, 9, 10], "texture": "#overlay"},
+        "east": {"uv": [0, 0, 6, 3], "texture": "#overlay"},
+        "south": {"uv": [0, 0, 2, 3], "texture": "#overlay"},
+        "west": {"uv": [0, 7, 6, 10], "texture": "#overlay"},
+        "up": {"uv": [0, 7, 6, 9], "rotation": 90, "texture": "#overlay"},
+        "down": {"uv": [0, 7, 6, 9], "rotation": 270, "texture": "#overlay"}
+      }
+    },
+    {
+      "from": [7, 12, 0],
+      "to": [9, 15, 6],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+      "faces": {
+        "north": {"uv": [7, 1, 9, 4], "texture": "#overlay"},
+        "east": {"uv": [0, 0, 6, 3], "texture": "#overlay"},
+        "south": {"uv": [0, 0, 2, 3], "texture": "#overlay"},
+        "west": {"uv": [0, 1, 6, 4], "texture": "#overlay"},
+        "up": {"uv": [0, 7, 6, 9], "rotation": 90, "texture": "#overlay"},
+        "down": {"uv": [0, 7, 6, 9], "rotation": 270, "texture": "#overlay"}
+      }
+    }
+  ]
 }

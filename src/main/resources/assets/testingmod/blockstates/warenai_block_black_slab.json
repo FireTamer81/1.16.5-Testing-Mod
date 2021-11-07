@@ -1,19 +1,67 @@
 {
   "variants": {
-    "type=top,block_condition=1": { "model": "testingmod:block/cracked_warenai_block_black_slab_top" },
-    "type=bottom,block_condition=1": { "model": "testingmod:block/cracked_warenai_block_black_slab" },
-    "type=double,block_condition=1": { "model": "testingmod:block/cracked_warenai_block_black" },
+    "type=top,block_condition=2,level_of_cracked=0": { "model": "testingmod:block/scuffed_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=2,level_of_cracked=0": { "model": "testingmod:block/scuffed_warenai_block_black_slab" },
+    "type=double,block_condition=2,level_of_cracked=0": { "model": "testingmod:block/scuffed_warenai_block_black" },
 
-    "type=top,block_condition=2": { "model": "testingmod:block/scuffed_warenai_block_black_slab_top" },
-    "type=bottom,block_condition=2": { "model": "testingmod:block/scuffed_warenai_block_black_slab" },
-    "type=double,block_condition=2": { "model": "testingmod:block/scuffed_warenai_block_black" },
+    "type=top,block_condition=2,level_of_cracked=1": { "model": "testingmod:block/cracked1_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=2,level_of_cracked=1": { "model": "testingmod:block/cracked1_warenai_block_black_slab" },
+    "type=double,block_condition=2,level_of_cracked=1": { "model": "testingmod:block/cracked1_warenai_block_black" },
 
-    "type=top,block_condition=3": { "model": "testingmod:block/warenai_block_black_slab_top" },
-    "type=bottom,block_condition=3": { "model": "testingmod:block/warenai_block_black_slab" },
-    "type=double,block_condition=3": { "model": "testingmod:block/warenai_block_black" },
+    "type=top,block_condition=2,level_of_cracked=2": { "model": "testingmod:block/cracked2_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=2,level_of_cracked=2": { "model": "testingmod:block/cracked2_warenai_block_black_slab" },
+    "type=double,block_condition=2,level_of_cracked=2": { "model": "testingmod:block/cracked2_warenai_block_black" },
 
-    "type=top,block_condition=4": { "model": "testingmod:block/polished_warenai_block_black_slab_top" },
-    "type=bottom,block_condition=4": { "model": "testingmod:block/polished_warenai_block_black_slab" },
-    "type=double,block_condition=4": { "model": "testingmod:block/polished_warenai_block_black" }
+    "type=top,block_condition=2,level_of_cracked=3": { "model": "testingmod:block/cracked3_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=2,level_of_cracked=3": { "model": "testingmod:block/cracked3_warenai_block_black_slab" },
+    "type=double,block_condition=2,level_of_cracked=3": { "model": "testingmod:block/cracked3_warenai_block_black" },
+
+    "type=top,block_condition=2,level_of_cracked=4": { "model": "testingmod:block/cracked4_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=2,level_of_cracked=4": { "model": "testingmod:block/cracked4_warenai_block_black_slab" },
+    "type=double,block_condition=2,level_of_cracked=4": { "model": "testingmod:block/cracked4_warenai_block_black" },
+
+
+
+    "type=top,block_condition=3,level_of_cracked=0": { "model": "testingmod:block/warenai_block_black_slab_top" },
+    "type=bottom,block_condition=3,level_of_cracked=0": { "model": "testingmod:block/warenai_block_black_slab" },
+    "type=double,block_condition=3,level_of_cracked=0": { "model": "testingmod:block/warenai_block_black" },
+
+    "type=top,block_condition=3,level_of_cracked=1": { "model": "testingmod:block/warenai_block_black_slab_top" },
+    "type=bottom,block_condition=3,level_of_cracked=1": { "model": "testingmod:block/warenai_block_black_slab" },
+    "type=double,block_condition=3,level_of_cracked=1": { "model": "testingmod:block/warenai_block_black" },
+
+    "type=top,block_condition=3,level_of_cracked=2": { "model": "testingmod:block/warenai_block_black_slab_top" },
+    "type=bottom,block_condition=3,level_of_cracked=2": { "model": "testingmod:block/warenai_block_black_slab" },
+    "type=double,block_condition=3,level_of_cracked=2": { "model": "testingmod:block/warenai_block_black" },
+
+    "type=top,block_condition=3,level_of_cracked=3": { "model": "testingmod:block/warenai_block_black_slab_top" },
+    "type=bottom,block_condition=3,level_of_cracked=3": { "model": "testingmod:block/warenai_block_black_slab" },
+    "type=double,block_condition=3,level_of_cracked=3": { "model": "testingmod:block/warenai_block_black" },
+
+    "type=top,block_condition=3,level_of_cracked=4": { "model": "testingmod:block/warenai_block_black_slab_top" },
+    "type=bottom,block_condition=3,level_of_cracked=4": { "model": "testingmod:block/warenai_block_black_slab" },
+    "type=double,block_condition=3,level_of_cracked=4": { "model": "testingmod:block/warenai_block_black" },
+
+
+
+    "type=top,block_condition=4,level_of_cracked=0": { "model": "testingmod:block/polished_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=4,level_of_cracked=0": { "model": "testingmod:block/polished_warenai_block_black_slab" },
+    "type=double,block_condition=4,level_of_cracked=0": { "model": "testingmod:block/polished_warenai_block_black" },
+
+    "type=top,block_condition=4,level_of_cracked=1": { "model": "testingmod:block/polished_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=4,level_of_cracked=1": { "model": "testingmod:block/polished_warenai_block_black_slab" },
+    "type=double,block_condition=4,level_of_cracked=1": { "model": "testingmod:block/polished_warenai_block_black" },
+
+    "type=top,block_condition=4,level_of_cracked=2": { "model": "testingmod:block/polished_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=4,level_of_cracked=2": { "model": "testingmod:block/polished_warenai_block_black_slab" },
+    "type=double,block_condition=4,level_of_cracked=2": { "model": "testingmod:block/polished_warenai_block_black" },
+
+    "type=top,block_condition=4,level_of_cracked=3": { "model": "testingmod:block/polished_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=4,level_of_cracked=3": { "model": "testingmod:block/polished_warenai_block_black_slab" },
+    "type=double,block_condition=4,level_of_cracked=3": { "model": "testingmod:block/polished_warenai_block_black" },
+
+    "type=top,block_condition=4,level_of_cracked=4": { "model": "testingmod:block/polished_warenai_block_black_slab_top" },
+    "type=bottom,block_condition=4,level_of_cracked=4": { "model": "testingmod:block/polished_warenai_block_black_slab" },
+    "type=double,block_condition=4,level_of_cracked=4": { "model": "testingmod:block/polished_warenai_block_black" }
   }
 }

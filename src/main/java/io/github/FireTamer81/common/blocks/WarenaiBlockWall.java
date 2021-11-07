@@ -1,15 +1,20 @@
 package io.github.FireTamer81.common.blocks;
 
 import io.github.FireTamer81.common.CustomBlockstateProperties;
+import io.github.FireTamer81.init.TileEntityTypesInit;
 import net.minecraft.block.*;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.*;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
@@ -18,10 +23,16 @@ import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.IWorldReader;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class WarenaiBlockWall extends Block implements IWaterLoggable
@@ -34,6 +45,7 @@ public class WarenaiBlockWall extends Block implements IWaterLoggable
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public static final IntegerProperty CRACKED_DIRTY_CLEAN_POLISHED = CustomBlockstateProperties.CRACKED_DIRTY_CLEAN_POLISHED;
+    public static final IntegerProperty CRACKED_LEVEL = CustomBlockstateProperties.LEVEL_OF_CRACKED;
 
     private static final VoxelShape POST_SHAPE = Block.box(7.0D, 0.0D, 7.0D, 9.0D, 16.0D, 9.0D);
     private static final VoxelShape NORTH_SHAPE = Block.box(7.0D, 0.0D, 0.0D, 9.0D, 16.0D, 9.0D);
@@ -53,7 +65,8 @@ public class WarenaiBlockWall extends Block implements IWaterLoggable
                 .setValue(SOUTH_WALL, WallHeight.NONE)
                 .setValue(WEST_WALL, WallHeight.NONE)
                 .setValue(WATERLOGGED, Boolean.valueOf(false))
-                .setValue(CRACKED_DIRTY_CLEAN_POLISHED, Integer.valueOf(3)));
+                .setValue(CRACKED_DIRTY_CLEAN_POLISHED, Integer.valueOf(3))
+                .setValue(CRACKED_LEVEL, Integer.valueOf(0)));
     }
 
     private boolean connectsTo(BlockState state, boolean isFaceSturdyBool, Direction connectionDirection)
@@ -441,5 +454,30 @@ public class WarenaiBlockWall extends Block implements IWaterLoggable
     public boolean isPathfindable(BlockState p_196266_1_, IBlockReader p_196266_2_, BlockPos p_196266_3_, PathType p_196266_4_) { return false; }
 
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> stateBuilder) {
-        stateBuilder.add(WALL_POST, NORTH_WALL, EAST_WALL, SOUTH_WALL, WEST_WALL, WATERLOGGED, CRACKED_DIRTY_CLEAN_POLISHED); }
+        stateBuilder.add(WALL_POST, NORTH_WALL, EAST_WALL, SOUTH_WALL, WEST_WALL, WATERLOGGED, CRACKED_DIRTY_CLEAN_POLISHED).add(CRACKED_LEVEL); }
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return TileEntityTypesInit.STRONGBLOCK_TILE.get().create();
+    }
+
+    @Override
+    @OnlyIn(Dist.CLIENT)
+    public void appendHoverText(ItemStack itemStack, @Nullable IBlockReader blockReader, List<ITextComponent> textComponent, ITooltipFlag tooltipFlag) {
+        super.appendHoverText(itemStack, blockReader, textComponent, tooltipFlag);
+
+        CompoundNBT stackNBT = itemStack.getTagElement("BlockEntityTag");
+        if (stackNBT != null) {
+            if (stackNBT.contains("BlockHealth")) {
+                int blockHealthValue = stackNBT.getInt("BlockHealth");
+                StringTextComponent mainTooltip = new StringTextComponent("Block Health is: " + blockHealthValue);
+                textComponent.add(mainTooltip);
+            }
+        }
+    }
 }

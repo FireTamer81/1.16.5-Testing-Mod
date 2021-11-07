@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "testingmod:block/ajisa_leaves",
-    "bottom": "testingmod:block/ajisa_leaves",
-    "top": "testingmod:block/ajisa_leaves"
-  }
-}

@@ -6,7 +6,8 @@ import io.github.FireTamer81.dataGenStuff.dataGenProviders.DBEItemModelsProvider
 import io.github.FireTamer81.init.ItemInit;
 import io.github.FireTamer81.init.TileEntityTypesInit;
 import io.github.FireTamer81.init.WarenaiBlocksInit;
-import io.github.FireTamer81.item_groups.WarenaiBlocksGroup;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraftforge.api.distmarker.Dist;
@@ -77,7 +78,14 @@ public class TestModMain
 	
 	public void setup(FMLCommonSetupEvent event) {}
 
-	public void clientSetup(FMLClientSetupEvent event) {}
+	public void clientSetup(FMLClientSetupEvent event)
+	{
+		RenderTypeLookup.setRenderLayer(WarenaiBlocksInit.WARENAI_BLOCK_BLACK.get(), RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_STAIRS.get(), RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_SLAB.get(), RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_FENCE.get(), RenderType.translucent());
+		RenderTypeLookup.setRenderLayer(WarenaiBlocksInit.WARENAI_BLOCK_BLACK_WALL.get(), RenderType.translucent());
+	}
 
 	private void gatherData(GatherDataEvent event)
 	{
@@ -86,10 +94,11 @@ public class TestModMain
 
 		gen.addProvider(new DBEBlockStates_BlockModels_Provider(gen, existingFileHelper));
 		gen.addProvider(new DBEItemModelsProvider(gen, existingFileHelper));
+		gen.addProvider(new DBEBlockTagsProvider(gen, existingFileHelper));
 
 		//The BlockTagsProvider is in a variable because the ItemTagsProvider requires it, so the variable makes sure it loads first or something.
-		DBEBlockTagsProvider blockTags = new DBEBlockTagsProvider(gen, existingFileHelper);
-		gen.addProvider(blockTags);
+		//DBEBlockTagsProvider blockTags = new DBEBlockTagsProvider(gen, existingFileHelper);
+		//gen.addProvider(blockTags);
 		//gen.addProvider(new DBEItemTagsProvider(gen, blockTags, existingFileHelper));
 	}
 }

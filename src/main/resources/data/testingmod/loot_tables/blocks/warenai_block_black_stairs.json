@@ -8,6 +8,19 @@
           "type": "minecraft:item",
           "name": "testingmod:warenai_block_black_stairs"
         }
+      ],
+      "functions": [
+        {
+          "function": "minecraft:copy_nbt",
+          "source": "block_entity",
+          "ops": [
+            {
+              "source": "BlockHealth",
+              "target": "BlockEntityTag.BlockHealth",
+              "op": "replace"
+            }
+          ]
+        }
       ]
     }
   ]

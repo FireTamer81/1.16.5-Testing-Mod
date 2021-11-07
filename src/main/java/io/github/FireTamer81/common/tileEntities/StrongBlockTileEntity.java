@@ -5,9 +5,12 @@ import io.github.FireTamer81.init.TileEntityTypesInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.DestroyBlockProgress;
+import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
 
 public class StrongBlockTileEntity extends TileEntity implements ITickableTileEntity
 {
@@ -17,7 +20,7 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
      */
 
 
-    private int strongBlockHealth = 2900;
+    private int strongBlockHealth = 3000;
 
     public StrongBlockTileEntity() {
         super(TileEntityTypesInit.STRONGBLOCK_TILE.get());
@@ -27,24 +30,24 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
     /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~**/
 
 
-    public void settingBlockValue(int setValueTo) {
+    public void settingBlockValue(int CDCPValue, int crackedValue) {
         Block thisBlock = this.level.getBlockState(this.worldPosition).getBlock();
         BlockState thisBlockState = this.level.getBlockState(this.worldPosition);
 
         if (thisBlock instanceof WarenaiBlock) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlock.CRACKED_DIRTY_CLEAN_POLISHED, setValueTo), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlock.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockStairs) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockStairs.CRACKED_DIRTY_CLEAN_POLISHED, setValueTo), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockStairs.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockSlab) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockSlab.CRACKED_DIRTY_CLEAN_POLISHED, setValueTo), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockSlab.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockFence) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockFence.CRACKED_DIRTY_CLEAN_POLISHED, setValueTo), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockFence.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockWall) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockWall.CRACKED_DIRTY_CLEAN_POLISHED, setValueTo), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockWall.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
         }
     }
 
@@ -53,17 +56,26 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
         if (!this.level.isClientSide()) {
             int currentHealth = getHealth();
 
-            if (currentHealth >= 2901 && currentHealth <= 3000) {
-                settingBlockValue(4);
+            if (currentHealth >= 3001 && currentHealth <= 3100) {
+                settingBlockValue(4, 0);
             }
-            if (currentHealth >= 1501 && currentHealth <= 2900) {
-                settingBlockValue(3);
+            if (currentHealth >= 1601 && currentHealth <= 3000) {
+                settingBlockValue(3, 0);
             }
-            if (currentHealth >= 501 && currentHealth <= 1500) {
-                settingBlockValue(2);
+            if (currentHealth >= 801 && currentHealth <= 1600) {
+                settingBlockValue(2, 0);
             }
-            if (currentHealth >= 1 && currentHealth <= 500) {
-                settingBlockValue(1);
+            if (currentHealth >= 631 && currentHealth <= 800) {
+                settingBlockValue(2, 1);
+            }
+            if (currentHealth >= 461 && currentHealth <= 630) {
+                settingBlockValue(2, 2);
+            }
+            if (currentHealth >= 291 && currentHealth <= 460) {
+                settingBlockValue(2, 3);
+            }
+            if (currentHealth >= 120 && currentHealth <= 290) {
+                settingBlockValue(2, 4);
             }
             if (currentHealth == 0) {
                 this.level.setBlockAndUpdate(this.worldPosition, Blocks.AIR.defaultBlockState());
@@ -74,11 +86,11 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
     public int getHealth() { return this.strongBlockHealth; }
 
     public void polishBlock(int polishAmount) {
-        final int maximumHealthValueForPolish = 3000;
+        final int maximumHealthValueForPolish = 3100;
         int currentMaxPolishValue = maximumHealthValueForPolish - getHealth();
         int currentHealth = getHealth();
 
-        if (currentHealth >= 2900) {
+        if (currentHealth >= 3000) {
             if (polishAmount > currentMaxPolishValue) {
                 this.strongBlockHealth = maximumHealthValueForPolish;
             } else {
@@ -90,10 +102,10 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
     }
 
     public void repairBlock(int repairAmount) {
-        final int maximumHealthValueForRepair = 2900;
+        final int maximumHealthValueForRepair = 3000;
         int currentMaxRepairValue = maximumHealthValueForRepair - getHealth();
 
-        if (getHealth() >=2901) {
+        if (getHealth() >= 3001) {
             this.strongBlockHealth = getHealth();
         } else if (repairAmount > currentMaxRepairValue) {
             this.strongBlockHealth = maximumHealthValueForRepair;

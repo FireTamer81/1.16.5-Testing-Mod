@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "testingmod:block/ajisa_leaves",
-    "bottom": "testingmod:block/ajisa_leaves",
-    "top": "testingmod:block/ajisa_leaves"
-  }
-}

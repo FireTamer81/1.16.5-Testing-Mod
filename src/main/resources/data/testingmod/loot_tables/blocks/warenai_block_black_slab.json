@@ -6,7 +6,36 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "testingmod:warenai_block_black_slab"
+          "name": "testingmod:warenai_block_black_slab",
+          "functions": [
+            {
+              "function": "minecraft:copy_nbt",
+              "source": "block_entity",
+              "ops": [
+                {
+                  "source": "BlockHealth",
+                  "target": "BlockEntityTag.BlockHealth",
+                  "op": "replace"
+                }
+              ]
+            },
+            {
+              "function": "minecraft:set_count",
+              "count": 2,
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "testingmod:warenai_block_black_slab",
+                  "properties": {
+                    "type": "double"
+                  }
+                }
+              ]
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ]
         }
       ]
     }

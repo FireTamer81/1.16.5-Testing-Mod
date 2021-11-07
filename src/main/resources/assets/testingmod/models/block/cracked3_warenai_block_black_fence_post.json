@@ -1,0 +1,54 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "0": "testingmod:block/warenai_block_black",
+    "particle": "testingmod:block/warenai_block_black",
+    "overlay1": "testingmod:block/scuffed_overlay_texture",
+    "overlay2": "testingmod:block/break_texture_3"
+  },
+  "elements": [
+    {
+      "from": [6, 0, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "north": {"uv": [6, 0, 10, 16], "texture": "#0"},
+        "east": {"uv": [6, 0, 10, 16], "texture": "#0"},
+        "south": {"uv": [6, 0, 10, 16], "texture": "#0"},
+        "west": {"uv": [6, 0, 10, 16], "texture": "#0"},
+        "up": {"uv": [5, 6, 9, 10], "texture": "#0"},
+        "down": {"uv": [6, 5, 10, 9], "texture": "#0"}
+      }
+    },
+
+
+
+    {
+      "from": [6, 0, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "north": {"uv": [6, 0, 10, 16], "texture": "#overlay1"},
+        "east": {"uv": [6, 0, 10, 16], "texture": "#overlay1"},
+        "south": {"uv": [6, 0, 10, 16], "texture": "#overlay1"},
+        "west": {"uv": [6, 0, 10, 16], "texture": "#overlay1"},
+        "up": {"uv": [5, 6, 9, 10], "texture": "#overlay1"},
+        "down": {"uv": [6, 5, 10, 9], "texture": "#overlay1"}
+      }
+    },
+
+
+
+    {
+      "from": [6, 0, 6],
+      "to": [10, 16, 10],
+      "faces": {
+        "north": {"uv": [6, 0, 10, 16], "texture": "#overlay2"},
+        "east": {"uv": [6, 0, 10, 16], "texture": "#overlay2"},
+        "south": {"uv": [6, 0, 10, 16], "texture": "#overlay2"},
+        "west": {"uv": [6, 0, 10, 16], "texture": "#overlay2"},
+        "up": {"uv": [5, 6, 9, 10], "texture": "#overlay2"},
+        "down": {"uv": [6, 5, 10, 9], "texture": "#overlay2"}
+      }
+    }
+  ]
+}

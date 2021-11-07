@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "testingmod:item/addition_item"
+    "layer0": "testingmod:item/can_o_wax"
   }
 }

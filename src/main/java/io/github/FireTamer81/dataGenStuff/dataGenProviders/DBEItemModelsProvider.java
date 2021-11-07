@@ -2,12 +2,13 @@ package io.github.FireTamer81.dataGenStuff.dataGenProviders;
 
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.IDataProvider;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
-public class DBEItemModelsProvider extends ItemModelProvider //implements IDataProvider
+public class DBEItemModelsProvider extends ItemModelProvider implements IDataProvider
 {
     public DBEItemModelsProvider(DataGenerator generator, ExistingFileHelper existingFileHelper)
     {
@@ -29,19 +30,19 @@ public class DBEItemModelsProvider extends ItemModelProvider //implements IDataP
          * Warenai Blocks
          **/
         //Full Blocks
-        //withExistingParent("warenai_block_black", modLoc("block/warenai_block_black"));
+        withExistingParent("warenai_block_black", modLoc("block/warenai_block_black"));
 
         //Stairs
-        //withExistingParent("warenai_block_black_stairs", modLoc("block/warenai_block_black_stairs"));
+        withExistingParent("warenai_block_black_stairs", modLoc("block/warenai_block_black_stairs"));
 
         //Slabs
-        //withExistingParent("warenai_block_black_slab", modLoc("block/warenai_block_black_slab"));
+        withExistingParent("warenai_block_black_slab", modLoc("block/warenai_block_black_slab"));
 
         //Fences
-        //withExistingParent("warenai_block_black_fence", modLoc("block/warenai_block_black_fence_inventory"));
+        withExistingParent("warenai_block_black_fence", modLoc("block/warenai_block_black_fence_inventory"));
 
         //Walls
-        //withExistingParent("warenai_block_black_wall", modLoc("block/warenai_block_black_wall_inventory"));
+        withExistingParent("warenai_block_black_wall", modLoc("block/warenai_block_black_wall_inventory"));
 
     }
 

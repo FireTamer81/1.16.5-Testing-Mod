@@ -15,15 +15,16 @@ public class ItemInit
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TestModMain.MOD_ID);
 
 
-    public static final RegistryObject<Item> POLISHER_ITEM = ITEMS.register("polisher_item",
-            () -> new PolisherItem(new Item.Properties()));
-
     public static final RegistryObject<Item> REPAIR_ITEM = ITEMS.register("repair_item",
             () -> new RepairItem(new Item.Properties()));
 
     public static final RegistryObject<Item> DAMAGE_ITEM = ITEMS.register("damage_item",
             () -> new DamageItem(new Item.Properties()));
 
+
+    public static final RegistryObject<Item> POLISHER_ITEM = ITEMS.register("polisher_item",
+            () -> new PolisherItem(new Item.Properties().durability(500)));
+
     public static final RegistryObject<Item> WEDGE_ITEM = ITEMS.register("wedge_item",
-            () -> new WedgeItem(new Item.Properties()));
+            () -> new WedgeItem(new Item.Properties().durability(2000)));
 }

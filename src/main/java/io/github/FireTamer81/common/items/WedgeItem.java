@@ -47,6 +47,10 @@ public class WedgeItem extends Item
             if (!worldIn.isClientSide) {
                 iWorld.destroyBlock(blockPos, true);
 
+                context.getItemInHand().hurtAndBreak(1, context.getPlayer(), (consumer) -> {
+                    consumer.broadcastBreakEvent(context.getHand());
+                });
+
                 return ActionResultType.SUCCESS;
             } else {
                 return ActionResultType.FAIL;
@@ -65,8 +69,8 @@ public class WedgeItem extends Item
         StringTextComponent shiftingTooltip = new StringTextComponent("Warenai Blocks are much to strong to break and pick up like most blocks, not that you'd want to try either. That would probably take as long as bedrock");
 
         textComponent.add(mainTooltip);
-        textComponent.add(new StringTextComponent("Hold Left-Shift for more Info"));
 
+        textComponent.add(new StringTextComponent("Hold Left-Shift for more Info"));
         if (InputMappings.isKeyDown(Minecraft.getInstance().getWindow().getWindow(), GLFW.GLFW_KEY_LEFT_SHIFT)) {
             textComponent.add(shiftingTooltip);
         }

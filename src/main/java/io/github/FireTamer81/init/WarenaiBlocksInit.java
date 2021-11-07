@@ -11,6 +11,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -36,6 +38,7 @@ public class WarenaiBlocksInit
     }
 
 
+
     /**
      * Actual Registry Objects
      **/
@@ -47,7 +50,7 @@ public class WarenaiBlocksInit
     //Full Blocks
     public static final RegistryObject<Block> WARENAI_BLOCK_BLACK = register("warenai_block_black", () ->
             new WarenaiBlock(AbstractBlock.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK)
-                    .strength(-1.0F, 50f) //Was originally 15f, 50f
+                    .strength(-1.0F, 50F)
                     .harvestTool(ToolType.PICKAXE)
                     .harvestLevel(3)));
 
@@ -57,11 +60,9 @@ public class WarenaiBlocksInit
             new WarenaiBlockStairs(WARENAI_BLOCK_BLACK.get().defaultBlockState(), AbstractBlock.Properties.copy(WarenaiBlocksInit.WARENAI_BLOCK_BLACK.get())));
 
 
-
     //Slabs
     public static final RegistryObject<SlabBlock> WARENAI_BLOCK_BLACK_SLAB = register("warenai_block_black_slab", () ->
             new WarenaiBlockSlab(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get())));
-
 
 
     //Fences
@@ -72,15 +73,4 @@ public class WarenaiBlocksInit
     //Walls
     public static final RegistryObject<WarenaiBlockWall> WARENAI_BLOCK_BLACK_WALL = register("warenai_block_black_wall", () ->
             new WarenaiBlockWall(AbstractBlock.Properties.copy(WARENAI_BLOCK_BLACK.get()).noOcclusion()));
-
-
-
-
-    public class WarenaiBlocks {
-
-    }
-
-    public class WarenaiBlockItems {
-
-    }
 }
