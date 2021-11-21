@@ -1,6 +1,7 @@
 package io.github.FireTamer81.common.blocks;
 
 import io.github.FireTamer81.common.CustomBlockstateProperties;
+import io.github.FireTamer81.common.blocks.properties.WarenaiBlockCondition;
 import io.github.FireTamer81.common.tileEntities.StrongBlockTileEntity;
 import io.github.FireTamer81.init.ItemInit;
 import io.github.FireTamer81.init.TileEntityTypesInit;
@@ -20,6 +21,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.loot.LootParameters;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.EnumProperty;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
@@ -48,18 +50,21 @@ import java.util.SortedSet;
 
 public class WarenaiBlock extends Block
 {
-    public static final IntegerProperty CRACKED_DIRTY_CLEAN_POLISHED = CustomBlockstateProperties.CRACKED_DIRTY_CLEAN_POLISHED;
-    public static final IntegerProperty CRACKED_LEVEL = CustomBlockstateProperties.LEVEL_OF_CRACKED;
+    //public static final IntegerProperty CRACKED_DIRTY_CLEAN_POLISHED = CustomBlockstateProperties.CRACKED_DIRTY_CLEAN_POLISHED;
+    //public static final IntegerProperty CRACKED_LEVEL = CustomBlockstateProperties.LEVEL_OF_CRACKED;
+
+    public static final EnumProperty<WarenaiBlockCondition> BLOCK_CONDITION = EnumProperty.create("block_condition",
+            WarenaiBlockCondition.class, WarenaiBlockCondition.POLISHED, WarenaiBlockCondition.NORMAL, WarenaiBlockCondition.SCUFFED,
+            WarenaiBlockCondition.CRACKED1, WarenaiBlockCondition.CRACKED2, WarenaiBlockCondition.CRACKED3, WarenaiBlockCondition.CRACKED4);
 
     public WarenaiBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
-                .setValue(CRACKED_DIRTY_CLEAN_POLISHED, Integer.valueOf(3))
-                .setValue(CRACKED_LEVEL, Integer.valueOf(0)));
+                .setValue(BLOCK_CONDITION, WarenaiBlockCondition.NORMAL));
     }
 
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> stateBuilder) {
-        stateBuilder.add(CRACKED_DIRTY_CLEAN_POLISHED).add(CRACKED_LEVEL);
+        stateBuilder.add(BLOCK_CONDITION);
     }
 
     @Override

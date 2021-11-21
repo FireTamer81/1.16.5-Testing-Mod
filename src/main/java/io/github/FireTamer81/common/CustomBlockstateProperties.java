@@ -9,4 +9,6 @@ public class CustomBlockstateProperties
 
     //There are actually only cracked block models, the zero is so it isn't always applied and will be the default state after finished with testing.
     public static final IntegerProperty LEVEL_OF_CRACKED = IntegerProperty.create("level_of_cracked", 0, 4);
+
+
 }

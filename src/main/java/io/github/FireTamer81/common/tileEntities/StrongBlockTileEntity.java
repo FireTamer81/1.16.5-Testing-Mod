@@ -1,6 +1,7 @@
 package io.github.FireTamer81.common.tileEntities;
 
 import io.github.FireTamer81.common.blocks.*;
+import io.github.FireTamer81.common.blocks.properties.WarenaiBlockCondition;
 import io.github.FireTamer81.init.TileEntityTypesInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -30,24 +31,24 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
     /**~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~**/
 
 
-    public void settingBlockValue(int CDCPValue, int crackedValue) {
+    public void settingBlockValue(int CDCPValue, int crackedValue, WarenaiBlockCondition condition) {
         Block thisBlock = this.level.getBlockState(this.worldPosition).getBlock();
         BlockState thisBlockState = this.level.getBlockState(this.worldPosition);
 
         if (thisBlock instanceof WarenaiBlock) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlock.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlock.BLOCK_CONDITION, condition), 3);
         }
         if (thisBlock instanceof WarenaiBlockStairs) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockStairs.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockStairs.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlockStairs.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockSlab) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockSlab.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockSlab.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlockSlab.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockFence) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockFence.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockFence.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlockFence.CRACKED_LEVEL, crackedValue), 3);
         }
         if (thisBlock instanceof WarenaiBlockWall) {
-            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockWall.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlock.CRACKED_LEVEL, crackedValue), 3);
+            this.level.setBlock(this.worldPosition, thisBlockState.setValue(WarenaiBlockWall.CRACKED_DIRTY_CLEAN_POLISHED, CDCPValue).setValue(WarenaiBlockWall.CRACKED_LEVEL, crackedValue), 3);
         }
     }
 
@@ -57,25 +58,25 @@ public class StrongBlockTileEntity extends TileEntity implements ITickableTileEn
             int currentHealth = getHealth();
 
             if (currentHealth >= 3001 && currentHealth <= 3100) {
-                settingBlockValue(4, 0);
+                settingBlockValue(4, 0, WarenaiBlockCondition.POLISHED);
             }
             if (currentHealth >= 1601 && currentHealth <= 3000) {
-                settingBlockValue(3, 0);
+                settingBlockValue(3, 0, WarenaiBlockCondition.NORMAL);
             }
             if (currentHealth >= 801 && currentHealth <= 1600) {
-                settingBlockValue(2, 0);
+                settingBlockValue(2, 0, WarenaiBlockCondition.SCUFFED);
             }
             if (currentHealth >= 631 && currentHealth <= 800) {
-                settingBlockValue(2, 1);
+                settingBlockValue(2, 1, WarenaiBlockCondition.CRACKED1);
             }
             if (currentHealth >= 461 && currentHealth <= 630) {
-                settingBlockValue(2, 2);
+                settingBlockValue(2, 2, WarenaiBlockCondition.CRACKED2);
             }
             if (currentHealth >= 291 && currentHealth <= 460) {
-                settingBlockValue(2, 3);
+                settingBlockValue(2, 3, WarenaiBlockCondition.CRACKED3);
             }
             if (currentHealth >= 120 && currentHealth <= 290) {
-                settingBlockValue(2, 4);
+                settingBlockValue(2, 4, WarenaiBlockCondition.CRACKED4);
             }
             if (currentHealth == 0) {
                 this.level.setBlockAndUpdate(this.worldPosition, Blocks.AIR.defaultBlockState());

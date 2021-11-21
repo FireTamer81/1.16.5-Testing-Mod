@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:block/block",
   "textures": {
+    "particle": "testingmod:block/warenai_block_black",
     "underlay": "testingmod:block/warenai_block_black",
     "overlay1": "testingmod:block/scuffed_overlay_texture",
     "overlay2": "testingmod:block/break_texture_3"
