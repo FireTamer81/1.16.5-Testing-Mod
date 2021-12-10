@@ -1,5 +1,7 @@
 package io.github.FireTamer81;
 
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,29 +20,17 @@ public class TestModMain
 	//Identifiers
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final String MOD_ID = "testingmod";
-	
-	
 
-	
-	
 	public TestModMain() 
 	{
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		
 		//bus.addListener(this::setup);
-		bus.addListener(this::clientSetup);
+		//bus.addListener(this::clientSetup);
      
-	
-		
-		//Registries
-		DeferredRegister<?>[] registers = {
-				
-		};
-		
-		for (DeferredRegister<?> register : registers) {
-			register.register(bus);
-		}
-		
+		Registration.init();
+
+		FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
      
 		//Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
@@ -55,4 +45,17 @@ public class TestModMain
 	public void setup(FMLCommonSetupEvent event) {}
 
 	public void clientSetup(FMLClientSetupEvent event) {}
+
+
+
+	public static class TestModItemGroup extends ItemGroup {
+
+		public static final TestModItemGroup TEST_GROUP = new TestModItemGroup(ItemGroup.TABS.length, "test_group");
+		private TestModItemGroup(int index, String label) { super(index, label); }
+
+		@Override
+		public ItemStack makeIcon() {
+			return new ItemStack(Registration.BAKED_MODEL_FULL_BLOCK_ITEM.get());
+		}
+	}
 }

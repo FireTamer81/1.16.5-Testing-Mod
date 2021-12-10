@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model":  "testingmod:block/baked_model_full_block"}
+  }
+}
