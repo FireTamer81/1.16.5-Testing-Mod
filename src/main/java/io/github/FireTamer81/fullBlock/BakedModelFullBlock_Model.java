@@ -1,10 +1,11 @@
 package io.github.FireTamer81.fullBlock;
 
+import io.github.FireTamer81.ModelHelper;
+import io.github.FireTamer81.StrongBlockTextureHelper;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.model.BakedQuad;
-import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.model.ItemOverrideList;
 import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -21,27 +22,33 @@ import java.util.Random;
 
 public class BakedModelFullBlock_Model implements IDynamicBakedModel {
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "block/warenai_block_black");
+    public BakedModelFullBlock_Model() {}
 
-    private TextureAtlasSprite getTexture() {
-        return Minecraft.getInstance().getTextureAtlas(AtlasTexture.LOCATION_BLOCKS).apply(TEXTURE);
-    }
+    //public static final ResourceLocation UNDERLAY_TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "block/warenai_block_black");
+    public static final ResourceLocation UNDERLAY_TEXTURE = BakedModelFullBlock_Tile.UNDERLAY_TEXTURE;
+    public static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "block/cracked4_texture");
 
     @Nonnull
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+        //TextureAtlasSprite underlayTexture = getUnderlayTexture();
+        TextureAtlasSprite underlayTexture = StrongBlockTextureHelper.getSmoothWarenaiBlockAtlasSprites().get(extraData.getData(BakedModelFullBlock_Tile.TEXTURE));
+        TextureAtlasSprite overlayTexture = getOverlayTexture();
 
-        TextureAtlasSprite texture = getTexture();
         List<BakedQuad> allQuads = new ArrayList<>();
-        double l = 1;
+
+        double l = 0;
         double r = 1;
 
-        allQuads.add(ModelHelper.createQuad(ModelHelper.v(l, r, l), ModelHelper.v(l, r, r), ModelHelper.v(r, r, r), ModelHelper.v(r, r, l), texture));
-        allQuads.add(ModelHelper.createQuad(ModelHelper.v(l, l, l), ModelHelper.v(r, l, l), ModelHelper.v(r, l, r), ModelHelper.v(l, l, r), texture));
-        allQuads.add(ModelHelper.createQuad(ModelHelper.v(r, r, r), ModelHelper.v(r, l, r), ModelHelper.v(r, l, l), ModelHelper.v(r, r, l), texture));
-        allQuads.add(ModelHelper.createQuad(ModelHelper.v(l, r, l), ModelHelper.v(l, l, l), ModelHelper.v(l, l, r), ModelHelper.v(l, r, r), texture));
-        allQuads.add(ModelHelper.createQuad(ModelHelper.v(r, r, l), ModelHelper.v(r, l, l), ModelHelper.v(l, l, l), ModelHelper.v(l, r, l), texture));
-        allQuads.add(ModelHelper.createQuad(ModelHelper.v(l, r, r), ModelHelper.v(l, l, r), ModelHelper.v(r, l, r), ModelHelper.v(r, r, r), texture));
+        boolean renderNorth = side == Direction.NORTH && extraData.getData(BakedModelFullBlock_Tile.NORTH_VISIBLE);
+        boolean renderEast = side == Direction.EAST && extraData.getData(BakedModelFullBlock_Tile.EAST_VISIBLE);
+        boolean renderSouth = side == Direction.SOUTH && extraData.getData(BakedModelFullBlock_Tile.SOUTH_VISIBLE);
+        boolean renderWest = side == Direction.WEST && extraData.getData(BakedModelFullBlock_Tile.WEST_VISIBLE);
+        boolean renderUp = side == Direction.UP && extraData.getData(BakedModelFullBlock_Tile.UP_VISIBLE);
+        boolean renderDown = side == Direction.DOWN && extraData.getData(BakedModelFullBlock_Tile.DOWN_VISIBLE);
+
+        allQuads.addAll(ModelHelper.createCuboid(0f, 1f, 0f, 1f, 0f, 1f, underlayTexture, renderNorth, renderEast, renderSouth, renderWest, renderUp, renderDown));
+        allQuads.addAll(ModelHelper.createCuboid(0f, 1f, 0f, 1f, 0f, 1f, overlayTexture, renderNorth, renderEast, renderSouth, renderWest, renderUp, renderDown));
 
         return allQuads;
     }
@@ -49,9 +56,13 @@ public class BakedModelFullBlock_Model implements IDynamicBakedModel {
 
 
 
+    private TextureAtlasSprite getUnderlayTexture() {
+        return Minecraft.getInstance().getTextureAtlas(AtlasTexture.LOCATION_BLOCKS).apply(UNDERLAY_TEXTURE);
+    }
 
-
-
+    private TextureAtlasSprite getOverlayTexture() {
+        return Minecraft.getInstance().getTextureAtlas(AtlasTexture.LOCATION_BLOCKS).apply(OVERLAY_TEXTURE);
+    }
 
 
 
@@ -84,7 +95,7 @@ public class BakedModelFullBlock_Model implements IDynamicBakedModel {
 
     @Override
     public TextureAtlasSprite getParticleIcon() {
-        return getTexture();
+        return getUnderlayTexture();
     }
 
     @Override

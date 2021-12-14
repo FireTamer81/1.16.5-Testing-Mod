@@ -35,9 +35,9 @@ public class Registration {
 
 
     public static final RegistryObject<BakedModelFullBlock> BAKED_MODEL_FULL_BLOCK_REGISTRY_OBJECT = BLOCKS.register("baked_model_full_block", () ->
-            new BakedModelFullBlock(AbstractBlock.Properties.of(Material.STONE)
+            new BakedModelFullBlock(0, AbstractBlock.Properties.of(Material.STONE)
                     .sound(SoundType.WOOD)
-                    .strength(0.4f)
+                    .strength(-1.0f)
                     .harvestTool(ToolType.AXE)
                     .harvestLevel(0)
                     .dynamicShape()

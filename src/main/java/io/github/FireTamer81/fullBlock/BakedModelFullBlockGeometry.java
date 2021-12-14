@@ -1,7 +1,6 @@
-package io.github.FireTamer81.fullBlock.completedClasses;
+package io.github.FireTamer81.fullBlock;
 
 import com.mojang.datafixers.util.Pair;
-import io.github.FireTamer81.fullBlock.BakedModelFullBlock_Model;
 import net.minecraft.client.renderer.model.*;
 import net.minecraft.client.renderer.texture.AtlasTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -22,6 +21,6 @@ public class BakedModelFullBlockGeometry implements IModelGeometry<BakedModelFul
 
     @Override
     public Collection<RenderMaterial> getTextures(IModelConfiguration owner, Function<ResourceLocation, IUnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
-        return Collections.singletonList(new RenderMaterial(AtlasTexture.LOCATION_BLOCKS, BakedModelFullBlock_Model.TEXTURE));
+        return Collections.singletonList(new RenderMaterial(AtlasTexture.LOCATION_BLOCKS, BakedModelFullBlock_Model.UNDERLAY_TEXTURE));
     }
 }

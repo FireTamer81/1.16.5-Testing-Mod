@@ -1,4 +1,4 @@
-package io.github.FireTamer81.fullBlock.completedClasses;
+package io.github.FireTamer81.fullBlock;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
