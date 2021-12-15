@@ -32,7 +32,7 @@ public class BakedModelFullBlock_Model implements IDynamicBakedModel {
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
         //TextureAtlasSprite underlayTexture = getUnderlayTexture();
-        TextureAtlasSprite underlayTexture = StrongBlockTextureHelper.getSmoothWarenaiBlockAtlasSprites().get(extraData.getData(BakedModelFullBlock_Tile.TEXTURE));
+        TextureAtlasSprite underlayTexture = StrongBlockTextureHelper.getSmoothWarenaiBlockAtlasSprites().get(state.getValue(BakedModelFullBlock.TEXTURE_INDEX));
         TextureAtlasSprite overlayTexture = getOverlayTexture();
 
         List<BakedQuad> allQuads = new ArrayList<>();

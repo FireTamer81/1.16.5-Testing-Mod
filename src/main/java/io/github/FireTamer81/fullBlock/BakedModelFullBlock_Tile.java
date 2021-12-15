@@ -60,8 +60,8 @@ public class BakedModelFullBlock_Tile extends TileEntity implements ITickableTil
 
     @Override
     public void tick() {
-        int currentTextureIndex = this.getLevel().getBlockState(this.worldPosition).getValue(BakedModelFullBlock.TEXTURE_INDEX);
-        setTextureIndex(currentTextureIndex);
+        //int currentTextureIndex = this.getLevel().getBlockState(this.worldPosition).getValue(BakedModelFullBlock.TEXTURE_INDEX);
+        //setTextureIndex(currentTextureIndex);
     }
 
 
