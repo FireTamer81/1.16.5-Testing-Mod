@@ -28,9 +28,7 @@ public class TestModMain
 		//bus.addListener(this::setup);
 		//bus.addListener(this::clientSetup);
      
-		Registration.init();
-
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientSetup::init);
+		//Registration.init();
      
 		//Register ourselves for server and other game events we are interested in
 		MinecraftForge.EVENT_BUS.register(this);
@@ -55,7 +53,8 @@ public class TestModMain
 
 		@Override
 		public ItemStack makeIcon() {
-			return new ItemStack(Registration.BAKED_MODEL_FULL_BLOCK_ITEM.get());
+			return new ItemStack(Registration.COLORABLE_FULL_BLOCK_ITEM.get());
 		}
 	}
+
 }

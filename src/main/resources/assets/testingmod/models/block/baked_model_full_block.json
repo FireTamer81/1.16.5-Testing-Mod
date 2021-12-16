@@ -1,3 +1,22 @@
 {
-  "loader": "testingmod:baked_model_full_block_loader"
+  "credit": "Made with Blockbench",
+  "texture_size": [16, 16],
+  "textures": {
+    "0": "testingmod:block/warenai_block_white",
+    "particle": "testingmod:block/warenai_block_white"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 4, 4], "texture": "#0", "tintindex": 1},
+        "east": {"uv": [0, 0, 4, 4], "texture": "#0", "tintindex": 1},
+        "south": {"uv": [0, 0, 4, 4], "texture": "#0", "tintindex": 1},
+        "west": {"uv": [0, 0, 4, 4], "texture": "#0", "tintindex": 1},
+        "up": {"uv": [4, 4, 0, 0], "texture": "#0", "tintindex": 1},
+        "down": {"uv": [4, 0, 0, 4], "texture": "#0", "tintindex": 1}
+      }
+    }
+  ]
 }
