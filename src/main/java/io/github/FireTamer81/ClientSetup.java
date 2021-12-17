@@ -30,11 +30,11 @@ public class ClientSetup {
     public static void onTextureStitchEvent(TextureStitchEvent.Pre event) { //getSmoothWarenaiBlockResourceLocations()
         if (event.getMap().location() == AtlasTexture.LOCATION_BLOCKS) {
             event.addSprite(BakedModelFullBlock_Model.UNDERLAY_TEXTURE);
-            event.addSprite(BakedModelFullBlock_Model.OVERLAY_TEXTURE);
-
-
-            event.addSprite(StrongBlockTextureHelper.getSmoothWarenaiBlockResourceLocations().get(0));
-            event.addSprite(StrongBlockTextureHelper.getSmoothWarenaiBlockResourceLocations().get(1));
+            event.addSprite(BakedModelFullBlock_Model.CRACKED4_OVERLAY_TEXTURE);
+            //event.addSprite(BakedModelFullBlock_Model.CRACKED3_OVERLAY_TEXTURE);
+            //event.addSprite(BakedModelFullBlock_Model.CRACKED2_OVERLAY_TEXTURE);
+            //event.addSprite(BakedModelFullBlock_Model.CRACKED1_OVERLAY_TEXTURE);
+            //event.addSprite(BakedModelFullBlock_Model.SCUFFED_OVERLAY_TEXTURE);
         }
     }
 }

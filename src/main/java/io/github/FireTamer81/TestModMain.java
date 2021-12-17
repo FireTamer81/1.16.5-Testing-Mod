@@ -1,5 +1,6 @@
 package io.github.FireTamer81;
 
+import io.github.FireTamer81.blockColorignStuff.BlockColors;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
@@ -26,7 +27,7 @@ public class TestModMain
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		
 		//bus.addListener(this::setup);
-		//bus.addListener(this::clientSetup);
+		bus.addListener(this::clientSetup);
      
 		Registration.init();
 
@@ -44,7 +45,9 @@ public class TestModMain
 	
 	public void setup(FMLCommonSetupEvent event) {}
 
-	public void clientSetup(FMLClientSetupEvent event) {}
+	public void clientSetup(FMLClientSetupEvent event) {
+		BlockColors.registerBlockColors();
+	}
 
 
 
