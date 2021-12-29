@@ -30,7 +30,8 @@ public class TestScreen extends Screen {
         super(new StringTextComponent(""));
     }
 
-    protected void init() {
+    @Override
+    public void init(Minecraft pMinecraft, int pWidth, int pHeight) {
         super.init();
         this.childScreenComponent.init(this.width, this.height, this.minecraft);
         this.children.add(this.childScreenComponent);
@@ -48,15 +49,15 @@ public class TestScreen extends Screen {
     }
 
     public void render(MatrixStack stack, int p_230430_2_, int p_230430_3_, float p_230430_4_) {
-        this.renderBackground(stack);
+        this.xMouse = (float)p_230430_2_;
+        this.yMouse = (float)p_230430_3_;
         //drawCenteredString(stack, this.font, this.title, this.width / 2, 40, 16777215);
 
         this.childScreenComponent.render(stack, p_230430_2_, p_230430_3_, p_230430_4_); //Adds the Menu Selector GUI
 
         super.render(stack, p_230430_2_, p_230430_3_, p_230430_4_);
 
-        this.xMouse = (float)p_230430_2_;
-        this.yMouse = (float)p_230430_3_;
+        this.renderBackground(stack);
     }
 
     @Override
