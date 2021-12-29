@@ -37,6 +37,7 @@ public class TestChildScreen extends AbstractGui implements IRenderable, IGuiEve
         //int i = (this.width - 146) / 2;
         //int j = (this.height - 165) - 90;
         this.blit(stack, 0, 100, 0, 0, 146, 165);      //Main Background
+        RenderSystem.popMatrix();
     }
 
 

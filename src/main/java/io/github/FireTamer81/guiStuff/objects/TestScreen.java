@@ -32,8 +32,8 @@ public class TestScreen extends Screen {
 
     @Override
     public void init(Minecraft pMinecraft, int pWidth, int pHeight) {
-        super.init();
-        this.childScreenComponent.init(this.width, this.height, this.minecraft);
+        super.init(pMinecraft, pWidth, pHeight);
+        this.childScreenComponent.init(pWidth, pHeight, pMinecraft);
         this.children.add(this.childScreenComponent);
     }
 
@@ -49,6 +49,7 @@ public class TestScreen extends Screen {
     }
 
     public void render(MatrixStack stack, int p_230430_2_, int p_230430_3_, float p_230430_4_) {
+
         this.xMouse = (float)p_230430_2_;
         this.yMouse = (float)p_230430_3_;
         //drawCenteredString(stack, this.font, this.title, this.width / 2, 40, 16777215);
@@ -74,7 +75,7 @@ public class TestScreen extends Screen {
         //int i = (this.width - 97);
         //int j = (this.height - 94);
         this.blit(stack, 0, 0, 0, 0, 97, 94);      //Top Piece
-        renderEntityInInventory(this.width - 51, this.height - 75, 30, (float)(this.width - 51) - this.xMouse, (float)(this.height - 75 - 50) - this.yMouse, this.minecraft.player);
+        //renderEntityInInventory(this.width - 51, this.height - 75, 30, (float)(this.width - 51) - this.xMouse, (float)(this.height - 75 - 50) - this.yMouse, this.minecraft.player);
     }
 
 
