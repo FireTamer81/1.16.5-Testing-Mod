@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class TestPlayerRenderer extends LivingRenderer<AbstractClientPlayerEntity, TestPlayerModel<AbstractClientPlayerEntity>> {
 
     public TestPlayerModel model;
-    public static final ResourceLocation TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "textures/entity/revised_male_player_model.png");
+    protected ResourceLocation TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "textures/entity/revised_male_player_model.png");
 
     public TestPlayerRenderer(EntityRendererManager manager) {
         super(manager, new TestPlayerModel<>(), 0.5F); //The 0.5F is meant to be the shadow size. So, if a model is larger I might want this to be a larger value

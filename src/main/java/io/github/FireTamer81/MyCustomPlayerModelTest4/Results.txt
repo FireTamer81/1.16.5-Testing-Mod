@@ -1,0 +1,7 @@
+Still can't figure out how to add a texture to the model, and it is still rotated weirdly.
+
+From what I can tell of the way Entities are normally rendered, the Renderer class never calls the model
+render method as the two are joined in the Entity Type Registry (or something similar, can't remember the name).
+
+Tried doing that, but I couldn't figure out how to do a "dummy entity" or bind the Entity Type (or whatever it was in tutorials) in that way.
+

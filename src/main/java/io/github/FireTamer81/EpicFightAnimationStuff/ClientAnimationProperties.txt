@@ -1,6 +1,0 @@
-package io.github.FireTamer81.EpicFightAnimationStuff;
-
-public class ClientAnimationProperties {
-    public static final StaticAnimationProperty<Layer.Priority> PRIORITY = new StaticAnimationProperty<Layer.Priority> ();
-    public static final StaticAnimationProperty<PoseModifier> POSE_MODIFIER = new StaticAnimationProperty<PoseModifier> ();
-}
