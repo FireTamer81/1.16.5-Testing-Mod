@@ -1,15 +1,15 @@
 package io.github.FireTamer81.MyCustomPlayerModelTest4;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import io.github.FireTamer81.MyCustomModelTest3.CustomPlayerModel;
+import com.mojang.blaze3d.vertex.IVertexBuilder;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
-import net.minecraft.client.renderer.entity.PlayerRenderer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -17,7 +17,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class TestPlayerRenderer extends LivingRenderer<AbstractClientPlayerEntity, TestPlayerModel<AbstractClientPlayerEntity>> {
 
     public TestPlayerModel model;
-    protected ResourceLocation TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "textures/entity/revised_male_player_model.png");
+    protected ResourceLocation TEXTURE = new ResourceLocation(TestModMain.MOD_ID, "textures/entity/texture.png");
 
     public TestPlayerRenderer(EntityRendererManager manager) {
         super(manager, new TestPlayerModel<>(), 0.5F); //The 0.5F is meant to be the shadow size. So, if a model is larger I might want this to be a larger value
@@ -25,11 +25,12 @@ public class TestPlayerRenderer extends LivingRenderer<AbstractClientPlayerEntit
         model = new TestPlayerModel();
     }
 
-    public void doRender(AbstractClientPlayerEntity e, float f1, float f2, MatrixStack stack, IRenderTypeBuffer buffer, int light) {
-        model.renderToBuffer(stack, buffer.getBuffer(RenderType.cutout()), light, 1, 1, 1, 1, 1);
+    public void doRender(MatrixStack stack, IRenderTypeBuffer buffer, int light) {
+        IVertexBuilder vertexBuilder = buffer.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
+
+        model.renderToBuffer(stack, vertexBuilder, light, 1, 0.0f, 0.0f, 0.0f, 0);
     }
 
-    //Might not need this since I am not using the vanilla player model that is being used by the super class PlayerRenderer
     @Override
     public ResourceLocation getTextureLocation(AbstractClientPlayerEntity playerEntity) {
         return TEXTURE;

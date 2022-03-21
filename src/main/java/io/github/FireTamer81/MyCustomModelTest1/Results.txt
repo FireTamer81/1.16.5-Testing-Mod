@@ -1,6 +1,0 @@
-This test resulted in something I am not even going to try to understand.
-
-When pressing f5, the game freezes for a good 20 seconds then crashes. Come to find out the log has been spammed with a LOT of stuff.
-I can only assume every tick, so 20*20 = 400 log messages.
-
-Abandoned.

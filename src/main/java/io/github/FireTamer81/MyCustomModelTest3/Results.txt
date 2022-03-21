@@ -1,5 +1,0 @@
-This is the first test I actually got anywhere with.
-
-It renders the vanilla player model..... but it's upside down and doesn't have a texture (it is using the whole vanilla texture atlas)
-
-This is what I based the "TestPlayerRenderer" off of, while the "TestPlayerModel" is the intended model.
