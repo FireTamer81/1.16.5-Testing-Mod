@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererManager;
 import net.minecraft.client.renderer.entity.LivingRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,7 +29,7 @@ public class TestPlayerRenderer extends LivingRenderer<AbstractClientPlayerEntit
     public void doRender(MatrixStack stack, IRenderTypeBuffer buffer, int light) {
         IVertexBuilder vertexBuilder = buffer.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
 
-        model.renderToBuffer(stack, vertexBuilder, light, 1, 0.0f, 0.0f, 0.0f, 0);
+        model.renderToBuffer(stack, vertexBuilder, light, OverlayTexture.NO_OVERLAY, 0.0f, 0.0f, 0.0f, 0);
     }
 
     @Override

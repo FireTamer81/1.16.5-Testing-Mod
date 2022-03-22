@@ -40,7 +40,7 @@ public class TestPlayerModel<T extends Entity> extends EntityModel<T> {
 
     @Override
     public void renderToBuffer(MatrixStack matrixStack, IVertexBuilder buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha){
-        this.setRotationByDegrees(bone, 180, 0, 0);
+        this.setRotationByDegrees(bone, 180, 180, 0);
         bone.render(matrixStack, buffer, packedLight, packedOverlay);
     }
 
