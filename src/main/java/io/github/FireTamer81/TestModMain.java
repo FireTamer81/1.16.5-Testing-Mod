@@ -1,8 +1,5 @@
 package io.github.FireTamer81;
 
-//import io.github.FireTamer81.EpicFightAnimationStuff.AnimationManager;
-import io.github.FireTamer81.resourceFilesSetup.ResourceFileSetup;
-import net.minecraftforge.fml.loading.FMLPaths;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -39,8 +36,5 @@ public class TestModMain
 
 	public void commonSetup(FMLCommonSetupEvent event) {}
 
-	public void clientSetup(FMLClientSetupEvent event) {
-		//For now, this was just a test.
-		//ResourceFileSetup.addResourceFoldersAndFiles();
-	}
+	public void clientSetup(FMLClientSetupEvent event) {}
 }
