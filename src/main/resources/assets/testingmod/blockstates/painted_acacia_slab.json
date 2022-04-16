@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"type=bottom": { "model": "testingmod:block/half_slab_painted_acacia" },
+		"type=top": { "model": "testingmod:block/upper_slab_painted_acacia" },
+		"type=double": { "model": "testingmod:block/painted_acacia" }
+	}
+}

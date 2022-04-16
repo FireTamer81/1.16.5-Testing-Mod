@@ -1,8 +1,10 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client.model.entity;
 
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.GeckoTestBone;
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.TestAnimatedGeoModel;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.MowzieAnimatedGeoModel;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.MowzieGeoBone;
 import io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.player.GeckoPlayer;
+import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityHandler;
+import io.github.FireTamer81.GeoPlayerModelTest.server.capability.AbilityCapability;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
@@ -12,9 +14,13 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import software.bernie.geckolib3.geo.render.built.GeoBone;
 
-public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
+@OnlyIn(Dist.CLIENT)
+public class ModelGeckoBiped extends MowzieAnimatedGeoModel<GeckoPlayer> {
+
     private ResourceLocation animationFileLocation;
     private ResourceLocation modelLocation;
     private ResourceLocation textureLocation;
@@ -29,8 +35,6 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
     public BipedModel.ArmPose rightArmPose = BipedModel.ArmPose.EMPTY;
 
     protected boolean useSmallArms;
-
-
 
     @Override
     public ResourceLocation getAnimationFileLocation(GeckoPlayer animatable) {
@@ -47,12 +51,11 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
         return textureLocation;
     }
 
-
     /** Check if the modelId has some ResourceLocation **/
     public boolean resourceForModelId(AbstractClientPlayerEntity player) {
-        this.animationFileLocation = new ResourceLocation(TestModMain.MOD_ID, "animations/animated_player.animation.json");
-        this.modelLocation = new ResourceLocation(TestModMain.MOD_ID, "geo/animated_player.geo.json");
-        this.textureLocation = player.getSkinTextureLocation();
+        this.animationFileLocation = new ResourceLocation(TestModMain.MODID, "animations/animated_player.animation.json");
+        this.modelLocation = new ResourceLocation(TestModMain.MODID, "geo/animated_player.geo.json");
+        this.textureLocation = player.getLocationSkin();
         return true;
     }
 
@@ -64,39 +67,33 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
         return useSmallArms;
     }
 
-    public GeckoTestBone bipedHead() {
-        return getGeckoTestBone("Head");
+    public MowzieGeoBone bipedHead() {
+        return getMowzieBone("Head");
     }
 
-    public GeckoTestBone bipedHeadwear() {
-        return getGeckoTestBone("HatLayer");
+    public MowzieGeoBone bipedHeadwear() {
+        return getMowzieBone("HatLayer");
     }
 
-    public GeckoTestBone bipedBody() {
-        return getGeckoTestBone("Body");
+    public MowzieGeoBone bipedBody() {
+        return getMowzieBone("Body");
     }
 
-    public GeckoTestBone bipedRightArm() {
-        return getGeckoTestBone("RightArm");
+    public MowzieGeoBone bipedRightArm() {
+        return getMowzieBone("RightArm");
     }
 
-    public GeckoTestBone bipedLeftArm() {
-        return getGeckoTestBone("LeftArm");
+    public MowzieGeoBone bipedLeftArm() {
+        return getMowzieBone("LeftArm");
     }
 
-    public GeckoTestBone bipedRightLeg() {
-        return getGeckoTestBone("RightLeg");
+    public MowzieGeoBone bipedRightLeg() {
+        return getMowzieBone("RightLeg");
     }
 
-    public GeckoTestBone bipedLeftLeg() {
-        return getGeckoTestBone("LeftLeg");
+    public MowzieGeoBone bipedLeftLeg() {
+        return getMowzieBone("LeftLeg");
     }
-
-
-
-
-
-
 
     public void setVisible(boolean visible) {
         this.bipedHead().setHidden(!visible);
@@ -109,8 +106,8 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
     }
 
     public void setRotationAngles() {
-        GeckoTestBone head = getGeckoTestBone("Head");
-        GeckoTestBone neck = getGeckoTestBone("Neck");
+        MowzieGeoBone head = getMowzieBone("Head");
+        MowzieGeoBone neck = getMowzieBone("Neck");
         float yaw = 0;
         float pitch = 0;
         float roll = 0;
@@ -126,12 +123,12 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
 
     public void setRotationAngles(PlayerEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float partialTick) {
         if (!isInitialized()) return;
-        if (Minecraft.getInstance().isPaused()) return;
+        if (Minecraft.getInstance().isGamePaused()) return;
 
-        GeckoTestBone rightArmClassic = getGeckoTestBone("RightArmClassic");
-        GeckoTestBone leftArmClassic = getGeckoTestBone("LeftArmClassic");
-        GeckoTestBone rightArmSlim = getGeckoTestBone("RightArmSlim");
-        GeckoTestBone leftArmSlim = getGeckoTestBone("LeftArmSlim");
+        MowzieGeoBone rightArmClassic = getMowzieBone("RightArmClassic");
+        MowzieGeoBone leftArmClassic = getMowzieBone("LeftArmClassic");
+        MowzieGeoBone rightArmSlim = getMowzieBone("RightArmSlim");
+        MowzieGeoBone leftArmSlim = getMowzieBone("LeftArmSlim");
         if (useSmallArms) {
             rightArmClassic.setHidden(true);
             leftArmClassic.setHidden(true);
@@ -145,21 +142,17 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
             leftArmClassic.setHidden(false);
         }
 
-        //.getSwimAmount() was originally .getSwimAnimation()
-        //If this doesn't work as intended, revert and find the right method
-        this.swimAnimation = entityIn.getSwimAmount(partialTick);
+        this.swimAnimation = entityIn.getSwimAnimation(partialTick);
 
         float headLookAmount = getControllerValue("HeadLookController");
         float armLookAmount = 1f - getControllerValue("ArmPitchController");
         float armLookAmountRight = getBone("ArmPitchController").getPositionY();
         float armLookAmountLeft = getBone("ArmPitchController").getPositionZ();
-        //.getFallFlyingTicks() was originally .getTicksElytraFlying()
-        //If this doesn't work as intended, revert and find the right method
-        boolean flag = entityIn.getFallFlyingTicks() > 4;
-        boolean flag1 = entityIn.isSwimming();
+        boolean flag = entityIn.getTicksElytraFlying() > 4;
+        boolean flag1 = entityIn.isActualySwimming();
         this.bipedHead().addRotationY(headLookAmount * -netHeadYaw * ((float)Math.PI / 180F));
-        this.getGeckoTestBone("LeftClavicle").addRotationY(Math.min(armLookAmount + armLookAmountLeft, 1) * -netHeadYaw * ((float)Math.PI / 180F));
-        this.getGeckoTestBone("RightClavicle").addRotationY(Math.min(armLookAmount + armLookAmountRight, 1) * -netHeadYaw * ((float)Math.PI / 180F));
+        this.getMowzieBone("LeftClavicle").addRotationY(Math.min(armLookAmount + armLookAmountLeft, 1) * -netHeadYaw * ((float)Math.PI / 180F));
+        this.getMowzieBone("RightClavicle").addRotationY(Math.min(armLookAmount + armLookAmountRight, 1) * -netHeadYaw * ((float)Math.PI / 180F));
         if (flag) {
             this.bipedHead().addRotationX((-(float)Math.PI / 4F));
         } else if (this.swimAnimation > 0.0F) {
@@ -170,8 +163,8 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
             }
         } else {
             this.bipedHead().addRotationX(headLookAmount * -headPitch * ((float)Math.PI / 180F));
-            this.getGeckoTestBone("LeftClavicle").addRotationX(Math.min(armLookAmount + armLookAmountLeft, 1) * -headPitch * ((float)Math.PI / 180F));
-            this.getGeckoTestBone("RightClavicle").addRotationX(Math.min(armLookAmount + armLookAmountRight, 1) * -headPitch * ((float)Math.PI / 180F));
+            this.getMowzieBone("LeftClavicle").addRotationX(Math.min(armLookAmount + armLookAmountLeft, 1) * -headPitch * ((float)Math.PI / 180F));
+            this.getMowzieBone("RightClavicle").addRotationX(Math.min(armLookAmount + armLookAmountRight, 1) * -headPitch * ((float)Math.PI / 180F));
         }
 
         float f = 1.0F;
@@ -189,7 +182,7 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
         float armSwingAmount = getControllerValue("ArmSwingController");
         float armSwingAmountRight = 1.0f - getBone("ArmSwingController").getPositionY();
         float armSwingAmountLeft = 1.0f - getBone("ArmSwingController").getPositionZ();
-        this.bipedRightArm().addRotationX(armSwingAmount * armSwingAmountRight * MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f);
+        this.bipedRightArm().addRotationX(armSwingAmount * armSwingAmountRight *MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 2.0F * limbSwingAmount * 0.5F / f);
         this.bipedLeftArm().addRotationX(armSwingAmount * armSwingAmountLeft * MathHelper.cos(limbSwing * 0.6662F) * 2.0F * limbSwingAmount * 0.5F / f);
         this.bipedRightLeg().addRotationX(legWalkAmount * MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount / f);
         this.bipedLeftLeg().addRotationX(legWalkAmount * MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount / f);
@@ -203,12 +196,12 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
             this.bipedLeftLeg().setRotationX(-1.4137167F);
             this.bipedLeftLeg().setRotationY((-(float)Math.PI / 10F));
             this.bipedLeftLeg().setRotationZ(-0.07853982F);
-            getGeckoTestBone("Waist").setRotation(0, 0, 0);
-            getGeckoTestBone("Root").setRotation(0, 0, 0);
+            getMowzieBone("Waist").setRotation(0, 0, 0);
+            getMowzieBone("Root").setRotation(0, 0, 0);
         }
 
         boolean flag2 = entityIn.getPrimaryHand() == HandSide.RIGHT;
-        boolean flag3 = flag2 ? this.leftArmPose.isTwoHanded() : this.rightArmPose.isTwoHanded();
+        boolean flag3 = flag2 ? this.leftArmPose.func_241657_a_() : this.rightArmPose.func_241657_a_();
         if (flag2 != flag3) {
             this.func_241655_c_(entityIn);
             this.func_241654_b_(entityIn);
@@ -222,23 +215,58 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
         float sneakController = getControllerValue("CrouchController");
         if (this.isSneak) {
             this.bipedBody().addRotationX(-0.5F * sneakController);
-            this.getGeckoTestBone("Neck").addRotationX(0.5F * sneakController);
+            this.getMowzieBone("Neck").addRotationX(0.5F * sneakController);
             this.bipedRightArm().addRotation(0.4F * sneakController, 0, 0);
             this.bipedLeftArm().addRotation(0.4F * sneakController, 0, 0);
             this.bipedHead().addPositionY(-1F * sneakController);
             this.bipedBody().addPosition(0, -1.5F * sneakController, 1.7f * sneakController);
-            this.getGeckoTestBone("Waist").addPosition(0, -0.2f * sneakController, 4F * sneakController);
+            this.getMowzieBone("Waist").addPosition(0, -0.2f * sneakController, 4F * sneakController);
             this.bipedLeftArm().addRotationX(-0.4f * sneakController);
             this.bipedLeftArm().addPosition(0, 0.2f * sneakController, -1f * sneakController);
             this.bipedRightArm().addRotationX(-0.4f * sneakController);
             this.bipedRightArm().addPosition(0, 0.2f * sneakController, -1f * sneakController);
 
-            this.getGeckoTestBone("Waist").addPositionY(2f * (1f - sneakController));
+            this.getMowzieBone("Waist").addPositionY(2f * (1f - sneakController));
         }
 
         float armBreathAmount = getControllerValue("ArmBreathController");
         breathAnim(this.bipedRightArm(), this.bipedLeftArm(), ageInTicks, armBreathAmount);
 
+//		if (this.swimAnimation > 0.0F) {
+//			float f1 = limbSwing % 26.0F;
+//			HandSide handside = this.getMainHand(entityIn);
+//			float f2 = handside == HandSide.RIGHT && this.swingProgress > 0.0F ? 0.0F : this.swimAnimation;
+//			float f3 = handside == HandSide.LEFT && this.swingProgress > 0.0F ? 0.0F : this.swimAnimation;
+//			if (f1 < 14.0F) {
+//				this.bipedLeftArm().setRotationX(this.rotLerpRad(f3, this.bipedLeftArm().getRotationX(), 0.0F));
+//				this.bipedRightArm().setRotationX(MathHelper.lerp(f2, this.bipedRightArm().getRotationX(), 0.0F));
+//				this.bipedLeftArm().setRotationY(this.rotLerpRad(f3, this.bipedLeftArm().getRotationY(), (float)Math.PI));
+//				this.bipedRightArm().setRotationY(MathHelper.lerp(f2, this.bipedRightArm().getRotationY(), (float)Math.PI));
+//				this.bipedLeftArm().setRotationZ(this.rotLerpRad(f3, this.bipedLeftArm().getRotationZ(), (float)Math.PI + 1.8707964F * this.getArmAngleSq(f1) / this.getArmAngleSq(14.0F)));
+//				this.bipedRightArm().setRotationZ(MathHelper.lerp(f2, this.bipedRightArm().getRotationZ(), (float)Math.PI - 1.8707964F * this.getArmAngleSq(f1) / this.getArmAngleSq(14.0F)));
+//			} else if (f1 >= 14.0F && f1 < 22.0F) {
+//				float f6 = (f1 - 14.0F) / 8.0F;
+//				this.bipedLeftArm().setRotationX(this.rotLerpRad(f3, this.bipedLeftArm().getRotationX(), ((float)Math.PI / 2F) * f6));
+//				this.bipedRightArm().setRotationX(MathHelper.lerp(f2, this.bipedRightArm().getRotationX(), ((float)Math.PI / 2F) * f6));
+//				this.bipedLeftArm().setRotationY(this.rotLerpRad(f3, this.bipedLeftArm().getRotationY(), (float)Math.PI));
+//				this.bipedRightArm().setRotationY(MathHelper.lerp(f2, this.bipedRightArm().getRotationY(), (float)Math.PI));
+//				this.bipedLeftArm().setRotationZ(this.rotLerpRad(f3, this.bipedLeftArm().getRotationZ(), 5.012389F - 1.8707964F * f6));
+//				this.bipedRightArm().setRotationZ(MathHelper.lerp(f2, this.bipedRightArm().getRotationZ(), 1.2707963F + 1.8707964F * f6));
+//			} else if (f1 >= 22.0F && f1 < 26.0F) {
+//				float f4 = (f1 - 22.0F) / 4.0F;
+//				this.bipedLeftArm().setRotationX(this.rotLerpRad(f3, this.bipedLeftArm().getRotationX(), ((float)Math.PI / 2F) - ((float)Math.PI / 2F) * f4));
+//				this.bipedRightArm().setRotationX(MathHelper.lerp(f2, this.bipedRightArm().getRotationX(), ((float)Math.PI / 2F) - ((float)Math.PI / 2F) * f4));
+//				this.bipedLeftArm().setRotationY(this.rotLerpRad(f3, this.bipedLeftArm().getRotationY(), (float)Math.PI));
+//				this.bipedRightArm().setRotationY(MathHelper.lerp(f2, this.bipedRightArm().getRotationY(), (float)Math.PI));
+//				this.bipedLeftArm().setRotationZ(this.rotLerpRad(f3, this.bipedLeftArm().getRotationZ(), (float)Math.PI));
+//				this.bipedRightArm().setRotationZ(MathHelper.lerp(f2, this.bipedRightArm().getRotationZ(), (float)Math.PI));
+//			}
+//
+//			float f7 = 0.3F;
+//			float f5 = 0.33333334F;
+//			this.bipedLeftLeg().setRotationX(MathHelper.lerp(this.swimAnimation, this.bipedLeftLeg().getRotationX(), 0.3F * MathHelper.cos(limbSwing * 0.33333334F + (float)Math.PI)));
+//			this.bipedRightLeg().setRotationX(MathHelper.lerp(this.swimAnimation, this.bipedRightLeg().getRotationX(), 0.3F * MathHelper.cos(limbSwing * 0.33333334F)));
+//		}
 
         AbilityCapability.IAbilityCapability abilityCapability = AbilityHandler.INSTANCE.getAbilityCapability(entityIn);
         if (abilityCapability != null && abilityCapability.getActiveAbility() != null) {
@@ -246,7 +274,7 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
         }
     }
 
-    protected GeckoTestBone getArmForSide(HandSide side) {
+    protected MowzieGeoBone getArmForSide(HandSide side) {
         return side == HandSide.LEFT ? this.bipedLeftArm() : this.bipedRightArm();
     }
 
@@ -269,10 +297,10 @@ public class ModelGeckoBiped extends TestAnimatedGeoModel<GeckoPlayer> {
 
     protected HandSide getMainHand(PlayerEntity entityIn) {
         HandSide handside = entityIn.getPrimaryHand();
-        return entityIn.swingingArm == Hand.MAIN_HAND ? handside : handside.getOpposite();
+        return entityIn.swingingHand == Hand.MAIN_HAND ? handside : handside.opposite();
     }
 
-    public static void breathAnim(GeckoTestBone rightArm, GeckoTestBone leftArm, float ageInTicks, float armBreathAmount) {
+    public static void breathAnim(MowzieGeoBone rightArm, MowzieGeoBone leftArm, float ageInTicks, float armBreathAmount) {
         rightArm.addRotationZ(armBreathAmount * MathHelper.cos(ageInTicks * 0.09F) * 0.05F + 0.05F);
         leftArm.addRotationZ(armBreathAmount * -MathHelper.cos(ageInTicks * 0.09F) * 0.05F - 0.05F);
         rightArm.addRotationX(armBreathAmount * MathHelper.sin(ageInTicks * 0.067F) * 0.05F);

@@ -5,17 +5,17 @@ import net.minecraft.client.renderer.model.ModelRenderer;
 import net.minecraft.util.math.vector.Matrix3f;
 import net.minecraft.util.math.vector.Matrix4f;
 
-public class ModelRendererMatrix  extends ModelRenderer {
+public class ModelRendererMatrix extends ModelRenderer {
     private Matrix4f worldXform;
     private Matrix3f worldNormal;
 
     private boolean useMatrixMode;
 
     public ModelRendererMatrix(ModelRenderer original) {
-        super((int) original.xTexSize, (int) original.yTexSize, original.xTexOffs, original.yTexOffs);
-        copyFrom(original);
-        cubes.addAll(original.cubes);
-        children.addAll(original.children);
+        super((int) original.textureWidth, (int) original.textureHeight, original.textureOffsetX, original.textureOffsetY);
+        copyModelAngles(original);
+        cubeList.addAll(original.cubeList);
+        childModels.addAll(original.childModels);
 
         worldNormal = new Matrix3f();
         worldNormal.setIdentity();
@@ -26,28 +26,28 @@ public class ModelRendererMatrix  extends ModelRenderer {
     }
 
     @Override
-    public void translateAndRotate(MatrixStack matrixStackIn) {
+    public void translateRotate(MatrixStack matrixStackIn) {
         if (!useMatrixMode || getWorldNormal() == null || getWorldXform() == null) {
-            super.translateAndRotate(matrixStackIn);
+            super.translateRotate(matrixStackIn);
         }
         else {
-            MatrixStack.Entry last = matrixStackIn.last();
-            last.pose().setIdentity();
-            last.normal().setIdentity();
-            last.pose().multiply(getWorldXform());
-            last.normal().mul(getWorldNormal());
+            MatrixStack.Entry last = matrixStackIn.getLast();
+            last.getMatrix().setIdentity();
+            last.getNormal().setIdentity();
+            last.getMatrix().mul(getWorldXform());
+            last.getNormal().mul(getWorldNormal());
         }
         useMatrixMode = false;
     }
 
     @Override
-    public void copyFrom(ModelRenderer modelRendererIn) {
+    public void copyModelAngles(ModelRenderer modelRendererIn) {
         if (modelRendererIn instanceof ModelRendererMatrix) {
             ModelRendererMatrix other = (ModelRendererMatrix) modelRendererIn;
             this.setWorldNormal(other.getWorldNormal());
             this.setWorldXform(other.getWorldXform());
         }
-        super.copyFrom(modelRendererIn);
+        super.copyModelAngles(modelRendererIn);
     }
 
     public Matrix3f getWorldNormal() {

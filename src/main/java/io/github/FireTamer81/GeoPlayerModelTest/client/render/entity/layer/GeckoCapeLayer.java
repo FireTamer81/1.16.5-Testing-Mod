@@ -1,7 +1,7 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.layer;
 
-import com.mojang.blaze3d.matrix.MatrixStack;
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.ModelRendererMatrix;
+import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
@@ -17,10 +17,10 @@ public class GeckoCapeLayer extends CapeLayer {
     }
 
     public void render(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, int packedLightIn, AbstractClientPlayerEntity entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        matrixStackIn.last().pose().setIdentity();
-        matrixStackIn.pushPose();
-        matrixStackIn.last().pose().multiply(((ModelRendererMatrix)this.getParentModel().body).getWorldXform());
+        matrixStackIn.getLast().getMatrix().setIdentity();
+        matrixStackIn.push();
+        matrixStackIn.getLast().getMatrix().mul(((ModelRendererMatrix)this.getEntityModel().bipedBody).getWorldXform());
         super.render(matrixStackIn, bufferIn, packedLightIn, entitylivingbaseIn, limbSwing, limbSwingAmount, partialTicks, ageInTicks, netHeadYaw, headPitch);
-        matrixStackIn.popPose();
+        matrixStackIn.pop();
     }
 }

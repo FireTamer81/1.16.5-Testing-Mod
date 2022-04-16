@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "testingmod:logo"
+    },
+    "title": {
+      "translate": "advancements.testingmod.root.title"
+    },
+    "description": {
+      "translate": "advancements.testingmod.root.description"
+    },
+    "background": "minecraft:textures/block/stone.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "custom_test_name": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

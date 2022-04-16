@@ -1,0 +1,728 @@
+{
+	"foliaath.bite1": {
+		"sounds": [ "testingmod:entity/foliaath/bite1" ],
+		"subtitle": "subtitles.testingmod.foliaath.bite"
+	},
+	"foliaath.bite2": {
+		"sounds": [ "testingmod:entity/foliaath/bite2" ],
+		"subtitle": "subtitles.testingmod.foliaath.bite"
+	},
+	"foliaath.emerge":{
+		"sounds": [ "testingmod:entity/foliaath/emerge" ],
+		"subtitle": "subtitles.testingmod.foliaath.emerge"
+	},
+	"foliaath.grunt": {
+		"sounds": [ "testingmod:entity/foliaath/grunt" ],
+		"subtitle": "subtitles.testingmod.foliaath.grunt"
+	},
+	"foliaath.pant1": {
+		"sounds": [ "testingmod:entity/foliaath/pant1" ],
+		"subtitle": "subtitles.testingmod.foliaath.pant"
+	},
+	"foliaath.pant2": {
+		"sounds": [ "testingmod:entity/foliaath/pant2" ],
+		"subtitle": "subtitles.testingmod.foliaath.pant"
+	},
+	"foliaath.retreat": {
+		"sounds": [ "testingmod:entity/foliaath/retreat" ],
+		"subtitle": "subtitles.testingmod.foliaath.retreat"
+	},
+	"foliaath.die": {
+		"sounds": [ "testingmod:entity/foliaath/die" ],
+		"subtitle": "subtitles.testingmod.foliaath.die"
+	},
+	"foliaath.hurt": {
+		"sounds": [ "testingmod:entity/foliaath/hurt" ],
+		"subtitle": "subtitles.testingmod.foliaath.hurt"
+	},
+	"foliaath.rustle": {
+		"sounds": [ "testingmod:entity/foliaath/rustle" ],
+		"subtitle": "subtitles.testingmod.foliaath.rustle"
+	},
+	"dirtimpact": {
+		"sounds": [ "testingmod:random/dirt_impact" ],
+		"subtitle": "subtitles.testingmod.ground_hit"
+	},
+	"foliaath.baby.eat": {
+		"sounds": [ "testingmod:entity/foliaath/baby_eat" ],
+		"subtitle": "subtitles.testingmod.foliaath.baby_eat"
+	},
+	"wroughtnaut.whoosh": {
+		"sounds": [ "testingmod:entity/wroughtnaut/whoosh" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.whoosh"
+	},
+	"wroughtnaut.creak": {
+		"sounds": [ "testingmod:entity/wroughtnaut/creak" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.creak"
+	},
+	"wroughtnaut.die": {
+		"sounds": [ "testingmod:entity/wroughtnaut/die" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.die"
+	},
+	"wroughtnaut.grunt1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/grunt1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.grunt"
+	},
+	"wroughtnaut.grunt2": {
+		"sounds": [ "testingmod:entity/wroughtnaut/grunt2" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.grunt"
+	},
+	"wroughtnaut.grunt3": {
+		"sounds": [ "testingmod:entity/wroughtnaut/grunt3" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.grunt"
+	},
+	"wroughtnaut.hurt1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/hurt1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.hurt"
+	},
+	"wroughtnaut.pre_swing1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pre_swing1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pre_swing"
+	},
+	"wroughtnaut.pre_swing2": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pre_swing2" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pre_swing"
+	},
+	"wroughtnaut.pre_swing3": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pre_swing3" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pre_swing"
+	},
+	"wroughtnaut.pull1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pull1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pull"
+	},
+	"wroughtnaut.pull2": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pull2" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pull"
+	},
+	"wroughtnaut.pull3": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pull3" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pull"
+	},
+	"wroughtnaut.pull4": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pull4" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pull"
+	},
+	"wroughtnaut.pull5": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pull5" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pull"
+	},
+	"wroughtnaut.pull6": {
+		"sounds": [ "testingmod:entity/wroughtnaut/pull6" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.pull"
+	},
+	"wroughtnaut.release1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/release1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.release"
+	},
+	"wroughtnaut.release2": {
+		"sounds": [ "testingmod:entity/wroughtnaut/release2" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.release"
+	},
+	"wroughtnaut.scream": {
+		"sounds": [ "testingmod:entity/wroughtnaut/scream" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.scream"
+	},
+	"wroughtnaut.shout1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/shout1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.shout"
+	},
+	"wroughtnaut.shout2": {
+		"sounds": [ "testingmod:entity/wroughtnaut/shout2" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.shout"
+	},
+	"wroughtnaut.shout3": {
+		"sounds": [ "testingmod:entity/wroughtnaut/shout3" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.shout"
+	},
+	"wroughtnaut.ambient": {
+		"sounds": [
+			"testingmod:entity/wroughtnaut/grunt1",
+			"testingmod:entity/wroughtnaut/grunt2",
+			"testingmod:entity/wroughtnaut/shout1",
+			"testingmod:entity/wroughtnaut/shout2"
+		],
+		"subtitle": "subtitles.testingmod.wroughtnaut.grunt"
+	},
+	"wroughtnaut.swing1": {
+		"sounds": [ "testingmod:entity/wroughtnaut/swing1" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.swing"
+	},
+	"wroughtnaut.swing2": {
+		"sounds": [ "testingmod:entity/wroughtnaut/swing2" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.swing"
+	},
+	"wroughtnaut.swing3": {
+		"sounds": [ "testingmod:entity/wroughtnaut/swing3" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.swing"
+	},
+	"wroughtnaut.step": {
+		"sounds": [
+			"minecraft:mob/zombie/metal1",
+			"minecraft:mob/zombie/metal2",
+			"minecraft:mob/zombie/metal3"
+		],
+		"subtitle": "subtitles.testingmod.wroughtnaut.footstep"
+	},
+	"wroughtnaut.undamaged": {
+		"sounds": [ "minecraft:random/anvil_land" ],
+		"subtitle": "subtitles.testingmod.clink"
+	},
+	"wroughtnaut.axe_land": {
+		"sounds": [ "minecraft:random/anvil_land" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.axe_clang"
+	},
+	"wroughtnaut.axe_hit": {
+		"sounds": [ "minecraft:random/anvil_land" ],
+		"subtitle": "subtitles.testingmod.wroughtnaut.axe_clang"
+	},
+	"barakoa.angry1": {
+		"sounds": [ "testingmod:entity/barakoa/angry1" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.angry2": {
+		"sounds": [ "testingmod:entity/barakoa/angry2" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.angry3": {
+		"sounds": [ "testingmod:entity/barakoa/angry3" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.angry4": {
+		"sounds": [ "testingmod:entity/barakoa/angry4" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.angry5": {
+		"sounds": [ "testingmod:entity/barakoa/angry5" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.angry6": {
+		"sounds": [ "testingmod:entity/barakoa/angry6" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.battlecry": {
+		"sounds": [ "testingmod:entity/barakoa/battlecry" ],
+		"subtitle": "subtitles.testingmod.barakoa.battlecry"
+	},
+	"barakoa.battlecry2": {
+		"sounds": [ "testingmod:entity/barakoa/battlecry2" ],
+		"subtitle": "subtitles.testingmod.barakoa.battlecry"
+	},
+	"barakoa.die": {
+		"sounds": [
+			"testingmod:entity/barakoa/die1",
+			"testingmod:entity/barakoa/die2"
+		],
+		"subtitle": "subtitles.testingmod.barakoa.die"
+	},
+	"barakoa.hurt": {
+		"sounds": [
+			"testingmod:entity/barakoa/hurt1",
+			"testingmod:entity/barakoa/hurt2",
+			"testingmod:entity/barakoa/hurt3",
+			"testingmod:entity/barakoa/hurt4"
+		],
+		"subtitle": "subtitles.testingmod.barakoa.hurt"
+	},
+	"barakoa.talk1": {
+		"sounds": [ "testingmod:entity/barakoa/talk1" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk2": {
+		"sounds": [ "testingmod:entity/barakoa/talk2" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk3": {
+		"sounds": [ "testingmod:entity/barakoa/talk3" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk4": {
+		"sounds": [ "testingmod:entity/barakoa/talk4" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk5": {
+		"sounds": [ "testingmod:entity/barakoa/talk5" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk6": {
+		"sounds": [ "testingmod:entity/barakoa/talk6" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk7": {
+		"sounds": [ "testingmod:entity/barakoa/talk7" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk8": {
+		"sounds": [ "testingmod:entity/barakoa/talk8" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.talk9": {
+		"sounds": [ "testingmod:entity/barakoa/talk9" ],
+		"subtitle": "subtitles.testingmod.barakoa.talk"
+	},
+	"barakoa.blowdart": {
+		"sounds": [ "testingmod:entity/barakoa/blowdart" ],
+		"subtitle": "subtitles.testingmod.barakoa.blowdart"
+	},
+	"barakoa.inhale": {
+		"sounds": [ "testingmod:entity/barakoa/inhale" ],
+		"subtitle": "subtitles.testingmod.barakoa.inhale"
+	},
+	"barakoa.shout": {
+		"sounds": [ "testingmod:entity/barakoa/shout" ],
+		"subtitle": "subtitles.testingmod.barakoa.shout"
+	},
+	"barakoa.swing": {
+		"sounds": [ "testingmod:entity/barakoa/swing" ],
+		"subtitle": "subtitles.testingmod.barakoa.swing"
+	},
+	"barakoa.emerge": {
+		"sounds": [ "testingmod:entity/barakoa/emerge" ],
+		"subtitle": "subtitles.testingmod.barakoa.emerge"
+	},
+	"barakoa.retract": {
+		"sounds": [ "testingmod:entity/barakoa/retract" ],
+		"subtitle": "subtitles.testingmod.barakoa.retract"
+	},
+	"barakoa.healstart1": {
+		"sounds": [ "testingmod:entity/barakoa/heal_cast1" ],
+		"subtitle": "subtitles.testingmod.barakoa.heal"
+	},
+	"barakoa.healstart2": {
+		"sounds": [ "testingmod:entity/barakoa/heal_cast2" ],
+		"subtitle": "subtitles.testingmod.barakoa.heal"
+	},
+	"barakoa.healstart3": {
+		"sounds": [ "testingmod:entity/barakoa/heal_cast3" ],
+		"subtitle": "subtitles.testingmod.barakoa.heal"
+	},
+	"barakoa.healloop": {
+		"sounds": [ "testingmod:entity/barakoa/heal_loop" ],
+		"subtitle": "subtitles.testingmod.barakoa.heal"
+	},
+	"barakoa.teleport1": {
+		"sounds": [ "testingmod:entity/barakoa/teleport_1" ],
+		"subtitle": "subtitles.testingmod.barakoa.teleport"
+	},
+	"barakoa.teleport2": {
+		"sounds": [ "testingmod:entity/barakoa/teleport_2" ],
+		"subtitle": "subtitles.testingmod.barakoa.teleport"
+	},
+	"barakoa.teleport3": {
+		"sounds": [ "testingmod:entity/barakoa/teleport_3" ],
+		"subtitle": "subtitles.testingmod.barakoa.teleport"
+	},
+	"barako.belly": {
+		"sounds": [ "testingmod:entity/barako/belly" ],
+		"subtitle": "subtitles.testingmod.barako.belly"
+	},
+	"barako.angry1": {
+		"sounds": [ "testingmod:entity/barako/angry1" ],
+		"subtitle": "subtitles.testingmod.barako.shout"
+	},
+	"barako.angry2": {
+		"sounds": [ "testingmod:entity/barako/angry2" ],
+		"subtitle": "subtitles.testingmod.barako.shout"
+	},
+	"barako.angry3": {
+		"sounds": [ "testingmod:entity/barako/angry3" ],
+		"subtitle": "subtitles.testingmod.barako.shout"
+	},
+	"barako.angry4": {
+		"sounds": [ "testingmod:entity/barako/angry4" ],
+		"subtitle": "subtitles.testingmod.barako.shout"
+	},
+	"barako.angry5": {
+		"sounds": [ "testingmod:entity/barako/angry5" ],
+		"subtitle": "subtitles.testingmod.barako.shout"
+	},
+	"barako.angry6": {
+		"sounds": [ "testingmod:entity/barako/angry6" ],
+		"subtitle": "subtitles.testingmod.barako.shout"
+	},
+	"barako.talk1": {
+		"sounds": [ "testingmod:entity/barako/talk1" ],
+		"subtitle": "subtitles.testingmod.barako.talk"
+	},
+	"barako.talk2": {
+		"sounds": [ "testingmod:entity/barako/talk2" ],
+		"subtitle": "subtitles.testingmod.barako.talk"
+	},
+	"barako.talk3": {
+		"sounds": [ "testingmod:entity/barako/talk3" ],
+		"subtitle": "subtitles.testingmod.barako.talk"
+	},
+	"barako.talk4": {
+		"sounds": [ "testingmod:entity/barako/talk4" ],
+		"subtitle": "subtitles.testingmod.barako.talk"
+	},
+	"barako.talk5": {
+		"sounds": [ "testingmod:entity/barako/talk5" ],
+		"subtitle": "subtitles.testingmod.barako.talk"
+	},
+	"barako.talk6": {
+		"sounds": [ "testingmod:entity/barako/talk6" ],
+		"subtitle": "subtitles.testingmod.barako.talk"
+	},
+	"barako.die": {
+		"sounds": [ "testingmod:entity/barako/die" ],
+		"subtitle": "subtitles.testingmod.barako.die"
+	},
+	"barako.hurt": {
+		"sounds": [
+			"testingmod:entity/barako/hurt1",
+			"testingmod:entity/barako/hurt2",
+			"testingmod:entity/barako/hurt3"
+		],
+		"subtitle": "subtitles.testingmod.barako.hurt"
+	},
+	"barako.attack": {
+		"sounds": [
+			"testingmod:entity/barako/attack1",
+			"testingmod:entity/barako/attack2",
+			"testingmod:entity/barako/attack3"
+		],
+		"subtitle": "subtitles.testingmod.barako.attack"
+	},
+	"barako.burst": {
+		"sounds": [ "testingmod:entity/barako/burst" ],
+		"subtitle": "subtitles.testingmod.barako.burst"
+	},
+	"barako.bless": {
+		"sounds": [ "testingmod:entity/barako/bless" ],
+		"subtitle": "subtitles.testingmod.barako.bless"
+	},
+	"sunstrike": {
+		"sounds": [ "testingmod:random/sunstrike" ],
+		"subtitle": "subtitles.testingmod.sunstrike"
+	},
+	"laser": {
+		"sounds": [ "testingmod:laser/laser" ],
+		"subtitle": "subtitles.testingmod.laser"
+	},
+	"barako.scream": {
+		"sounds": [ "testingmod:entity/barako/scream" ],
+		"subtitle": "subtitles.testingmod.barako.scream"
+	},
+	"supernova.start": {
+		"sounds": [ "testingmod:entity/barako/supernova_start" ],
+		"subtitle": "subtitles.testingmod.barako.supernova_start"
+	},
+	"supernova.blackhole": {
+		"sounds": [ "testingmod:entity/barako/black_hole" ],
+		"subtitle": "subtitles.testingmod.barako.black_hole"
+	},
+	"supernova.end": {
+		"sounds": [ "testingmod:entity/barako/supernova_end" ],
+		"subtitle": "subtitles.testingmod.barako.supernova_end"
+	},
+	"geomancy.smallcrash": {
+		"sounds": [ "testingmod:effects/geomancy/small_rock_crash" ],
+		"subtitle": "subtitles.testingmod.geomancy.small_rock"
+	},
+	"geomancy.hitsmall": {
+		"sounds": [ "testingmod:effects/geomancy/magic_hit_small" ],
+		"subtitle": "subtitles.testingmod.geomancy.small_hit"
+	},
+	"geomancy.hitbig": {
+		"sounds": [ "testingmod:effects/geomancy/magic_hit_big" ],
+		"subtitle": "subtitles.testingmod.geomancy.big_hit"
+	},
+	"geomancy.breaklarge": {
+		"sounds": [ "testingmod:effects/geomancy/break_large" ],
+		"subtitle": "subtitles.testingmod.geomancy.big_break"
+	},
+	"geomancy.breaklarge2": {
+		"sounds": [ "testingmod:effects/geomancy/break_large_2" ],
+		"subtitle": "subtitles.testingmod.geomancy.big_break"
+	},
+	"geomancy.breakmedium": {
+		"sounds": [ "testingmod:effects/geomancy/break_medium" ],
+		"subtitle": "subtitles.testingmod.geomancy.medium_break"
+	},
+	"geomancy.breakmedium2": {
+		"sounds": [ "testingmod:effects/geomancy/break_medium_2" ],
+		"subtitle": "subtitles.testingmod.geomancy.medium_break"
+	},
+	"geomancy.breakmedium3": {
+		"sounds": [ "testingmod:effects/geomancy/break_medium_3" ],
+		"subtitle": "subtitles.testingmod.geomancy.medium_break"
+	},
+	"geomancy.hit": {
+		"sounds": [ "testingmod:effects/geomancy/hit" ],
+		"subtitle": "subtitles.testingmod.geomancy.hit"
+	},
+	"geomancy.hitmedium": {
+		"sounds": [ "testingmod:effects/geomancy/hit_medium" ],
+		"subtitle": "subtitles.testingmod.geomancy.medium_hit"
+	},
+	"geomancy.hitmedium2": {
+		"sounds": [ "testingmod:effects/geomancy/hit_medium_2" ],
+		"subtitle": "subtitles.testingmod.geomancy.medium_hit"
+	},
+	"geomancy.rockbreak": {
+		"sounds": [ "testingmod:effects/geomancy/rock_break" ],
+		"subtitle": "subtitles.testingmod.geomancy.break"
+	},
+	"geomancy.rockcrash1": {
+		"sounds": [ "testingmod:effects/geomancy/rock_crash_1" ],
+		"subtitle": "subtitles.testingmod.geomancy.crash"
+	},
+	"geomancy.rockcrumble": {
+		"sounds": [ "testingmod:effects/geomancy/rock_crumble" ],
+		"subtitle": "subtitles.testingmod.geomancy.crumble"
+	},
+	"geomancy.rumble1": {
+		"sounds": [ "testingmod:effects/geomancy/rumble_1" ],
+		"subtitle": "subtitles.testingmod.geomancy.rumble"
+	},
+	"geomancy.rumble2": {
+		"sounds": [ "testingmod:effects/geomancy/rumble_2" ],
+		"subtitle": "subtitles.testingmod.geomancy.rumble"
+	},
+	"geomancy.rumble3": {
+		"sounds": [ "testingmod:effects/geomancy/rumble_3" ],
+		"subtitle": "subtitles.testingmod.geomancy.rumble"
+	},
+	"geomancy.smallrockhit": {
+		"sounds": [ "testingmod:effects/geomancy/small_rock_hit" ],
+		"subtitle": "subtitles.testingmod.geomancy.small_hit"
+	},
+	"geomancy.bouldercharge": {
+		"sounds": [ "testingmod:effects/geomancy/boulder_spawn_charge" ],
+		"subtitle": "subtitles.testingmod.geomancy.boulder_charge"
+	},
+	"geomancy.magicchargesmall": {
+		"sounds": [ "testingmod:effects/geomancy/magic_charge_small" ]
+	},
+	"frostmaw.roar": {
+		"sounds": [ "testingmod:entity/frostmaw/roar" ],
+		"subtitle": "subtitles.testingmod.frostmaw.roar"
+	},
+	"frostmaw.whoosh": {
+		"sounds": [ "testingmod:entity/frostmaw/whoosh" ],
+		"subtitle": "subtitles.testingmod.frostmaw.whoosh"
+	},
+	"frostmaw.icebreath": {
+		"sounds": [ "testingmod:entity/frostmaw/icebreath" ],
+		"subtitle": "subtitles.testingmod.frostmaw.icebreath",
+		"stream": true
+	},
+	"frostmaw.icebreathstart": {
+		"sounds": [ "testingmod:entity/frostmaw/icebreathstart" ],
+		"subtitle": "subtitles.testingmod.frostmaw.icebreath.start"
+	},
+	"frostmaw.iceballcharge": {
+		"sounds": [ "testingmod:entity/frostmaw/iceballcharge" ],
+		"subtitle": "subtitles.testingmod.frostmaw.iceball.charge"
+	},
+	"frostmaw.iceballshoot": {
+		"sounds": [ "testingmod:entity/frostmaw/iceballshoot" ],
+		"subtitle": "subtitles.testingmod.frostmaw.iceball.shoot"
+	},
+	"frostmaw.step": {
+		"sounds": [ "testingmod:entity/frostmaw/step" ],
+		"subtitle": "subtitles.testingmod.frostmaw.footstep"
+	},
+	"frostmaw.land": {
+		"sounds": [ "testingmod:entity/frostmaw/land" ],
+		"subtitle": "subtitles.testingmod.frostmaw.land"
+	},
+	"frostmaw.attack1": {
+		"sounds": [ "testingmod:entity/frostmaw/attack1" ],
+		"subtitle": "subtitles.testingmod.frostmaw.attack"
+	},
+	"frostmaw.attack2": {
+		"sounds": [ "testingmod:entity/frostmaw/attack2" ],
+		"subtitle": "subtitles.testingmod.frostmaw.attack"
+	},
+	"frostmaw.attack3": {
+		"sounds": [ "testingmod:entity/frostmaw/attack3" ],
+		"subtitle": "subtitles.testingmod.frostmaw.attack"
+	},
+	"frostmaw.attack4": {
+		"sounds": [ "testingmod:entity/frostmaw/attack4" ],
+		"subtitle": "subtitles.testingmod.frostmaw.attack"
+	},
+	"frostmaw.die": {
+		"sounds": [ "testingmod:entity/frostmaw/die" ],
+		"subtitle": "subtitles.testingmod.frostmaw.die"
+	},
+	"frostmaw.breath1": {
+		"sounds": [ "testingmod:entity/frostmaw/breath" ],
+		"subtitle": "subtitles.testingmod.frostmaw.breath"
+	},
+	"frostmaw.breath2": {
+		"sounds": [ "testingmod:entity/frostmaw/breath2" ],
+		"subtitle": "subtitles.testingmod.frostmaw.breath"
+	},
+	"frostmaw.living1": {
+		"sounds": [ "testingmod:entity/frostmaw/living1" ],
+		"subtitle": "subtitles.testingmod.frostmaw.growl"
+	},
+	"frostmaw.living2": {
+		"sounds": [ "testingmod:entity/frostmaw/living2" ],
+		"subtitle": "subtitles.testingmod.frostmaw.growl"
+	},
+	"frostmaw.wakeup": {
+		"sounds": [ "testingmod:entity/frostmaw/wakeup" ],
+		"subtitle": "subtitles.testingmod.frostmaw.wakeup"
+	},
+	"frostmaw.frozencrash": {
+		"sounds": [ "testingmod:entity/frostmaw/icecrash" ],
+		"subtitle": "subtitles.testingmod.ice.crash"
+	},
+	"grottol.step": {
+		"sounds": [
+			"testingmod:entity/grottol/step1",
+			"testingmod:entity/grottol/step2",
+			"testingmod:entity/grottol/step3",
+			"testingmod:entity/grottol/step4"
+		],
+		"subtitle": "subtitles.testingmod.grottol.step"
+	},
+	"grottol.undamaged": {
+		"sounds": [ "minecraft:random/anvil_land" ],
+		"subtitle": "subtitles.testingmod.clink"
+	},
+	"grottol.burrow": {
+		"sounds": [
+			"minecraft:dig/sand1",
+			"minecraft:dig/sand2",
+			"minecraft:dig/sand3",
+			"minecraft:dig/sand4"
+		],
+		"subtitle": "subtitles.testingmod.grottol.dig"
+	},
+	"grottol.die": {
+		"sounds": [ "testingmod:effects/geomancy/rock_break" ],
+		"subtitle": "subtitles.testingmod.grottol.die"
+	},
+	"lantern.pop": {
+		"sounds": [ "testingmod:entity/lantern/pop" ],
+		"subtitle": "subtitles.testingmod.lantern.pop"
+	},
+	"lantern.puff": {
+		"sounds": [ "testingmod:entity/lantern/puff" ],
+		"subtitle": "subtitles.testingmod.lantern.puff"
+	},
+	"naga.acidcharge": {
+		"sounds": [ "testingmod:entity/naga/acid_charge" ],
+		"subtitle": "subtitles.testingmod.naga.acid.charge"
+	},
+	"naga.acidhit": {
+		"sounds": [ "testingmod:entity/naga/acid_hit" ],
+		"subtitle": "subtitles.testingmod.naga.acid.hit"
+	},
+	"naga.acidspit": {
+		"sounds": [ "testingmod:entity/naga/acid_spit" ],
+		"subtitle": "subtitles.testingmod.naga.acid.spit"
+	},
+	"naga.acidspithiss": {
+		"sounds": [ "testingmod:entity/naga/acid_spit_hiss" ],
+		"subtitle": "subtitles.testingmod.naga.acid.hiss"
+	},
+	"naga.flap1": {
+		"sounds": [ "testingmod:entity/naga/flap1" ],
+		"subtitle": "subtitles.testingmod.naga.flap"
+	},
+	"naga.growl1": {
+		"sounds": [ "testingmod:entity/naga/growl1" ],
+		"subtitle": "subtitles.testingmod.naga.growl"
+	},
+	"naga.growl2": {
+		"sounds": [ "testingmod:entity/naga/growl2" ],
+		"subtitle": "subtitles.testingmod.naga.growl"
+	},
+	"naga.growl3": {
+		"sounds": [ "testingmod:entity/naga/growl3" ],
+		"subtitle": "subtitles.testingmod.naga.growl"
+	},
+	"naga.grunt1": {
+		"sounds": [ "testingmod:entity/naga/grunt1" ],
+		"subtitle": "subtitles.testingmod.naga.grunt"
+	},
+	"naga.grunt2": {
+		"sounds": [ "testingmod:entity/naga/grunt2" ],
+		"subtitle": "subtitles.testingmod.naga.grunt"
+	},
+	"naga.grunt3": {
+		"sounds": [ "testingmod:entity/naga/grunt3" ],
+		"subtitle": "subtitles.testingmod.naga.grunt"
+	},
+	"naga.roar1": {
+		"sounds": [ "testingmod:entity/naga/roar1" ],
+		"subtitle": "subtitles.testingmod.naga.roar"
+	},
+	"naga.roar2": {
+		"sounds": [ "testingmod:entity/naga/roar2" ],
+		"subtitle": "subtitles.testingmod.naga.roar"
+	},
+	"naga.roar3": {
+		"sounds": [ "testingmod:entity/naga/roar3" ],
+		"subtitle": "subtitles.testingmod.naga.roar"
+	},
+	"naga.roar4": {
+		"sounds": [ "testingmod:entity/naga/roar4" ],
+		"subtitle": "subtitles.testingmod.naga.roar"
+	},
+	"naga.swoop": {
+		"sounds": [ "testingmod:entity/naga/swoop" ],
+		"subtitle": "subtitles.testingmod.naga.swoop"
+	},
+	"misc.groundhit1": {
+		"sounds": [ "testingmod:entity/misc/ground_hit1" ],
+		"subtitle": "subtitles.testingmod.ground_hit"
+	},
+	"misc.groundhit2": {
+		"sounds": [ "testingmod:entity/misc/ground_hit2" ],
+		"subtitle": "subtitles.testingmod.ground_hit"
+	},
+	"music.black_pink": {
+		"sounds": [
+			"testingmod:music/black_pink"
+		],
+		"subtitle": "subtitles.testingmod.black_pink"
+	},
+	"music.petiole": {
+		"category": "record",
+		"sounds": [
+			"testingmod:music/petiole"
+		],
+		"subtitle": "subtitles.testingmod.petiole",
+		"stream": true
+	},
+	"music.barako_theme": {
+		"category": "music",
+		"sounds": [
+			{
+				"name": "testingmod:music/barako",
+				"stream": true,
+				"volume": 0.5
+			}
+		],
+		"subtitle": "subtitles.testingmod.barako_theme"
+	},
+	"music.ferrous_wroughtnaut_theme": {
+		"category": "music",
+		"sounds": [
+			{
+				"name": "testingmod:music/ferrous_wroughtnaut",
+				"stream": true,
+				"volume": 0.5
+			}
+		],
+		"subtitle": "subtitles.testingmod.ferrous_wroughtnaut_theme"
+	},
+	"music.frostmaw_theme": {
+		"category": "music",
+		"sounds": [
+			{
+				"name": "testingmod:music/frostmaw",
+				"stream": true,
+				"volume": 0.5
+			}
+		],
+		"subtitle": "subtitles.testingmod.frostmaw_theme"
+	}
+}

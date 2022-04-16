@@ -1,0 +1,6 @@
+{
+	"parent": "testingmod:item/barakoa_mask_frame",
+	"textures": {
+		"layer0": "testingmod:item/barakoa_mask_fear"
+	}
+}

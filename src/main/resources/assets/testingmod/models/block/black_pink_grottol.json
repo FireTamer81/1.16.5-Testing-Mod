@@ -1,0 +1,9 @@
+{
+	"parent": "builtin/generated",
+	"textures": {
+		"layer0": "testingmod:entity/grottol",
+		"particle": "testingmod:blocks/black_pink_grottol_particle",
+		"layer1": "testingmod:blocks/black_pink_grottol_particle", "__comment": "for LLibrary bug not putting particle into textures set"
+	},
+	"tabula": "testingmod:models/block/black_pink_grottol"
+}

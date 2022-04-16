@@ -1,9 +1,13 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.player;
 
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.Model_GeckoPlayer_FirstPerson;
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.Model_GeckoPlayer_ThirdPerson;
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.TestAnimatedGeoModel;
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.TestAnimationController;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelGeckoPlayerFirstPerson;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelGeckoPlayerThirdPerson;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.MowzieAnimatedGeoModel;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.MowzieAnimationController;
+import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityHandler;
+import io.github.FireTamer81.GeoPlayerModelTest.server.capability.AbilityCapability;
+import io.github.FireTamer81.GeoPlayerModelTest.server.capability.CapabilityHandler;
+import io.github.FireTamer81.GeoPlayerModelTest.server.capability.PlayerCapability;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.IAnimationTickable;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
@@ -25,7 +29,7 @@ import javax.annotation.Nullable;
 public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
 
     protected IGeoRenderer<GeckoPlayer> renderer;
-    protected TestAnimatedGeoModel<GeckoPlayer> model;
+    protected MowzieAnimatedGeoModel<GeckoPlayer> model;
 
     private int tickTimer = 0;
 
@@ -46,7 +50,7 @@ public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new TestAnimationController<>(this, getControllerName(), 0, this::predicate));
+        data.addAnimationController(new MowzieAnimationController<>(this, getControllerName(), 0, this::predicate));
     }
 
     @Override
@@ -98,7 +102,7 @@ public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
         return null;
     }
 
-    public static TestAnimationController<GeckoPlayer> getAnimationController(PlayerEntity player, Perspective perspective) {
+    public static MowzieAnimationController<GeckoPlayer> getAnimationController(PlayerEntity player, Perspective perspective) {
         PlayerCapability.IPlayerCapability playerCapability = CapabilityHandler.getCapability(player, PlayerCapability.PlayerProvider.PLAYER_CAPABILITY);
         if (playerCapability != null) {
             GeckoPlayer geckoPlayer;
@@ -106,7 +110,7 @@ public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
             else geckoPlayer = playerCapability.getGeckoPlayer();
             if (geckoPlayer != null) {
                 String name = perspective == Perspective.FIRST_PERSON ? FIRST_PERSON_CONTROLLER_NAME : THIRD_PERSON_CONTROLLER_NAME;
-                return (TestAnimationController<GeckoPlayer>) GeckoLibUtil.getControllerForID(geckoPlayer.getFactory(), player.getUniqueID().hashCode(), name);
+                return (MowzieAnimationController<GeckoPlayer>) GeckoLibUtil.getControllerForID(geckoPlayer.getFactory(), player.getUniqueID().hashCode(), name);
             }
         }
         return null;
@@ -116,7 +120,7 @@ public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
         return renderer;
     }
 
-    public TestAnimatedGeoModel<GeckoPlayer> getModel() {
+    public MowzieAnimatedGeoModel<GeckoPlayer> getModel() {
         return model;
     }
 
@@ -143,7 +147,7 @@ public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
 
         @Override
         public void setup(PlayerEntity player) {
-            Model_GeckoPlayer_FirstPerson modelGeckoPlayer = new Model_GeckoPlayer_FirstPerson();
+            ModelGeckoPlayerFirstPerson modelGeckoPlayer = new ModelGeckoPlayerFirstPerson();
             model = modelGeckoPlayer;
             model.resourceForModelId((AbstractClientPlayerEntity) player);
             GeckoFirstPersonRenderer geckoRenderer = new GeckoFirstPersonRenderer(Minecraft.getInstance(), modelGeckoPlayer);
@@ -171,7 +175,7 @@ public abstract class GeckoPlayer implements IAnimatable, IAnimationTickable {
 
         @Override
         public void setup(PlayerEntity player) {
-            Model_GeckoPlayer_ThirdPerson modelGeckoPlayer = new Model_GeckoPlayer_ThirdPerson();
+            ModelGeckoPlayerThirdPerson modelGeckoPlayer = new ModelGeckoPlayerThirdPerson();
             model = modelGeckoPlayer;
             model.resourceForModelId((AbstractClientPlayerEntity) player);
             GeckoRenderPlayer geckoRenderer = new GeckoRenderPlayer(Minecraft.getInstance().getRenderManager(), modelGeckoPlayer);

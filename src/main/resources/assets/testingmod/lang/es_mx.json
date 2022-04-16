@@ -1,0 +1,124 @@
+{
+  "_comment": "####By Xesar_Zk#####",
+  "_comment": "",
+  "_comment": "Creative Tabs",
+  "itemGroup.testingmod.creativeTab": "Mowzie's Mobs",
+
+  "_comment": "Entities",
+  "entity.testingmod.foliaath": "Foliaath",
+  "entity.testingmod.ferrous_wroughtnaut": "Ferrous Wroughtnaut",
+  "entity.testingmod.baby_foliaath": "Bebe Foliaath",
+  "entity.testingmod.barakoan_barakoana": "Barakoa",
+  "entity.testingmod.barakoan_player": "Barakoa",
+  "entity.testingmod.barakoana": "Barakoana",
+  "entity.testingmod.barakoaya": "Barakoa",
+  "entity.testingmod.barakoa_sunblocker": "Barakoaya",
+  "entity.testingmod.barakoa_sunblocker_player": "Barakoaya",
+  "entity.testingmod.barako": "Barako, el Jefe Sol",
+  "entity.testingmod.frostmaw": "Frostmaw",
+  "entity.testingmod.grottol": "Grottol",
+  "entity.testingmod.lantern": "Linterna",
+  "entity.testingmod.naga": "Naga",
+
+  "_comment": "Items",
+  "item.testingmod.foliaath_seed": "Semilla de Foliaath",
+  "item.testingmod.mob_remover": "Removedor de Mob",
+  "item.testingmod.wrought_axe": "Hacha de los Mil Metales",
+  "item.testingmod.wrought_helmet": "Casco Forjado",
+  "item.testingmod.barakoa_mask_fury": "Mascara de Furia",
+  "item.testingmod.barakoa_mask_fear": "Mascara de Miedo",
+  "item.testingmod.barakoa_mask_rage": "Mascara de Rabia",
+  "item.testingmod.barakoa_mask_bliss": "Mascara de Dicha",
+  "item.testingmod.barakoa_mask_misery": "Mascara de Miseria",
+  "item.testingmod.barako_mask": "Semblante Sol",
+  "item.testingmod.dart": "Dardo",
+  "item.testingmod.spear": "Lanza",
+  "item.testingmod.blowgun": "Cerbatana",
+  "item.testingmod.grant_suns_blessing": "Recibe la Bendicion del Sol",
+  "item.testingmod.test_structure": "Estructuras de Prueba",
+  "item.testingmod.ice_crystal": "Cristal de hielo",
+  "item.testingmod.earth_talisman": "Talisman de Tierra",
+
+  "item.testingmod.blowgun.text.0": "Cargas rapido",
+  "item.testingmod.blowgun.text.1": "Corto alcance",
+  "item.testingmod.blowgun.text.2": "Solo dispara los dardos",
+
+  "item.testingmod.wrought_axe.text.0": "Nunca se rompe",
+  "item.testingmod.wrought_axe.text.1": "Click derecho para atacar en un arco grande",
+  "item.testingmod.wrought_axe.text.2": "Shift + Click derecho para golpear el suelo y crear una onda de choque",
+
+  "item.testingmod.barako_mask.text.0": "Nunca se rompe",
+  "item.testingmod.barako_mask.text.1": "Equipa, luego Click derecho con una Mascara de Barakoa",
+  "item.testingmod.barako_mask.text.2": "para engendrar seguidores",
+
+  "item.testingmod.barakoa_mask_fear.text.0": "Concede Rapidez",
+  "item.testingmod.barakoa_mask_fear.text.1": "Me pregunto si...?",
+  "item.testingmod.barakoa_mask_rage.text.0": "Concede Prisa",
+  "item.testingmod.barakoa_mask_rage.text.1": "Me pregunto si...?",
+  "item.testingmod.barakoa_mask_misery.text.0": "Concede Resistencia",
+  "item.testingmod.barakoa_mask_misery.text.1": "Me pregunto si...?",
+  "item.testingmod.barakoa_mask_bliss.text.0": "Concede Salto Impulsado",
+  "item.testingmod.barakoa_mask_bliss.text.1": "Me pregunto si...?",
+  "item.testingmod.barakoa_mask_fury.text.0": "Concede Fuerza",
+  "item.testingmod.barakoa_mask_fury.text.1": "Me pregunto si...?",
+
+  "item.testingmod.dart.text.0": "Solo se puede usar con cerbatanas",
+  "item.testingmod.dart.text.1": "Objetivos venenosos",
+
+  "item.testingmod.foliaath_seed.text.0": "Plantalo en la hierba",
+  "item.testingmod.foliaath_seed.text.1": "Alimentalo cuando tenga hambre por 2 dias",
+
+  "item.testingmod.grant_suns_blessing.text.0": "Otorga la Bendicion del Sol por 20 minutos",
+  "item.testingmod.grant_suns_blessing.text.1": "Con la mano vacia, Click derecho para llamar un ataque del sol",
+  "item.testingmod.grant_suns_blessing.text.2": "Con la mano vacia, Shift + Click derecho disparar un rayo solar (cuesta 2 minutos)",
+
+  "item.testingmod.earth_talisman.text.0": "Solo modo Creativo",
+  "item.testingmod.earth_talisman.text.1": "Coloquelo en inventario para manejar la geomancia",
+  "item.testingmod.earth_talisman.text.2": "Click derecho apuntando al suelo con la mano vacia para generar una roca",
+  "item.testingmod.earth_talisman.text.3": "Golpea la Roca para dispararlo como proyectil",
+  "item.testingmod.earth_talisman.text.4": "Carga Click derecho para generar rocas mas grandes",
+
+  "item.testingmod.mob_remover.text.0": "Click izquierdo para eliminar un mob de Mowzie's Mobs",
+
+  "item.testingmod.wrought_helmet.text.0": "Nunca se rompe",
+
+  "item.testingmod.spear.text.0": "Extiende el rango de ataque en 3.5 bloques",
+  "item.testingmod.spear.text.1": "1/3 posibilidad de matar animales instantaneamente",
+
+  "item.testingmod.ice_crystal.text.0": "Mantenga Click derecho para canalizar un torbellino helado",
+  "item.testingmod.ice_crystal.text.1": "Se recarga en el inventario",
+
+  "item.testingmod.captured_grottol": "Grottol Capturado",
+
+  "item.testingmod.glowing_jelly": "Gelatina Luminosa",
+  "item.testingmod.glowing_jelly.text.0": "Come para ganar brevemente visión nocturna",
+
+  "item.testingmod.naga_fang": "Colmillo de Naga",
+  "item.testingmod.naga_fang.text.0": "Úsalo para crear poción de resistencia al veneno.",
+
+  "_comment": "Blocks",
+  "block.testingmod.campfire": "Hoguera",
+  "block.testingmod.painted_acacia": "Madera de Acacia Pintada",
+  "block.testingmod.painted_acacia_slab": "Losa de Madera de Acacia Pintada",
+
+  "_comment": "Potions",
+  "effect.testingmod.suns_blessing": "Bendicion del Sol",
+  "effect.testingmod.geomancy": "Geomancia",
+  "effect.testingmod.frozen": "Congelado(a)",
+  "effect.testingmod.poison_resist": "Resistencia al Veneno",
+  "effect.testingmod.effect.poison_resist": "Poción de Resistencia al Veneno",
+
+  "_comment": "Tile Entities",
+
+
+  "_comment": "Containers",
+  "entity.testingmod.barakoaya.trade": "Barakoa",
+  "entity.testingmod.barako.trade": "Barako, el Jefe Sol",
+  "entity.testingmod.barako.trade.button.text": "Comercio",
+  "entity.testingmod.barako.trade.button.hover": "Regrese luego para reponer gratis",
+  "entity.testingmod.barako.replenish.button.text": "Reponer",
+  "entity.testingmod.barako.replenish.button.hover": "Reponga su bendicion gratis",
+
+  "_comment": "Death Messages",
+  "death.attack.dart": "%1$s fue destruido por %2$s"
+}

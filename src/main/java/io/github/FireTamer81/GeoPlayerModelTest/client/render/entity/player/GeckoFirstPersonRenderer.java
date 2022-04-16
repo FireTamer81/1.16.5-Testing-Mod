@@ -1,10 +1,15 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.player;
 
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelGeckoPlayerFirstPerson;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelPlayerAnimated;
+import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.MowzieGeoBone;
+import io.github.FireTamer81.GeoPlayerModelTest.client.render.MowzieRenderUtils;
+import io.github.FireTamer81.GeoPlayerModelTest.server.ability.Ability;
+import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityHandler;
+import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilitySection;
+import io.github.FireTamer81.GeoPlayerModelTest.server.capability.AbilityCapability;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.Model_GeckoPlayer_FirstPerson;
-import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.GeckoTestBone;
-import io.github.FireTamer81.GeoPlayerModelTest.client.render.TestRenderUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.player.AbstractClientPlayerEntity;
 import net.minecraft.client.renderer.FirstPersonRenderer;
@@ -37,11 +42,11 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
     public static GeckoPlayer.GeckoPlayerFirstPerson GECKO_PLAYER_FIRST_PERSON;
 
     private static HashMap<Class<? extends GeckoPlayer>, GeckoFirstPersonRenderer> modelsToLoad = new HashMap<>();
-    private Model_GeckoPlayer_FirstPerson modelProvider;
+    private ModelGeckoPlayerFirstPerson modelProvider;
 
     boolean mirror;
 
-    public GeckoFirstPersonRenderer(Minecraft mcIn, Model_GeckoPlayer_FirstPerson modelProvider) {
+    public GeckoFirstPersonRenderer(Minecraft mcIn, ModelGeckoPlayerFirstPerson modelProvider) {
         super(mcIn);
         this.modelProvider = modelProvider;
     }
@@ -61,8 +66,6 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
         return modelsToLoad.get(animatable);
     }
 
-
-
     public HashMap<Class<? extends GeckoPlayer>, GeckoFirstPersonRenderer> getModelsToLoad() {
         return modelsToLoad;
     }
@@ -73,9 +76,9 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
         mirror = player.getPrimaryHand() == HandSide.LEFT;
 
         if (flag) {
-            this.modelProvider.setLivingAnimations(geckoPlayer, player.getUUID().hashCode());
+            this.modelProvider.setLivingAnimations(geckoPlayer, player.getUniqueID().hashCode());
 
-            RenderType rendertype = RenderType.itemEntityTranslucentCull(getTextureLocation(geckoPlayer));
+            RenderType rendertype = RenderType.getItemEntityTranslucentCull(getTextureLocation(geckoPlayer));
             IVertexBuilder ivertexbuilder = bufferIn.getBuffer(rendertype);
             matrixStackIn.translate(0, -2, -1);
             render(
@@ -105,18 +108,18 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
             if (mirror) handside = handside.opposite();
             String sideName = handside == HandSide.RIGHT ? "Right" : "Left";
             String boneName = sideName + "Arm";
-            GeckoTestBone bone = this.modelProvider.getGeckoTestBone(boneName);
+            MowzieGeoBone bone = this.modelProvider.getMowzieBone(boneName);
 
             MatrixStack newMatrixStack = new MatrixStack();
 
             float fixedPitchController = 1f - this.modelProvider.getControllerValue("FixedPitchController" + sideName);
             newMatrixStack.rotate(new Quaternion(Vector3f.XP, pitch * fixedPitchController, true));
 
-            newMatrixStack.last().normal().mul(bone.getWorldSpaceNormal());
-            newMatrixStack.last().pose().multiply(bone.getWorldSpaceXForm());
+            newMatrixStack.getLast().getNormal().mul(bone.getWorldSpaceNormal());
+            newMatrixStack.getLast().getMatrix().mul(bone.getWorldSpaceXform());
             newMatrixStack.translate(sideMult * 0.547, 0.7655, 0.625);
 
-            if (mirror) handside = handside.getOpposite();
+            if (mirror) handside = handside.opposite();
 
             if (stack.isEmpty() && !flag && handDisplay == Ability.HandDisplay.FORCE_RENDER && !player.isInvisible()) {
                 newMatrixStack.translate(0, -1 * offHandEquipProgress, 0);
@@ -128,7 +131,6 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
         }
     }
 
-
     public void setSmallArms() {
         this.modelProvider.setUseSmallArms(true);
     }
@@ -138,22 +140,22 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
         return this.modelProvider;
     }
 
-    public Model_GeckoPlayer_FirstPerson getAnimatedPlayerModel() {
+    public ModelGeckoPlayerFirstPerson getAnimatedPlayerModel() {
         return this.modelProvider;
     }
 
     @Override
     public ResourceLocation getTextureLocation(GeckoPlayer geckoPlayer) {
-        return ((AbstractClientPlayerEntity)geckoPlayer.getPlayer()).getSkinTextureLocation();
+        return ((AbstractClientPlayerEntity)geckoPlayer.getPlayer()).getLocationSkin();
     }
 
     @Override
     public void renderRecursively(GeoBone bone, MatrixStack matrixStack, IVertexBuilder bufferIn, int packedLightIn, int packedOverlayIn, float red, float green, float blue, float alpha) {
-        matrixStack.pushPose();
+        matrixStack.push();
         if (mirror) {
-            TestRenderUtils.translateMirror(bone, matrixStack);
-            TestRenderUtils.moveToPivotMirror(bone, matrixStack);
-            TestRenderUtils.rotateMirror(bone, matrixStack);
+            MowzieRenderUtils.translateMirror(bone, matrixStack);
+            MowzieRenderUtils.moveToPivotMirror(bone, matrixStack);
+            MowzieRenderUtils.rotateMirror(bone, matrixStack);
             RenderUtils.scale(bone, matrixStack);
         }
         else {
@@ -163,18 +165,18 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
             RenderUtils.scale(bone, matrixStack);
         }
         // Record xform matrices for relevant bones
-        if (bone instanceof GeckoTestBone) {
-            GeckoTestBone mowzieBone = (GeckoTestBone)bone;
+        if (bone instanceof MowzieGeoBone) {
+            MowzieGeoBone mowzieBone = (MowzieGeoBone)bone;
             if (mowzieBone.name.equals("LeftArm") || mowzieBone.name.equals("RightArm")) {
-                matrixStack.pushPose();
-                MatrixStack.Entry entry = matrixStack.last();
-                mowzieBone.setWorldSpaceNormal(entry.normal().copy());
-                mowzieBone.setWorldSpaceXForm(entry.pose().copy());
-                matrixStack.popPose();
+                matrixStack.push();
+                MatrixStack.Entry entry = matrixStack.getLast();
+                mowzieBone.setWorldSpaceNormal(entry.getNormal().copy());
+                mowzieBone.setWorldSpaceXform(entry.getMatrix().copy());
+                matrixStack.pop();
             }
         }
         if (mirror) {
-            TestRenderUtils.moveBackFromPivotMirror(bone, matrixStack);
+            MowzieRenderUtils.moveBackFromPivotMirror(bone, matrixStack);
         }
         else {
             RenderUtils.moveBackFromPivot(bone, matrixStack);
@@ -184,9 +186,9 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
 
             while(var10.hasNext()) {
                 GeoCube cube = (GeoCube)var10.next();
-                matrixStack.pushPose();
+                matrixStack.push();
                 this.renderCube(cube, matrixStack, bufferIn, packedLightIn, packedOverlayIn, red, green, blue, alpha);
-                matrixStack.popPose();
+                matrixStack.pop();
             }
 
             var10 = bone.childBones.iterator();
@@ -197,6 +199,6 @@ public class GeckoFirstPersonRenderer extends FirstPersonRenderer implements IGe
             }
         }
 
-        matrixStack.popPose();
+        matrixStack.pop();
     }
 }

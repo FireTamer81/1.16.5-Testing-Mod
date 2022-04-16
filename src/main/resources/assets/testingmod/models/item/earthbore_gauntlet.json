@@ -1,0 +1,6 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "testingmod:item/earthbore_gauntlet_icon"
+	}
+}

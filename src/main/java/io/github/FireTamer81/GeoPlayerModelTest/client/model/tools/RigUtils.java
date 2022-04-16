@@ -4,30 +4,30 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.*;
 import software.bernie.geckolib3.core.processor.IBone;
 
+import java.util.Arrays;
+
 public class RigUtils {
     public static Vector3d lerp(Vector3d v, Vector3d u, float alpha) {
         return new Vector3d(
-                MathHelper.lerp(alpha, (float)v.x(), (float) u.x()),
-                MathHelper.lerp(alpha, (float)v.y(), (float) u.y()),
-                MathHelper.lerp(alpha, (float)v.z(), (float) u.z())
+                MathHelper.lerp(alpha, (float)v.getX(), (float) u.getX()),
+                MathHelper.lerp(alpha, (float)v.getY(), (float) u.getY()),
+                MathHelper.lerp(alpha, (float)v.getZ(), (float) u.getZ())
         );
     }
 
     public static Vector3d lerpAngles(Vector3d v, Vector3d u, float alpha) {
         return new Vector3d(
-                //The clamp method was originally interpolateAngle
-                //If this does not work as intended, return to that and figure out the right one.
-                Math.toRadians(MathHelper.clamp(alpha, (float) Math.toDegrees(v.x()), (float) Math.toDegrees(u.x()))),
-                Math.toRadians(MathHelper.clamp(alpha, (float) Math.toDegrees(v.y()), (float) Math.toDegrees(u.y()))),
-                Math.toRadians(MathHelper.clamp(alpha, (float) Math.toDegrees(v.z()), (float) Math.toDegrees(u.z())))
+                Math.toRadians(MathHelper.interpolateAngle(alpha, (float) Math.toDegrees(v.getX()), (float) Math.toDegrees(u.getX()))),
+                Math.toRadians(MathHelper.interpolateAngle(alpha, (float) Math.toDegrees(v.getY()), (float) Math.toDegrees(u.getY()))),
+                Math.toRadians(MathHelper.interpolateAngle(alpha, (float) Math.toDegrees(v.getZ()), (float) Math.toDegrees(u.getZ())))
         );
     }
 
     public static Vector3d blendAngles(Vector3d v, Vector3d u, float alpha) {
         return new Vector3d(
-                Math.toRadians(MathHelper.wrapDegrees(Math.toDegrees(v.x()) * alpha + Math.toDegrees(u.x()))),
-                Math.toRadians(MathHelper.wrapDegrees(Math.toDegrees(v.y()) * alpha + Math.toDegrees(u.y()))),
-                Math.toRadians(MathHelper.wrapDegrees(Math.toDegrees(v.z()) * alpha + Math.toDegrees(u.z())))
+                Math.toRadians(MathHelper.wrapDegrees(Math.toDegrees(v.getX()) * alpha + Math.toDegrees(u.getX()))),
+                Math.toRadians(MathHelper.wrapDegrees(Math.toDegrees(v.getY()) * alpha + Math.toDegrees(u.getY()))),
+                Math.toRadians(MathHelper.wrapDegrees(Math.toDegrees(v.getZ()) * alpha + Math.toDegrees(u.getZ())))
         );
     }
 
@@ -66,17 +66,17 @@ public class RigUtils {
 
         public void apply(IBone bone, boolean mirrorX) {
             float mirror = mirrorX ? -1 : 1;
-            bone.setPositionX(bone.getPositionX() + mirror * (float) translation.x());
-            bone.setPositionY(bone.getPositionY() + (float) translation.y());
-            bone.setPositionZ(bone.getPositionZ() + (float) translation.z());
+            bone.setPositionX(bone.getPositionX() + mirror * (float) translation.getX());
+            bone.setPositionY(bone.getPositionY() + (float) translation.getY());
+            bone.setPositionZ(bone.getPositionZ() + (float) translation.getZ());
 
-            bone.setRotationX(bone.getRotationX() + (float) rotation.x());
-            bone.setRotationY(bone.getRotationY() + mirror * (float) rotation.y());
-            bone.setRotationZ(bone.getRotationZ() + mirror * (float) rotation.z());
+            bone.setRotationX(bone.getRotationX() + (float) rotation.getX());
+            bone.setRotationY(bone.getRotationY() + mirror * (float) rotation.getY());
+            bone.setRotationZ(bone.getRotationZ() + mirror * (float) rotation.getZ());
 
-            bone.setScaleX(bone.getScaleX() * (float) scale.x());
-            bone.setScaleY(bone.getScaleY() * (float) scale.y());
-            bone.setScaleZ(bone.getScaleZ() * (float) scale.z());
+            bone.setScaleX(bone.getScaleX() * (float) scale.getX());
+            bone.setScaleY(bone.getScaleY() * (float) scale.getY());
+            bone.setScaleZ(bone.getScaleZ() * (float) scale.getZ());
         }
     }
 
@@ -92,7 +92,7 @@ public class RigUtils {
         }
 
         public double getWeight(Vector3d dir) {
-            double dot = dir.normalize().dot(direction.normalize());
+            double dot = dir.normalize().dotProduct(direction.normalize());
             dot = Math.max(dot, 0);
             dot = Math.pow(dot, 0.01 * power);
             return dot;
@@ -115,14 +115,14 @@ public class RigUtils {
 
         private double[] getWeights(Vector3d dir) {
             double[] weights = new double[entries.length];
-            double[] dots = new double[entries.length];
-            double totaldot = 0.0;
+            double[] dotProducts = new double[entries.length];
+            double totalDotProduct = 0.0;
             for (int i = 0; i < entries.length; i++) {
                 BlendShape3DEntry entry = entries[i];
                 double dot = 1.0 - entry.getWeight(dir);
                 if (dot > 0.0) {
-                    totaldot += 1.0 / dot;
-                    dots[i] = dot;
+                    totalDotProduct += 1.0 / dot;
+                    dotProducts[i] = dot;
                 }
                 else {
                     weights[i] = 1.0;
@@ -130,7 +130,7 @@ public class RigUtils {
                 }
             }
             for (int i = 0; i < entries.length; i++) {
-                double dot_prod = totaldot * dots[i];
+                double dot_prod = totalDotProduct * dotProducts[i];
                 if (dot_prod > 0) weights[i] = 1 / dot_prod;
                 else weights[i] = 0.0;
             }
@@ -145,9 +145,9 @@ public class RigUtils {
             double totalAngularDistance = 0.0;
             for (int i = 0; i < entries.length; i++) {
                 BlendShape3DEntry entry = entries[i];
-                double sqrdDistance = dir.subtract(entry.direction).dot(dir.subtract(entry.direction));
+                double sqrdDistance = dir.subtract(entry.direction).dotProduct(dir.subtract(entry.direction));
                 if (sqrdDistance > 0.0) {
-                    double angularDistance = -(MathHelper.clamp(dir.dot(entry.direction), -1, 1) - 1) * 0.5;
+                    double angularDistance = -(MathHelper.clamp(dir.dotProduct(entry.direction), -1, 1) - 1) * 0.5;
                     totalSqrdDistance += 1.0 / sqrdDistance;
                     if (angularDistance > 0) totalAngularDistance += 1.0 / angularDistance;
                     sqrdDistances[i] = sqrdDistance;
@@ -171,7 +171,7 @@ public class RigUtils {
         }
 
         public void evaluate(IBone bone, Vector3d d, boolean mirrorX) {
-            Vector3d dir = mirrorX ? d.multiply(-1, 1, 1) : d;
+            Vector3d dir = mirrorX ? d.mul(-1, 1, 1) : d;
             dir = dir.normalize();
 
             double[] weights = getWeights(dir);
@@ -253,9 +253,9 @@ public class RigUtils {
     }
 
     public static Quaternion betweenVectors(Vector3d u, Vector3d v) {
-        Vector3d a = u.cross(v);
-        float w = (float) (Math.sqrt(u.lengthSqr() * v.lengthSqr()) + u.dot(v));
-        Quaternion q = new Quaternion((float) a.x(), -(float) a.y(), -(float) a.z(), w);
+        Vector3d a = u.crossProduct(v);
+        float w = (float) (Math.sqrt(u.lengthSquared() * v.lengthSquared()) + u.dotProduct(v));
+        Quaternion q = new Quaternion((float) a.getX(), -(float) a.getY(), -(float) a.getZ(), w);
         q.normalize();
         return q;
     }
