@@ -480,7 +480,7 @@ public class PlayerCapability {
 
     public static class PlayerProvider implements ICapabilitySerializable<INBT> {
         @CapabilityInject(IPlayerCapability.class)
-        public static final Capability<IPlayerCapability> PLAYER_CAPABILITY = null;
+        public static Capability<IPlayerCapability> PLAYER_CAPABILITY = null;
 
         private final LazyOptional<IPlayerCapability> instance = LazyOptional.of(PLAYER_CAPABILITY::getDefaultInstance);
 
