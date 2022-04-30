@@ -478,6 +478,20 @@ public class PlayerCapability {
 
 
 
+    public static class PlayerStorage implements Capability.IStorage<IPlayerCapability> {
+        @Override
+        public INBT writeNBT(Capability<IPlayerCapability> capability, IPlayerCapability instance, Direction side) {
+            return instance.writeNBT();
+        }
+
+        @Override
+        public void readNBT(Capability<IPlayerCapability> capability, IPlayerCapability instance, Direction side, INBT nbt) {
+            instance.readNBT(nbt);
+        }
+    }
+
+
+
     public static class PlayerProvider implements ICapabilitySerializable<INBT> {
         @CapabilityInject(IPlayerCapability.class)
         public static Capability<IPlayerCapability> PLAYER_CAPABILITY = null;

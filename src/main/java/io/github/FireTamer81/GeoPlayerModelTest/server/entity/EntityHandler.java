@@ -48,7 +48,6 @@ public class EntityHandler {
     public static final RegistryObject<EntityType<EntityGrottol>> GROTTOL = REG.register("grottol", () -> EntityType.Builder.create(EntityGrottol::new, EntityClassification.MONSTER).size(0.9F, 1.2F).setUpdateInterval(1).build(new ResourceLocation(TestModMain.MODID, "grottol").toString()));
     public static final RegistryObject<EntityType<EntityLantern>> LANTERN = REG.register("lantern", () -> EntityType.Builder.create(EntityLantern::new, EntityClassification.AMBIENT).size(1.0f, 1.0f).setUpdateInterval(1).build(new ResourceLocation(TestModMain.MODID, "lantern").toString()));
     public static final RegistryObject<EntityType<EntityNaga>> NAGA = REG.register("naga", () -> EntityType.Builder.create(EntityNaga::new, EntityClassification.MONSTER).size(3.0f, 1.0f).setTrackingRange(128).setUpdateInterval(1).build(new ResourceLocation(TestModMain.MODID, "naga").toString()));
-//    public static final RegistryObject<EntityType<EntitySculptor> SCULPTOR = register("sculptor", EntityType.Builder.create(EntitySculptor::new, EntityClassification.MISC).size(1.0f, 2.0f).setUpdateInterval(1).build(null));
 
     private static EntityType.Builder<EntitySunstrike> sunstrikeBuilder() {
         return EntityType.Builder.create(EntitySunstrike::new, EntityClassification.MISC);
