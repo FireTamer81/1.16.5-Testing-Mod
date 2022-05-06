@@ -1,6 +1,5 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client;
 
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.MaskType;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.model.*;
@@ -79,59 +78,5 @@ public class MMModels {
             map.put(modelInventory, modelWrapper);
         }
 
-        for (MaskType type : MaskType.values()) {
-            ResourceLocation maskModelInventory = new ModelResourceLocation("mowziesmobs:barakoa_mask_" + type.name, "inventory");
-            ResourceLocation maskModelFrame = new ModelResourceLocation("mowziesmobs:barakoa_mask_" + type.name + "_frame", "inventory");
-
-            IBakedModel maskBakedModelDefault = map.get(maskModelInventory);
-            IBakedModel maskBakedModelFrame = map.get(maskModelFrame);
-            IBakedModel maskModelWrapper = new IBakedModel() {
-                @Override
-                public List<BakedQuad> getQuads(BlockState state, Direction side, Random rand) {
-                    return maskBakedModelDefault.getQuads(state, side, rand);
-                }
-
-                @Override
-                public boolean isAmbientOcclusion() {
-                    return maskBakedModelDefault.isAmbientOcclusion();
-                }
-
-                @Override
-                public boolean isGui3d() {
-                    return maskBakedModelDefault.isGui3d();
-                }
-
-                @Override
-                public boolean isSideLit() {
-                    return false;
-                }
-
-                @Override
-                public boolean isBuiltInRenderer() {
-                    return maskBakedModelDefault.isBuiltInRenderer();
-                }
-
-                @Override
-                public TextureAtlasSprite getParticleTexture() {
-                    return maskBakedModelDefault.getParticleTexture();
-                }
-
-                @Override
-                public ItemOverrideList getOverrides() {
-                    return maskBakedModelDefault.getOverrides();
-                }
-
-                @Override
-                public IBakedModel handlePerspective(ItemCameraTransforms.TransformType cameraTransformType, MatrixStack mat) {
-                    IBakedModel modelToUse = maskBakedModelDefault;
-                    if (cameraTransformType == ItemCameraTransforms.TransformType.FIXED) {
-                        modelToUse = maskBakedModelFrame;
-                    }
-                    return ForgeHooksClient.handlePerspective(modelToUse, cameraTransformType, mat);
-                }
-            };
-
-            map.put(maskModelInventory, maskModelWrapper);
-        }
     }
 }

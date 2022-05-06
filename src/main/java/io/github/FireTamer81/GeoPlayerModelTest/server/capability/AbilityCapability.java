@@ -191,8 +191,7 @@ public class AbilityCapability {
         }
     }
 
-    public static class AbilityProvider implements ICapabilitySerializable<INBT>
-    {
+    public static class AbilityProvider implements ICapabilitySerializable<INBT> {
         @CapabilityInject(IAbilityCapability.class)
         public static final Capability<IAbilityCapability> ABILITY_CAPABILITY = null;
 

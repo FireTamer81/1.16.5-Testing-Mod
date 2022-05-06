@@ -96,11 +96,6 @@ public class AdvancedModelRenderer extends ModelRenderer {
         return super.setTextureOffset(x, y);
     }
 
-    /*public AdvancedModelRenderer add3DTexture(float posX, float posY, float posZ, int width, int height) {
-        this.cubeList.add(new Model3DTexture(this, this.textureOffsetX, this.textureOffsetY, posX, posY, posZ, width, height));
-        return this;
-    }*/
-
     public AdvancedModelRenderer addBox(String partName, float x, float y, float z, int width, int height, int depth, float delta, int texX, int texY) {
         this.setTextureOffset(texX, texY);
         this.addBox(this.textureOffsetX, this.textureOffsetY, x, y, z, (float)width, (float)height, (float)depth, delta, delta, delta, this.mirror, false);

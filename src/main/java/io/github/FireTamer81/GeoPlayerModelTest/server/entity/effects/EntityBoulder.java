@@ -237,10 +237,8 @@ public class EntityBoulder extends Entity {
                 playSound(MMSounds.EFFECT_GEOMANCY_SMALL_CRASH.get(), 1.5f, 1.3f);
                 playSound(MMSounds.EFFECT_GEOMANCY_MAGIC_SMALL.get(), 1.5f, 1f);
             } else if (boulderSize == BoulderSizeEnum.MEDIUM) {
-                playSound(MMSounds.EFFECT_GEOMANCY_HIT_MEDIUM_2.get(), 1.5f, 1.5f);
                 playSound(MMSounds.EFFECT_GEOMANCY_MAGIC_SMALL.get(), 1.5f, 0.8f);
             } else if (boulderSize == BoulderSizeEnum.LARGE) {
-                playSound(MMSounds.EFFECT_GEOMANCY_HIT_MEDIUM_1.get(), 1.5f, 0.9f);
                 playSound(MMSounds.EFFECT_GEOMANCY_MAGIC_BIG.get(), 1.5f, 1.5f);
                 EntityCameraShake.cameraShake(world, getPositionVec(), 10, 0.05f, 0, 20);
             } else if (boulderSize == BoulderSizeEnum.HUGE) {
@@ -439,7 +437,6 @@ public class EntityBoulder extends Entity {
                 EntityCameraShake.cameraShake(world, getPositionVec(), 10, 0.05f, 0, 20);
             }
             else if (boulderSize == BoulderSizeEnum.HUGE) {
-                playSound(MMSounds.EFFECT_GEOMANCY_HIT_MEDIUM_1.get(), 1.5f, 1f);
                 playSound(MMSounds.EFFECT_GEOMANCY_MAGIC_BIG.get(), 1.5f, 0.9f);
                 EntityCameraShake.cameraShake(world, getPositionVec(), 15, 0.05f, 0, 20);
             }

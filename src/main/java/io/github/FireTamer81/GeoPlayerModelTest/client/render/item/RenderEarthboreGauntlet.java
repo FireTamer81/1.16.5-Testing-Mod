@@ -2,7 +2,7 @@ package io.github.FireTamer81.GeoPlayerModelTest.client.render.item;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.item.ModelEarthboreGauntlet;
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemEarthboreGauntlet;
+import io.github.FireTamer81.GeoPlayerModelTest.server.item.objects.ItemEarthboreGauntlet;
 import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.model.ItemCameraTransforms;
 import net.minecraft.item.ItemStack;

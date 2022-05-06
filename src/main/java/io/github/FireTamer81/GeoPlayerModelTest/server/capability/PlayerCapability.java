@@ -5,8 +5,7 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.player.Geck
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.Ability;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarakoanToPlayer;
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemEarthTalisman;
+import io.github.FireTamer81.GeoPlayerModelTest.server.item.objects.ItemEarthTalisman;
 import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.mouse.MessageLeftMouseDown;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.mouse.MessageLeftMouseUp;
@@ -24,7 +23,6 @@ import net.minecraft.nbt.INBT;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
@@ -35,10 +33,6 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.fml.LogicalSide;
-
-import javax.swing.plaf.basic.BasicComboBoxUI;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerCapability {
     public interface IPlayerCapability {
@@ -84,21 +78,11 @@ public class PlayerCapability {
 
         void setTribeCircleTick(int tribeCircleTick);
 
-        List<EntityBarakoanToPlayer> getTribePack();
-
-        void setTribePack(List<EntityBarakoanToPlayer> tribePack);
-
         int getTribePackRadius();
 
         void setTribePackRadius(int tribePackRadius);
 
-        int getPackSize();
-
         Vector3d getPrevMotion();
-
-        void removePackMember(EntityBarakoanToPlayer tribePlayer);
-
-        void addPackMember(EntityBarakoanToPlayer tribePlayer);
 
         PowerGeomancy getGeomancy();
 
@@ -128,7 +112,6 @@ public class PlayerCapability {
         private float prevCooledAttackStrength;
 
         public int tribeCircleTick;
-        public List<EntityBarakoanToPlayer> tribePack = new ArrayList<>();
         public int tribePackRadius = 3;
 
         @OnlyIn(Dist.CLIENT)
@@ -196,14 +179,6 @@ public class PlayerCapability {
 
         public void setTribeCircleTick(int tribeCircleTick) {
             this.tribeCircleTick = tribeCircleTick;
-        }
-
-        public List<EntityBarakoanToPlayer> getTribePack() {
-            return tribePack;
-        }
-
-        public void setTribePack(List<EntityBarakoanToPlayer> tribePack) {
-            this.tribePack = tribePack;
         }
 
         public int getTribePackRadius() {
@@ -279,22 +254,6 @@ public class PlayerCapability {
                 if (player.getHeldItemOffhand().getItem() instanceof ItemEarthTalisman)
                     player.addPotionEffect(new EffectInstance(EffectHandler.GEOMANCY, 20, 0, false, false));
 
-                List<EntityBarakoanToPlayer> pack = tribePack;
-                float theta = (2 * (float) Math.PI / pack.size());
-                for (int i = 0; i < pack.size(); i++) {
-                    EntityBarakoanToPlayer barakoan = pack.get(i);
-                    barakoan.index = i;
-                    float distanceToPlayer = player.getDistance(barakoan);
-                    if (barakoan.getAttackTarget() == null && barakoan.getAnimation() != EntityBarakoanToPlayer.DEACTIVATE_ANIMATION) {
-                        if (distanceToPlayer > 4)
-                            barakoan.getNavigator().tryMoveToXYZ(player.getPosX() + tribePackRadius * MathHelper.cos(theta * i), player.getPosY(), player.getPosZ() + tribePackRadius * MathHelper.sin(theta * i), 0.45);
-                        else
-                            barakoan.getNavigator().clearPath();
-                        if (distanceToPlayer > 20 && player.isOnGround()) {
-                            tryTeleportBarakoan(player, barakoan);
-                        }
-                    }
-                }
             }
 
             Ability iceBreathAbility = AbilityHandler.INSTANCE.getAbility(player, AbilityHandler.ICE_BREATH_ABILITY);
@@ -416,22 +375,6 @@ public class PlayerCapability {
             }
         }
 
-        private void tryTeleportBarakoan(PlayerEntity player, EntityBarakoanToPlayer barakoan) {
-            int x = MathHelper.floor(player.getPosX()) - 2;
-            int z = MathHelper.floor(player.getPosZ()) - 2;
-            int y = MathHelper.floor(player.getBoundingBox().minY);
-
-            for (int l = 0; l <= 4; ++l) {
-                for (int i1 = 0; i1 <= 4; ++i1) {
-                    if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && barakoan.isTeleportFriendlyBlock(x, z, y, l, i1)) {
-                        barakoan.setLocationAndAngles((float) (x + l) + 0.5F, y, (float) (z + i1) + 0.5F, barakoan.rotationYaw, barakoan.rotationPitch);
-                        barakoan.getNavigator().clearPath();
-                        return;
-                    }
-                }
-            }
-        }
-
         public int getTick() {
             return time;
         }
@@ -439,20 +382,7 @@ public class PlayerCapability {
         public void decrementTime() {
             time--;
         }
-
-        public int getPackSize() {
-            return tribePack.size();
-        }
-
-        public void removePackMember(EntityBarakoanToPlayer tribePlayer) {
-            tribePack.remove(tribePlayer);
-        }
-
-        public void addPackMember(EntityBarakoanToPlayer tribePlayer) {
-            tribePack.add(tribePlayer);
-        }
-
-        public Power[] getPowers() {
+                public Power[] getPowers() {
             return powers;
         }
 

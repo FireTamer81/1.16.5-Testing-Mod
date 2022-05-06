@@ -6,20 +6,11 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.particle.util.AdvancedPar
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.util.ParticleComponent;
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.util.ParticleRotation;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.ai.AvoidEntityIfNotTamedGoal;
-import io.github.FireTamer81.GeoPlayerModelTest.server.block.BlockHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.capability.*;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.LeaderSunstrikeImmune;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.*;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.foliaath.EntityFoliaath;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.frostmaw.EntityFrostmaw;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.naga.EntityNaga;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.wroughtnaut.EntityWroughtnaut;
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemBarakoaMask;
 import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemNagaFangDagger;
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemSpear;
+import io.github.FireTamer81.GeoPlayerModelTest.server.item.objects.ItemNagaFangDagger;
+import io.github.FireTamer81.GeoPlayerModelTest.server.item.objects.ItemSpear;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.MessageFreezeEffect;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.MessagePlayerAttackMob;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.MessageSunblockEffect;
@@ -28,25 +19,11 @@ import io.github.FireTamer81.GeoPlayerModelTest.server.power.Power;
 import io.github.FireTamer81.GeoPlayerModelTest.server.sound.MMSounds;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.ChestBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
-import net.minecraft.entity.item.ItemFrameEntity;
-import net.minecraft.entity.merchant.villager.AbstractVillagerEntity;
-import net.minecraft.entity.monster.AbstractSkeletonEntity;
-import net.minecraft.entity.monster.ZombieEntity;
-import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.stats.Stats;
@@ -56,7 +33,6 @@ import net.minecraft.util.math.vector.Vector3d;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
@@ -90,32 +66,7 @@ public class ServerEventHandler {
             return;
         }
         Entity entity = event.getEntity();
-        if (entity instanceof ZombieEntity && !(entity instanceof ZombifiedPiglinEntity)) {
-            ((CreatureEntity) entity).targetSelector.addGoal(2, new NearestAttackableTargetGoal<>((CreatureEntity) entity, EntityFoliaath.class, 0, true, false, null));
-            ((CreatureEntity) entity).targetSelector.addGoal(3, new NearestAttackableTargetGoal<>((CreatureEntity) entity, EntityBarakoa.class, 0, true, false, null));
-            ((CreatureEntity) entity).targetSelector.addGoal(2, new NearestAttackableTargetGoal<>((CreatureEntity) entity, EntityBarako.class, 0, true, false, null));
-        }
-        if (entity instanceof AbstractSkeletonEntity) {
-            ((CreatureEntity) entity).targetSelector.addGoal(3, new NearestAttackableTargetGoal<>((CreatureEntity) entity, EntityBarakoa.class, 0, true, false, null));
-            ((CreatureEntity) entity).targetSelector.addGoal(2, new NearestAttackableTargetGoal<>((CreatureEntity) entity, EntityBarako.class, 0, true, false, null));
-        }
 
-        if (entity instanceof ParrotEntity) {
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityGoal<>((CreatureEntity) entity, EntityFoliaath.class, 6.0F, 1.0D, 1.2D));
-        }
-        if (entity instanceof AnimalEntity) {
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityIfNotTamedGoal<>((CreatureEntity) entity, EntityFoliaath.class, 6.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityIfNotTamedGoal<>((CreatureEntity) entity, EntityBarakoa.class, 6.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityIfNotTamedGoal<>((CreatureEntity) entity, EntityBarako.class, 6.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityIfNotTamedGoal<>((CreatureEntity) entity, EntityNaga.class, 10.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityIfNotTamedGoal<>((CreatureEntity) entity, EntityFrostmaw.class, 10.0F, 1.0D, 1.2D));
-        }
-        if (entity instanceof AbstractVillagerEntity) {
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityGoal<>((CreatureEntity) entity, EntityBarakoa.class, 6.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityGoal<>((CreatureEntity) entity, EntityBarako.class, 6.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityGoal<>((CreatureEntity) entity, EntityNaga.class, 10.0F, 1.0D, 1.2D));
-            ((CreatureEntity) entity).goalSelector.addGoal(3, new AvoidEntityGoal<>((CreatureEntity) entity, EntityFrostmaw.class, 10.0F, 1.0D, 1.2D));
-        }
     }
 
     @SubscribeEvent
@@ -127,26 +78,6 @@ public class ServerEventHandler {
                 entity.removeActivePotionEffect(Effects.POISON);
             }
 
-            if (!entity.world.isRemote) {
-                Item headItemStack = entity.getItemStackFromSlot(EquipmentSlotType.HEAD).getItem();
-                if (headItemStack instanceof ItemBarakoaMask) {
-                    ItemBarakoaMask mask = (ItemBarakoaMask) headItemStack;
-                    EffectHandler.addOrCombineEffect(entity, mask.getPotion(), 50, 0, true, false);
-                }
-            }
-
-            if (entity instanceof MobEntity) {
-                MobEntity mob = (MobEntity) entity;
-                if (mob.getAttackTarget() instanceof EntityBarako && mob.getAttackTarget().isPotionActive(EffectHandler.SUNBLOCK)) {
-                    EntityBarakoaya sunblocker = mob.world.getClosestEntity(EntityBarakoaya.class, EntityPredicate.DEFAULT, mob, mob.getPosX(), mob.getPosY() + mob.getEyeHeight(), mob.getPosZ(), mob.getBoundingBox().grow(40.0D, 15.0D, 40.0D));
-                    mob.setAttackTarget(sunblocker);
-                }
-            }
-
-            FrozenCapability.IFrozenCapability frozenCapability = CapabilityHandler.getCapability(entity, FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-            if (frozenCapability != null) {
-                frozenCapability.tick(entity);
-            }
             LivingCapability.ILivingCapability livingCapability = CapabilityHandler.getCapability(entity, LivingCapability.LivingProvider.LIVING_CAPABILITY);
             if (livingCapability != null) {
                 livingCapability.tick(entity);
@@ -169,10 +100,6 @@ public class ServerEventHandler {
         if (event.getPotionEffect().getPotion() == EffectHandler.FROZEN) {
             if (!event.getEntity().world.isRemote()) {
                 TestModMain.NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(event::getEntity), new MessageFreezeEffect(event.getEntityLiving(), true));
-                FrozenCapability.IFrozenCapability frozenCapability = CapabilityHandler.getCapability(event.getEntity(), FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-                if (frozenCapability != null) {
-                    frozenCapability.onFreeze(event.getEntityLiving());
-                }
             }
         }
     }
@@ -184,10 +111,6 @@ public class ServerEventHandler {
         }
         if (!event.getEntity().world.isRemote() && event.getPotion() == EffectHandler.FROZEN) {
             TestModMain.NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(event::getEntity), new MessageFreezeEffect(event.getEntityLiving(), false));
-            FrozenCapability.IFrozenCapability frozenCapability = CapabilityHandler.getCapability(event.getEntity(), FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-            if (frozenCapability != null) {
-                frozenCapability.onUnfreeze(event.getEntityLiving());
-            }
         }
     }
 
@@ -199,10 +122,6 @@ public class ServerEventHandler {
         }
         if (!event.getEntity().world.isRemote() && effectInstance != null && effectInstance.getPotion() == EffectHandler.FROZEN) {
             TestModMain.NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(event::getEntity), new MessageFreezeEffect(event.getEntityLiving(), false));
-            FrozenCapability.IFrozenCapability frozenCapability = CapabilityHandler.getCapability(event.getEntity(), FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-            if (frozenCapability != null) {
-                frozenCapability.onUnfreeze(event.getEntityLiving());
-            }
         }
     }
 
@@ -234,10 +153,6 @@ public class ServerEventHandler {
         if (event.getSource().isFireDamage()) {
             event.getEntityLiving().removeActivePotionEffect(EffectHandler.FROZEN);
             TestModMain.NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(event::getEntity), new MessageFreezeEffect(event.getEntityLiving(), false));
-            FrozenCapability.IFrozenCapability frozenCapability = CapabilityHandler.getCapability(event.getEntityLiving(), FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-            if (frozenCapability != null) {
-                frozenCapability.onUnfreeze(event.getEntityLiving());
-            }
         }
         if (event.getEntity() instanceof PlayerEntity) {
             PlayerCapability.IPlayerCapability playerCapability = CapabilityHandler.getCapability(event.getEntity(), PlayerCapability.PlayerProvider.PLAYER_CAPABILITY);
@@ -322,18 +237,6 @@ public class ServerEventHandler {
                 return;
             }
 
-            if (entity instanceof PlayerEntity) {
-                BlockState block = event.getPlacedBlock();
-                if (
-                        block.getBlock() == Blocks.FIRE ||
-                                block.getBlock() == Blocks.TNT ||
-                                block.getBlock() == Blocks.RESPAWN_ANCHOR ||
-                                block.getBlock() == Blocks.DISPENSER ||
-                                block.getBlock() == Blocks.CACTUS
-                ) {
-                    aggroBarakoa((PlayerEntity) entity);
-                }
-            }
         }
     }
 
@@ -352,9 +255,6 @@ public class ServerEventHandler {
                 return;
             }
 
-            if (event.getEmptyBucket().getItem() == Items.LAVA_BUCKET) {
-                aggroBarakoa(event.getPlayer());
-            }
         }
     }
 
@@ -372,15 +272,6 @@ public class ServerEventHandler {
         }
 
         BlockState block = event.getState();
-        if (block.getBlock() == Blocks.GOLD_BLOCK ||
-                block.getMaterial() == Material.WOOD ||
-                block.getBlock() == BlockHandler.THATCH.get() ||
-                block.getBlock() == Blocks.RED_TERRACOTTA ||
-                block.getBlock() == Blocks.SKELETON_SKULL ||
-                block.getBlock() == Blocks.TORCH
-        ) {
-            aggroBarakoa(event.getPlayer());
-        }
     }
 
     public <T extends Entity> List<T> getEntitiesNearby(Entity startEntity, Class<T> entityClass, double r) {
@@ -461,20 +352,11 @@ public class ServerEventHandler {
         }
 
         PlayerEntity player = event.getPlayer();
-        if (player.world.getBlockState(event.getPos()).getBlock() instanceof ChestBlock) {
-            aggroBarakoa(player);
-        }
 
         PlayerCapability.IPlayerCapability playerCapability = CapabilityHandler.getCapability(player, PlayerCapability.PlayerProvider.PLAYER_CAPABILITY);
         if (playerCapability != null) {
 
             ItemStack item = event.getItemStack();
-            if (
-                    item.getItem() == Items.FLINT_AND_STEEL ||
-                            item.getItem() == Items.TNT_MINECART
-            ) {
-                aggroBarakoa(player);
-            }
 
             if (event.getSide() == LogicalSide.CLIENT && player.inventory.getCurrentItem().isEmpty() && player.isPotionActive(EffectHandler.SUNS_BLESSING)) {
                 if (player.isSneaking()) {
@@ -518,11 +400,7 @@ public class ServerEventHandler {
         LivingEntity entity = event.getEntityLiving();
         if (entity.getHealth() <= event.getAmount() && entity.isPotionActive(EffectHandler.FROZEN)) {
             entity.removeActivePotionEffect(EffectHandler.FROZEN);
-            FrozenCapability.IFrozenCapability frozenCapability = CapabilityHandler.getCapability(entity, FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
             TestModMain.NETWORK.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(event::getEntity), new MessageFreezeEffect(event.getEntityLiving(), false));
-            if (frozenCapability != null) {
-                frozenCapability.onUnfreeze(entity);
-            }
         }
     }
 
@@ -614,27 +492,7 @@ public class ServerEventHandler {
                     power.onLeftClickEntity(event);
                 }
 
-                if (event.getTarget() instanceof ItemFrameEntity) {
-                    ItemFrameEntity itemFrame = (ItemFrameEntity) event.getTarget();
-                    if (itemFrame.getDisplayedItem().getItem() instanceof ItemBarakoaMask) {
-                        aggroBarakoa(event.getPlayer());
-                    }
-                }
-                if (event.getTarget() instanceof LeaderSunstrikeImmune) {
-                    aggroBarakoa(event.getPlayer());
-                }
-
                 if (!(event.getTarget() instanceof LivingEntity)) return;
-                if (event.getTarget() instanceof EntityBarakoanToPlayer) return;
-                if (!event.getPlayer().world.isRemote()) {
-                    for (int i = 0; i < playerCapability.getPackSize(); i++) {
-                        EntityBarakoanToPlayer barakoa = playerCapability.getTribePack().get(i);
-                        LivingEntity living = (LivingEntity) event.getTarget();
-                        if (barakoa.getMask() != MaskType.FAITH) {
-                            if (!living.isInvulnerable()) barakoa.setAttackTarget(living);
-                        }
-                    }
-                }
             }
         }
     }
@@ -705,37 +563,11 @@ public class ServerEventHandler {
     @SubscribeEvent
     public void onAttachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof LivingEntity) {
-            event.addCapability(new ResourceLocation(TestModMain.MODID, "frozen"), new FrozenCapability.FrozenProvider());
             event.addCapability(new ResourceLocation(TestModMain.MODID, "last_damage"), new LivingCapability.LivingProvider());
             event.addCapability(new ResourceLocation(TestModMain.MODID, "ability"), new AbilityCapability.AbilityProvider());
         }
         if (event.getObject() instanceof PlayerEntity) {
             event.addCapability(new ResourceLocation(TestModMain.MODID, "player"), new PlayerCapability.PlayerProvider());
-        }
-    }
-
-    @SubscribeEvent
-    public void onRideEntity(EntityMountEvent event) {
-        if (event.getEntityMounting() instanceof EntityBarako || event.getEntityMounting() instanceof EntityFrostmaw || event.getEntityMounting() instanceof EntityWroughtnaut)
-            event.setCanceled(true);
-    }
-
-    private void aggroBarakoa(PlayerEntity player) {
-        List<EntityBarako> barakos = getEntitiesNearby(player, EntityBarako.class, 50);
-        for (EntityBarako barako : barakos) {
-            if (barako.getAttackTarget() == null || !(barako.getAttackTarget() instanceof PlayerEntity)) {
-                if (!player.isCreative() && !player.isSpectator() && player.getPosition().distanceSq(barako.getHomePosition()) < 900) {
-                    if (barako.canAttack(player)) barako.setMisbehavedPlayerId(player.getUniqueID());
-                }
-            }
-        }
-        List<EntityBarakoaVillager> barakoas = getEntitiesNearby(player, EntityBarakoaVillager.class, 50);
-        for (EntityBarakoaVillager barakoa : barakoas) {
-            if (barakoa.getAttackTarget() == null || !(barakoa.getAttackTarget() instanceof PlayerEntity)) {
-                if (player.getPosition().distanceSq(barakoa.getHomePosition()) < 900) {
-                    if (barakoa.canAttack(player)) barakoa.setMisbehavedPlayerId(player.getUniqueID());
-                }
-            }
         }
     }
 }

@@ -10,7 +10,6 @@ import io.github.FireTamer81.GeoPlayerModelTest.server.ServerProxy;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityClientEventHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.effects.*;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.naga.EntityNaga;
 import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
@@ -58,7 +57,6 @@ public class ClientProxy extends ServerProxy {
 
         modbus.register(MMModels.class);
         MinecraftForge.EVENT_BUS.register(ClientEventHandler.INSTANCE);
-        MinecraftForge.EVENT_BUS.register(FrozenRenderHandler.INSTANCE);
         MinecraftForge.EVENT_BUS.register(AbilityClientEventHandler.INSTANCE);
     }
 
@@ -67,12 +65,10 @@ public class ClientProxy extends ServerProxy {
         for (EntityRenderer<?> entityRenderer : Minecraft.getInstance().getRenderManager().renderers.values()) {
             if (entityRenderer instanceof LivingRenderer) {
                 LivingRenderer livingRenderer = (LivingRenderer) entityRenderer;
-                livingRenderer.addLayer(new FrozenRenderHandler.LayerFrozen(livingRenderer));
                 livingRenderer.addLayer(new SunblockLayer(livingRenderer));
             }
         }
         for (PlayerRenderer playerRenderer : Minecraft.getInstance().getRenderManager().getSkinMap().values()) {
-            playerRenderer.addLayer(new FrozenRenderHandler.LayerFrozen(playerRenderer));
             playerRenderer.addLayer(new SunblockLayer(playerRenderer));
         }
         IItemPropertyGetter pulling = ItemModelsProperties.func_239417_a_(Items.BOW, new ResourceLocation("pulling"));
@@ -92,11 +88,6 @@ public class ClientProxy extends ServerProxy {
     @Override
     public void playBoulderChargeSound(LivingEntity player) {
         Minecraft.getInstance().getSoundHandler().play(new SpawnBoulderChargeSound(player));
-    }
-
-    @Override
-    public void playNagaSwoopSound(EntityNaga naga) {
-        Minecraft.getInstance().getSoundHandler().play(new NagaSwoopSound(naga));
     }
 
     @Override

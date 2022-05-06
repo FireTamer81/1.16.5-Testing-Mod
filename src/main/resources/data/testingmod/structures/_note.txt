@@ -1,3 +1,0 @@
-The structure files might be messed up since the blocks and such will not be of the same MOD ID
-
-So, just ignore that if it's the case

@@ -5,9 +5,7 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.model.armour.BarakoaMaskM
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.armour.SolVisageModel;
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.armour.WroughtHelmModel;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.trade.Trade;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.effects.EntitySunstrike;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.naga.EntityNaga;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.*;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.mouse.MessageLeftMouseDown;
 import io.github.FireTamer81.GeoPlayerModelTest.server.message.mouse.MessageLeftMouseUp;
@@ -40,45 +38,8 @@ import java.util.function.Supplier;
 public class ServerProxy {
     private int nextMessageId;
 
-    public static final IDataSerializer<Optional<Trade>> OPTIONAL_TRADE = new IDataSerializer<Optional<Trade>>() {
-        @Override
-        public void write(PacketBuffer buf, Optional<Trade> value) {
-            if (value.isPresent()) {
-                Trade trade = value.get();
-                buf.writeItemStack(trade.getInput());
-                buf.writeItemStack(trade.getOutput());
-                buf.writeInt(trade.getWeight());
-            } else {
-                buf.writeItemStack(ItemStack.EMPTY);
-            }
-        }
-
-        @Override
-        public Optional<Trade> read(PacketBuffer buf) {
-            ItemStack input = buf.readItemStack();
-            if (input == ItemStack.EMPTY) {
-                return Optional.empty();
-            }
-            return Optional.of(new Trade(input, buf.readItemStack(), buf.readInt()));
-        }
-
-        @Override
-        public DataParameter<Optional<Trade>> createKey(int id) {
-            return new DataParameter<>(id, this);
-        }
-
-        @Override
-        public Optional<Trade> copyValue(Optional<Trade> value) {
-            if (value.isPresent()) {
-                return Optional.of(new Trade(value.get()));
-            }
-            return Optional.empty();
-        }
-    };
-
     public void init(final IEventBus modbus) {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHandler.COMMON_CONFIG);
-        DataSerializers.registerSerializer(OPTIONAL_TRADE);
     }
 
     public void onLateInit(final IEventBus modbus) {}
@@ -88,8 +49,6 @@ public class ServerProxy {
     public void playIceBreathSound(Entity entity) {}
 
     public void playBoulderChargeSound(LivingEntity player) {}
-
-    public void playNagaSwoopSound(EntityNaga naga) {}
 
     public void playBlackPinkSound(AbstractMinecartEntity entity) {}
 
@@ -110,8 +69,6 @@ public class ServerProxy {
         this.registerMessage(MessageRightMouseDown.class, MessageRightMouseDown::serialize, MessageRightMouseDown::deserialize, new MessageRightMouseDown.Handler());
         this.registerMessage(MessageRightMouseUp.class, MessageRightMouseUp::serialize, MessageRightMouseUp::deserialize, new MessageRightMouseUp.Handler());
         this.registerMessage(MessageFreezeEffect.class, MessageFreezeEffect::serialize, MessageFreezeEffect::deserialize, new MessageFreezeEffect.Handler());
-        this.registerMessage(MessageBarakoTrade.class, MessageBarakoTrade::serialize, MessageBarakoTrade::deserialize, new MessageBarakoTrade.Handler());
-        this.registerMessage(MessageBlackPinkInYourArea.class, MessageBlackPinkInYourArea::serialize, MessageBlackPinkInYourArea::deserialize, new MessageBlackPinkInYourArea.Handler());
         this.registerMessage(MessagePlayerAttackMob.class, MessagePlayerAttackMob::serialize, MessagePlayerAttackMob::deserialize, new MessagePlayerAttackMob.Handler());
         this.registerMessage(MessagePlayerSolarBeam.class, MessagePlayerSolarBeam::serialize, MessagePlayerSolarBeam::deserialize, new MessagePlayerSolarBeam.Handler());
         this.registerMessage(MessagePlayerSummonSunstrike.class, MessagePlayerSummonSunstrike::serialize, MessagePlayerSummonSunstrike::deserialize, new MessagePlayerSummonSunstrike.Handler());

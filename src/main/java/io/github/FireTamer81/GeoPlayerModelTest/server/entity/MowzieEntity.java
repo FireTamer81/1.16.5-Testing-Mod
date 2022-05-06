@@ -6,7 +6,6 @@ import io.github.FireTamer81.GeoPlayerModelTest._library.server.animation.IAnima
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.IntermittentAnimation;
 import io.github.FireTamer81.GeoPlayerModelTest.client.sound.BossMusicPlayer;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.world.spawn.SpawnHandler;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
@@ -109,63 +108,6 @@ public abstract class MowzieEntity extends CreatureEntity implements IEntityAddi
 
     protected ConfigHandler.CombatConfig getCombatConfig() {
         return null;
-    }
-
-    public static boolean spawnPredicate(EntityType type, IWorld world, SpawnReason reason, BlockPos spawnPos, Random rand) {
-        ConfigHandler.SpawnConfig spawnConfig = SpawnHandler.spawnConfigs.get(type);
-        if (spawnConfig != null) {
-            if (rand.nextDouble() > spawnConfig.extraRarity.get()) return false;
-
-            // Dimension check
-            List<? extends String> dimensionNames = spawnConfig.dimensions.get();
-            ResourceLocation currDimensionName = ((ServerWorld)world).getDimensionKey().getLocation();
-            if (!dimensionNames.contains(currDimensionName.toString())) {
-                return false;
-            }
-
-            // Height check
-            float heightMax = spawnConfig.heightMax.get();
-            float heightMin = spawnConfig.heightMin.get();
-            if (spawnPos.getY() > heightMax && heightMax >= 0) {
-                return false;
-            }
-            if (spawnPos.getY() < heightMin) {
-                return false;
-            }
-
-            // Light level check
-            if (spawnConfig.needsDarkness.get() && !MonsterEntity.isValidLightLevel((IServerWorld) world, spawnPos, rand)) {
-                return false;
-            }
-
-            // Block check
-            Block block = world.getBlockState(spawnPos.down()).getBlock();
-            ResourceLocation blockName = block.getRegistryName();
-            List<? extends String> allowedBlocks = spawnConfig.allowedBlocks.get();
-            List<? extends String> allowedBlockTags = spawnConfig.allowedBlockTags.get();
-            if (blockName == null) return false;
-            if (!allowedBlocks.isEmpty() && !allowedBlocks.contains(blockName.toString()) && !allowedBlocks.contains(blockName.getPath())) return false;
-            if (!allowedBlockTags.isEmpty() && !isBlockTagAllowed(allowedBlockTags, block)) return false;
-
-            // See sky
-            if (spawnConfig.needsSeeSky.get() && !world.canBlockSeeSky(spawnPos)) {
-                return false;
-            }
-            if (spawnConfig.needsCantSeeSky.get() && world.canBlockSeeSky(spawnPos)) {
-                return false;
-            }
-
-            List<? extends String> avoidStructures = spawnConfig.avoidStructures.get();
-            for (String structureName : avoidStructures) {
-                Structure<?> structure = ForgeRegistries.STRUCTURE_FEATURES.getValue(new ResourceLocation(structureName));
-                if (structure == null) continue;
-                BlockPos pos = ((ServerWorld) world).getStructureLocation(structure, spawnPos, 3, false);
-                if (pos == null) continue;
-                double dist = spawnPos.add(0, -spawnPos.getY(), 0).distanceSq(pos);
-                if (dist < 900) return false;
-            }
-        }
-        return true;
     }
 
     private static boolean structureNearby(Structure structure, ChunkGenerator chunkGenerator, long seed, SharedSeedRandom chunkRandom, int chunkX, int chunkY) {

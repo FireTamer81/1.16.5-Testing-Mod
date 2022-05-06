@@ -1,6 +1,6 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client.model.item;
 
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemEarthboreGauntlet;
+import io.github.FireTamer81.GeoPlayerModelTest.server.item.objects.ItemEarthboreGauntlet;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.util.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;

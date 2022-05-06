@@ -6,17 +6,11 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ServerEventHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ServerProxy;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityCommonEventHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.advancement.AdvancementHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.block.BlockHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.capability.CapabilityHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.creativetab.CreativeTabHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.EntityHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.loot.LootTableHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.sound.MMSounds;
-import io.github.FireTamer81.GeoPlayerModelTest.server.world.feature.ConfiguredFeatureHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.world.spawn.SpawnHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.world.feature.FeatureHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.event.world.WorldEvent;
@@ -55,9 +49,7 @@ public class TestModMain
 		CreativeTabHandler.INSTANCE.onInit();
 		EntityHandler.REG.register(bus);
 		MMSounds.REG.register(bus);
-		BlockHandler.REG.register(bus);
 		ParticleHandler.REG.register(bus);
-		FeatureHandler.REG.register(bus);
 
 		PROXY.init(bus);
 		bus.<FMLCommonSetupEvent>addListener(this::init);
@@ -70,33 +62,18 @@ public class TestModMain
 
 	public void init(final FMLCommonSetupEvent event) {
 		CapabilityHandler.register();
-		SpawnHandler.registerSpawnPlacementTypes();
 		PROXY.initNetwork();
-		AdvancementHandler.preInit();
-		LootTableHandler.init();
 
-		event.enqueueWork(() -> {
-			FeatureHandler.setupStructures();
-			ConfiguredFeatureHandler.registerConfiguredStructures();
-		});
 	}
 
 	private void init(FMLLoadCompleteEvent event) {
 		ItemHandler.initializeAttributes();
-		ItemHandler.initializeDispenserBehaviors();
-		BlockHandler.init();
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		PROXY.onLateInit(bus);
 	}
 
 	@SubscribeEvent
 	public void onBiomeLoading(BiomeLoadingEvent event) {
-		SpawnHandler.onBiomeLoading(event);
-		ConfiguredFeatureHandler.onBiomeLoading(event);
 	}
 
-	@SubscribeEvent
-	public void onWorldLoad(final WorldEvent.Load event) {
-		FeatureHandler.addDimensionalSpacing(event);
-	}
 }

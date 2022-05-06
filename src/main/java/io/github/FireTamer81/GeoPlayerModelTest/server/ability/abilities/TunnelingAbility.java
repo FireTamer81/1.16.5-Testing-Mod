@@ -7,14 +7,13 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.particle.util.AdvancedPar
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.util.ParticleComponent;
 import io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.player.GeckoPlayer;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.Ability;
-import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilitySection;
 import io.github.FireTamer81.GeoPlayerModelTest.server.ability.AbilityType;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.EntityHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.effects.EntityBlockSwapper;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.effects.EntityFallingBlock;
-import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemEarthboreGauntlet;
+import io.github.FireTamer81.GeoPlayerModelTest.server.item.objects.ItemEarthboreGauntlet;
 import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.potion.effects.EffectGeomancy;
 import io.github.FireTamer81.GeoPlayerModelTest.server.sound.MMSounds;
@@ -30,16 +29,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.network.PacketDistributor;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.network.GeckoLibNetwork;
-import software.bernie.geckolib3.network.ISyncable;
-import software.bernie.geckolib3.util.GeckoLibUtil;
 
 import java.util.List;
 

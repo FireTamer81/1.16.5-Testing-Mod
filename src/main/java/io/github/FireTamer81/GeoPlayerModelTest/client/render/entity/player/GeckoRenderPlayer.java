@@ -4,7 +4,6 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelBipedAn
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelGeckoPlayerThirdPerson;
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.entity.ModelPlayerAnimated;
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.geckolib.MowzieGeoBone;
-import io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.FrozenRenderHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.client.render.entity.layer.*;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
@@ -69,7 +68,6 @@ public class GeckoRenderPlayer extends PlayerRenderer implements IGeoRenderer<Ge
         this.addLayer(new GeckoParrotVariantLayer(this));
         this.addLayer(new SpinAttackEffectLayer<>(this));
         this.addLayer(new BeeStingerLayer<>(this));
-        this.addLayer(new FrozenRenderHandler.LayerFrozen<>(this));
 
         this.modelProvider = modelProvider;
 

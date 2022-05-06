@@ -3,8 +3,8 @@ package io.github.FireTamer81.GeoPlayerModelTest.server.entity.effects;
 import io.github.FireTamer81.GeoPlayerModelTest.client.model.tools.MathUtils;
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleOrb;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.LeaderSunstrikeImmune;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarako;
+//import io.github.FireTamer81.GeoPlayerModelTest.server.entity.LeaderSunstrikeImmune;
+//import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarako;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SlabBlock;
@@ -193,18 +193,18 @@ public class EntitySunstrike extends Entity implements IEntityAdditionalSpawnDat
         double radiusSq = radius * radius;
         for (Entity entity : entities) {
             if (entity instanceof LivingEntity && getDistanceSqXZToEntity(entity) < radiusSq) {
-                if (caster instanceof EntityBarako && (entity instanceof LeaderSunstrikeImmune)) {
-                    continue;
-                }
+                //if (caster instanceof EntityBarako && (entity instanceof LeaderSunstrikeImmune)) {
+                //    continue;
+                //}
                 if (caster instanceof PlayerEntity && entity == caster) {
                     continue;
                 }
                 float damageFire = 2f;
                 float damageMob = 2f;
-                if (caster instanceof EntityBarako) {
-                    damageFire *= ConfigHandler.COMMON.MOBS.BARAKO.combatConfig.attackMultiplier.get();
-                    damageMob *= ConfigHandler.COMMON.MOBS.BARAKO.combatConfig.attackMultiplier.get();
-                }
+                //if (caster instanceof EntityBarako) {
+                //    damageFire *= ConfigHandler.COMMON.MOBS.BARAKO.combatConfig.attackMultiplier.get();
+                //    damageMob *= ConfigHandler.COMMON.MOBS.BARAKO.combatConfig.attackMultiplier.get();
+                //}
                 if (caster instanceof PlayerEntity) {
                     damageFire *= ConfigHandler.COMMON.TOOLS_AND_ABILITIES.SUNS_BLESSING.sunsBlessingAttackMultiplier.get();
                     damageMob *= ConfigHandler.COMMON.TOOLS_AND_ABILITIES.SUNS_BLESSING.sunsBlessingAttackMultiplier.get();

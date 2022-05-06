@@ -12,7 +12,6 @@ import io.github.FireTamer81.GeoPlayerModelTest.server.capability.PlayerCapabili
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.damage.DamageUtil;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.LeaderSunstrikeImmune;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarako;
 import io.github.FireTamer81.GeoPlayerModelTest.server.sound.MMSounds;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.client.Minecraft;
@@ -85,7 +84,6 @@ public class EntitySolarBeam extends Entity {
         this.setPitch(pitch);
         this.setDuration(duration);
         this.setPosition(x, y, z);
-        this.calculateEndPos();
         this.playSound(MMSounds.LASER.get(), 2f, 1);
         if (!world.isRemote) {
             this.setCasterID(caster.getEntityId());
@@ -172,22 +170,14 @@ public class EntitySolarBeam extends Entity {
             }
         }
         if (ticksExisted > 20) {
-            this.calculateEndPos();
             List<LivingEntity> hit = raytraceEntities(world, new Vector3d(getPosX(), getPosY(), getPosZ()), new Vector3d(endPosX, endPosY, endPosZ), false, true, true).entities;
             if (blockSide != null) {
                 spawnExplosionParticles(2);
             }
             if (!world.isRemote) {
                 for (LivingEntity target : hit) {
-                    if (caster instanceof EntityBarako && target instanceof LeaderSunstrikeImmune) {
-                        continue;
-                    }
                     float damageFire = 1f;
                     float damageMob = 1.5f;
-                    if (caster instanceof EntityBarako) {
-                        damageFire *= ConfigHandler.COMMON.MOBS.BARAKO.combatConfig.attackMultiplier.get();
-                        damageMob *= ConfigHandler.COMMON.MOBS.BARAKO.combatConfig.attackMultiplier.get();
-                    }
                     if (caster instanceof PlayerEntity) {
                         damageFire *= ConfigHandler.COMMON.TOOLS_AND_ABILITIES.SUNS_BLESSING.sunsBlessingAttackMultiplier.get();
                         damageMob *= ConfigHandler.COMMON.TOOLS_AND_ABILITIES.SUNS_BLESSING.sunsBlessingAttackMultiplier.get();
@@ -302,20 +292,6 @@ public class EntitySolarBeam extends Entity {
     @Override
     public IPacket<?> createSpawnPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    private void calculateEndPos() {
-        double radius = caster instanceof EntityBarako ? RADIUS_BARAKO : RADIUS_PLAYER;
-        if (world.isRemote()) {
-            endPosX = getPosX() + radius * Math.cos(renderYaw) * Math.cos(renderPitch);
-            endPosZ = getPosZ() + radius * Math.sin(renderYaw) * Math.cos(renderPitch);
-            endPosY = getPosY() + radius * Math.sin(renderPitch);
-        }
-        else {
-            endPosX = getPosX() + radius * Math.cos(getYaw()) * Math.cos(getPitch());
-            endPosZ = getPosZ() + radius * Math.sin(getYaw()) * Math.cos(getPitch());
-            endPosY = getPosY() + radius * Math.sin(getPitch());
-        }
     }
 
     public HitResult raytraceEntities(World world, Vector3d from, Vector3d to, boolean stopOnLiquid, boolean ignoreBlockWithoutBoundingBox, boolean returnLastUncollidableBlock) {

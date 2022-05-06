@@ -1,7 +1,6 @@
 package io.github.FireTamer81.GeoPlayerModelTest.client.sound;
 
 import io.github.FireTamer81.GeoPlayerModelTest._library.client.model.tools.ControlledAnimation;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarakoa;
 import io.github.FireTamer81.GeoPlayerModelTest.server.potion.EffectHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.sound.MMSounds;
 import net.minecraft.client.audio.TickableSound;
@@ -42,10 +41,7 @@ public class SunblockSound extends TickableSound {
             y = (float) entity.getPosY();
             z = (float) entity.getPosZ();
             boolean barakoaHealing = false;
-            if (entity instanceof EntityBarakoa) {
-                EntityBarakoa barakoa = (EntityBarakoa) entity;
-                barakoaHealing = barakoa.getAnimation() == EntityBarakoa.HEAL_LOOP_ANIMATION || barakoa.getAnimation() == EntityBarakoa.HEAL_START_ANIMATION;
-            }
+
             boolean hasSunblock = entity.isPotionActive(EffectHandler.SUNBLOCK);
             active = barakoaHealing || hasSunblock;
             if (!entity.isAlive()) {

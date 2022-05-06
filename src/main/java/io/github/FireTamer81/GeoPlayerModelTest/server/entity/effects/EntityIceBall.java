@@ -5,8 +5,6 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleCloud;
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleRing;
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleSnowFlake;
 import io.github.FireTamer81.GeoPlayerModelTest.server.capability.CapabilityHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.capability.FrozenCapability;
-import io.github.FireTamer81.GeoPlayerModelTest.server.capability.FrozenCapability.IFrozenCapability;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.entity.EntityHandler;
 import io.github.FireTamer81.TestModMain;
@@ -56,10 +54,6 @@ public class EntityIceBall extends EntityMagicEffect {
                 List<? extends String> freezeImmune = ConfigHandler.COMMON.GENERAL.freeze_blacklist.get();
                 ResourceLocation mobName = EntityType.getKey(entity.getType());
                 if (freezeImmune.contains(mobName.toString())) continue;
-                if (entity.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this, caster), 3f * ConfigHandler.COMMON.MOBS.FROSTMAW.combatConfig.attackMultiplier.get().floatValue())) {
-                    IFrozenCapability capability = CapabilityHandler.getCapability(entity, FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-                    if (capability != null) capability.addFreezeProgress(entity, 1);
-                }
             }
         }
 

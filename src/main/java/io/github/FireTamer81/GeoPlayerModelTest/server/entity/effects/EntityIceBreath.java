@@ -5,9 +5,7 @@ import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleCloud;
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleRing;
 import io.github.FireTamer81.GeoPlayerModelTest.client.particle.ParticleSnowFlake;
 import io.github.FireTamer81.GeoPlayerModelTest.server.capability.CapabilityHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.capability.FrozenCapability;
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.frostmaw.EntityFrostmaw;
 import io.github.FireTamer81.GeoPlayerModelTest.server.sound.MMSounds;
 import io.github.FireTamer81.TestModMain;
 import net.minecraft.block.BlockState;
@@ -94,7 +92,6 @@ public class EntityIceBreath extends EntityMagicEffect {
     public void hitEntities() {
         List<LivingEntity> entitiesHit = getEntityLivingBaseNearby(RANGE, RANGE, RANGE, RANGE);
         float damage = DAMAGE_PER_HIT;
-        if (caster instanceof EntityFrostmaw) damage *= ConfigHandler.COMMON.MOBS.FROSTMAW.combatConfig.attackMultiplier.get();
         if (caster instanceof PlayerEntity) damage *= ConfigHandler.COMMON.TOOLS_AND_ABILITIES.ICE_CRYSTAL.attackMultiplier.get();
         for (LivingEntity entityHit : entitiesHit) {
             if (entityHit == caster) continue;
@@ -130,17 +127,6 @@ public class EntityIceBreath extends EntityMagicEffect {
             boolean inRange = entityHitDistance <= RANGE;
             boolean yawCheck = (entityRelativeYaw <= ARC / 2f && entityRelativeYaw >= -ARC / 2f) || (entityRelativeYaw >= 360 - ARC / 2f || entityRelativeYaw <= -360 + ARC / 2f);
             boolean pitchCheck = (entityRelativePitch <= ARC / 2f && entityRelativePitch >= -ARC / 2f) || (entityRelativePitch >= 360 - ARC / 2f || entityRelativePitch <= -360 + ARC / 2f);
-            boolean frostmawCloseCheck = caster instanceof EntityFrostmaw && entityHitDistance <= 2;
-            if (inRange && yawCheck && pitchCheck || frostmawCloseCheck) {
-                // Do raycast check to prevent damaging through walls
-                if (!raytraceCheckEntity(entityHit)) continue;
-
-                if (entityHit.attackEntityFrom(DamageSource.causeIndirectMagicDamage(this, caster), damage)) {
-                    entityHit.setMotion(entityHit.getMotion().mul(0.25, 1, 0.25));
-                    FrozenCapability.IFrozenCapability capability = CapabilityHandler.getCapability(entityHit, FrozenCapability.FrozenProvider.FROZEN_CAPABILITY);
-                    if (capability != null) capability.addFreezeProgress(entityHit, 0.23f);
-                }
-            }
         }
     }
 

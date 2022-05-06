@@ -1,9 +1,6 @@
 package io.github.FireTamer81.GeoPlayerModelTest.server.entity;
 
 import io.github.FireTamer81.GeoPlayerModelTest.server.config.ConfigHandler;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarakoa;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.barakoa.EntityBarakoanToPlayer;
-import io.github.FireTamer81.GeoPlayerModelTest.server.entity.frostmaw.EntityFrostmaw;
 import io.github.FireTamer81.GeoPlayerModelTest.server.item.ItemHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -64,13 +61,7 @@ public class EntityDart extends ArrowEntity {
             Entity shooter = getShooter();
             if (hit instanceof LivingEntity) {
                 LivingEntity living = (LivingEntity) hit;
-                if (
-                        world.isRemote ||
-                                (shooter == hit) ||
-                                (shooter instanceof EntityBarakoa && living instanceof EntityBarakoa && ((EntityBarakoa) shooter).isBarakoDevoted() == ((EntityBarakoa) living).isBarakoDevoted()) ||
-                                (shooter instanceof EntityBarakoanToPlayer && living == ((EntityBarakoanToPlayer) shooter).getLeader())
-                )
-                    return;
+                if (world.isRemote || (shooter == hit)) return;
             }
         }
         super.onEntityHit(raytraceResultIn);

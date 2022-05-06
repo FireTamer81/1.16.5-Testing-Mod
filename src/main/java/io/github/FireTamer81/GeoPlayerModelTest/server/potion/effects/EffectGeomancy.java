@@ -1,6 +1,5 @@
 package io.github.FireTamer81.GeoPlayerModelTest.server.potion.effects;
 
-import io.github.FireTamer81.GeoPlayerModelTest.server.block.BlockHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.potion.EffectHandler;
 import io.github.FireTamer81.GeoPlayerModelTest.server.potion.TestEffect;
 import net.minecraft.block.BlockState;
@@ -35,7 +34,6 @@ public class EffectGeomancy extends TestEffect {
                 && blockState.getBlock() != Blocks.ENDER_CHEST
                 && blockState.getBlock() != Blocks.SLIME_BLOCK
                 && blockState.getBlock() != Blocks.HOPPER
-                && blockState.getBlock() != BlockHandler.THATCH.get()
                 && !blockState.hasTileEntity();
     }
 
