@@ -1,5 +1,8 @@
 package io.github.FireTamer81;
 
+import io.github.FireTamer81.core.init.BlockInit;
+import io.github.FireTamer81.core.tabs.TestGroup;
+import net.minecraft.item.ItemGroup;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,9 +21,9 @@ public class TestModMain
 	//Identifiers
 	public static final Logger LOGGER = LogManager.getLogger();
 	public static final String MOD_ID = "testingmod";
-	
-	
 
+
+	public static final ItemGroup TEST_GROUP = new TestGroup("test_group");
 	
 	
 	public TestModMain() 
@@ -34,6 +37,7 @@ public class TestModMain
 		
 		//Registries
 		DeferredRegister<?>[] registers = {
+
 				
 		};
 		

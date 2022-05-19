@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "testingmod:blocks/portal_block",
+        "down": "testingmod:blocks/portal_block",
+        "up": "testingmod:blocks/portal_block",
+        "east": "testingmod:blocks/portal_block",
+        "west": "testingmod:blocks/portal_block",
+        "north": "testingmod:blocks/portal_block_face",
+        "south": "testingmod:blocks/portal_block"
+    }
+}

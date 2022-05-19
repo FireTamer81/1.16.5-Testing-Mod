@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "testingmod:block/faced_portal_block" },
+        "facing=south": { "model": "testingmod:block/faced_portal_block", "y": 180 },
+        "facing=west": { "model": "testingmod:block/faced_portal_block", "y": 270 },
+        "facing=east": { "model": "testingmod:block/faced_portal_block", "y": 90 }
+    }
+}
